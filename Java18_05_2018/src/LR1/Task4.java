@@ -24,5 +24,5 @@ public class Task4 {
     String b;
     b = "Программирование это " + a + "!";
     System.out.println(b);
-            } 
+             } 
 }
