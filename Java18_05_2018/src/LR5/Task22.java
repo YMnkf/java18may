@@ -30,7 +30,7 @@ import java.util.Scanner;
  * Точки на пересечении границ.
  *
  */
-public class Task5382 {
+public class Task22 {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Введите x:");
