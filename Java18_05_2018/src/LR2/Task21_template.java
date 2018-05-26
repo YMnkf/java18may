@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author adm
  */
-public class Task21 {
+public class Task21_template {
     public static void main (String [] args) {
     Scanner sc = new Scanner (System.in);
     double a;
