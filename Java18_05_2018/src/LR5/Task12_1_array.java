@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author adm
  */
-public class Task12_1 {
+public class Task12_1_array {
     public static void main (String [] args) {
     Scanner sc = new Scanner (System.in);
     String a;

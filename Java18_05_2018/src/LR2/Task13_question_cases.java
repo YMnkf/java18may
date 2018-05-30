@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author adm
  */
-public class Task13_cases {
+public class Task13_question_cases {
     public static void main (String [] args) {
     Scanner sc = new Scanner (System.in);
     double a;
