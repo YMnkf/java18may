@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author adm
  */
-public class Task13_question_cases {
+public class Task13_better {
     public static void main (String [] args) {
     Scanner sc = new Scanner (System.in);
     double a;
@@ -18,22 +18,25 @@ public class Task13_question_cases {
     double result;
     a = sc.nextDouble();
     b = sc.nextDouble();
-    if (a<=0 && b>0){
+    
+    boolean error = false;
+    
+    
+    if (a<=0){
         System.out.println("Значение base должно быть положительным");
+        error = true;
+    }
+
+    if (b<=0){
+        System.out.println("Значение height должно быть положительным");
+        error = true;
+    }
+    
+    if (error) {
         return;
-    } else {
-            if (a>0 && b<=0){
-                System.out.println("Значение height должно быть положительным");
-                return;
-            }
-            else {
-            if ((a<=0 && b<=0)){
-                System.out.println("Значение base должно быть положительным,\nЗначение height должно быть положительным");
-                return;
-            }
-            } 
+    }
+    
         result = a * b / 2;
         System.out.printf("%.4f\n", result);
-}
 }
 }

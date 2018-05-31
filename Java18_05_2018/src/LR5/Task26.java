@@ -1,4 +1,4 @@
-package Lab05;
+package LR5;
 
 import java.util.Scanner;
 
@@ -27,7 +27,7 @@ import java.util.Scanner;
  * Точки на пересечении границ.
  *
  */
-public class Task9038 {
+public class Task26 {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Введите x:");

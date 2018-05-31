@@ -50,7 +50,7 @@ public class Task27_global_var_template_case {
                                 return;
                     }
         result_kinetic_energy = a * Math.pow(b,2)/2;
-        result_potential_energy = a * 9.8067 * c;
+        result_potential_energy = a * Class_Utils.ACCS * c;
         System.out.printf("Кинетическая энергия составляет: %.4f Дж\nПотенциальная энергия составляет: %.4f Дж\n", result_kinetic_energy, result_potential_energy);
     }    
     }
