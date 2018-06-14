@@ -29,7 +29,7 @@ public class Task1 {
 //        System.out.print("!");
        
     int i=0; //сколько сделали
-    int n=13; // сколько нжно сделать
+    int n=13; // сколько нужно сделать
     
     while (i<13) {
         System.out.print("!");
