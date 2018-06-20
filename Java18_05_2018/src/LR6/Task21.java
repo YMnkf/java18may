@@ -7,23 +7,32 @@ package LR6;
 
 import java.util.Scanner;
 
-public class Task10 {
+public class Task21 {
 
     public static void main(String[] args) {
   
     Scanner sc = new Scanner (System.in);
     double a;
     double b;
-    
+    double S;
+       
     a = sc.nextDouble();
     b = sc.nextDouble();
-  
-    int i = (int) a;
-    while (i <= (int) b) {
-        System.out.println(i + " " + (int) (b - i + a));
-        i = i+1;
+    
+    if (a <= b) {
+    S = 0;
+    for (int i = (int) a; i <= (int) b; i=i+1){
+        S=S+Math.pow(i, 2);
+        }
+    System.out.print("\n" + S +"\n");
     }
-    
-    
+    if (a > b) {
+    S = 0;
+    for (int i = (int) a; i >= (int) b; i=i-1){
+        S=S+Math.pow(i, 2);
+        }
+    System.out.print("\n" + S +"\n");
     }
 }
+}
+

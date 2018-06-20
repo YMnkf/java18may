@@ -7,23 +7,23 @@ package LR6;
 
 import java.util.Scanner;
 
-public class Task10 {
+public class Task19 {
 
     public static void main(String[] args) {
   
     Scanner sc = new Scanner (System.in);
     double a;
-    double b;
+    double S;
+    int count;
+        
+    S=0;
+    count = 0;
     
-    a = sc.nextDouble();
-    b = sc.nextDouble();
-  
-    int i = (int) a;
-    while (i <= (int) b) {
-        System.out.println(i + " " + (int) (b - i + a));
-        i = i+1;
+    do {
+        a = sc.nextDouble();
+        S=S+a;
+        count = count + 1;
+    } while (S <= 1000);
+    System.out.print("Количество чисел:" + count + "\n");
     }
-    
-    
     }
-}

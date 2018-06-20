@@ -7,30 +7,25 @@ package LR6;
 
 import java.util.Scanner;
 
-public class Task5 {
+public class Task4 {
 
     public static void main(String[] args) {
   
     Scanner sc = new Scanner (System.in);
     double a;
-    String b;
+    double b;
     
-    b = sc.nextLine();
     a = sc.nextDouble();
+    b = sc.nextDouble();
     
-    
-    if (a < 0) {
-                System.out.println("Значение A должно быть неотрицательным\n");
+    if (a > b) {
+                System.out.println("Значение A должно быть не больше значения B\n");
                 return;
     }
 
-    System.out.print("\"");
-    int i = 0;
-    while (i < (int) a) {
-        System.out.print(b);
-        i = i+1;
-    }
-    
-    System.out.print("\"\n");
+    for (int i = (int) b; i >= (int) a; i=i-1){
+        System.out.print(i + "\n");
+        }
     }
 }
+   

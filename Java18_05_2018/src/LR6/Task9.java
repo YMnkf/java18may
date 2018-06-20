@@ -7,23 +7,17 @@ package LR6;
 
 import java.util.Scanner;
 
-public class Task10 {
+public class Task9 {
 
     public static void main(String[] args) {
   
     Scanner sc = new Scanner (System.in);
     double a;
-    double b;
-    
+        
     a = sc.nextDouble();
-    b = sc.nextDouble();
-  
-    int i = (int) a;
-    while (i <= (int) b) {
-        System.out.println(i + " " + (int) (b - i + a));
-        i = i+1;
-    }
     
-    
-    }
+    for (int i = 1; i <= 9; i=i+1){
+                                   System.out.print(i + "*" + a + " = " + i*a + "\n");
+                                       }
+                }
 }

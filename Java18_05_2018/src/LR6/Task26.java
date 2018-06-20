@@ -7,7 +7,7 @@ package LR6;
 
 import java.util.Scanner;
 
-public class Task22 {
+public class Task26 {
 
     public static void main(String[] args) {
   
@@ -15,19 +15,19 @@ public class Task22 {
     int a;
     a = sc.nextInt();  
     
-    //if (a < 10){
-    //            System.out.println("Значение A должно находиться в интервале [10,20]\n");
+    //if (a < 30){
+    //            System.out.println("Значение A должно находиться в интервале [30,40]\n");
     //            return;
     //}
-    //if (a > 20){
-    //            System.out.println("Значение A должно находиться в интервале [10,20]\n");
+    //if (a > 40){
+    //            System.out.println("Значение A должно находиться в интервале [30,40]\n");
     //            return;
     //}
-    for (int i = 10; i <= 20; i=i+1){
+    for (int i = 30; i <= 40; i=i+1){
                 if (i == (int) a) {
                 System.out.print(i + "+\n");    
                 } else {
-                    System.out.print(i + "\n");
+                    System.out.print(i + "-\n");
                 }
                 
         } 
