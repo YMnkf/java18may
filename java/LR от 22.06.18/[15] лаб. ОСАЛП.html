@@ -1,0 +1,1216 @@
+<!DOCTYPE html>  <html>  <head>  <meta charset="utf-8"/>  <title>15 Коллекции</title>  <style>
+.check_single {
+    margin:15px;
+	border:1px solid black;
+	padding:5px;
+    width:calc(100% - 40px);
+}
+sqrt val {
+	border-top: 1px solid black;
+}
+sqrt:before {
+	content:"\221A";
+}
+.section {
+	counter-reset:section;
+}
+.section h3:after {
+	counter-increment:section;
+	content: " " counter(section);
+}
+table {
+	border-collapse:collapse;
+}
+.check_values {
+	width:100%;
+	counter-reset:test_case;
+}
+.check_values td:first-child::before {
+	counter-increment:test_case;
+	content: counter(test_case);
+}
+table td, table th {
+	border:1px solid black;
+	text-align:center;
+}
+.check_values td:first-child{
+	width:40px;
+}
+.lab_nav ol {
+	list-style:none;
+}
+.nav {
+	position:fixed;
+	top:0px;
+	right:0px;
+	margin:15px;
+	clear:both;
+}
+.nav ul{
+	list-style-type:none;
+	padding:0px;
+	float:left;
+}
+.nav li {
+	margin:2px;
+	border:1px solid black;
+}
+.nav li a {
+	display:block;
+	padding:7px;
+}
+.task_block {
+	width:80%;
+	page-break-inside:avoid;
+	padding:10px;
+	display:block;
+}
+.task_block:target{
+	background-color:lightgrey;
+}
+.task_block:target .task_id{
+	color:white;
+}
+.task_id {
+	float:right;
+	color:lightgrey;
+}
+.quiz_block {
+	width:80%;
+}
+.quiz_block:target{
+	background-color:lightgrey;
+}
+.task_desc {
+	margin:5px;
+}
+.example_image {
+	width:200px;
+}
+.lab_nav {
+	width:80%;
+	overflow:auto;
+}
+.check_values .preformatted, .preformatted {
+	font-family:monospace;
+	white-space:pre;
+	text-align:left;
+	padding:10px;
+}
+formula {
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+}
+fraction {
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:bold;
+}
+numerator {
+	display:block;
+	border-bottom:2px solid black;
+}
+denominator {
+	display:block;
+}
+.example::after{
+	content:"*";
+}
+.supervision::after{
+	content:"!";
+}
+spoiler {
+	color:darkgrey;
+}
+spoiler origin {
+	display:none;
+}
+spoiler:hover origin {
+	display:inline;
+}
+spoiler trans {
+	display:inline;
+}
+spoiler:hover trans {
+	display:none;
+}
+.comment{
+	color:darkgrey;
+}
+.step{
+	display:none;
+}
+.step:last-child, .step:target{
+	display:block;
+}
+.step:target ~ .step:last-child{
+	display:none;
+}
+.console{
+	background-color:black;
+	color:white;
+	width:300px;
+}
+zoom{
+	background-color:gray;
+	font-size:40pt;
+}
+@media print {
+	.nav {
+		display:none;
+	}
+	.lab_nav {
+		display:none;
+	}
+	ol li {
+		margin-bottom:30px;
+	}
+	.quiz_block {
+		width:100%;
+	}
+	.hide_on_print .check_values, .hide_on_print .check_single{
+		display:none;
+	}
+	.hide_on_print img{
+		display:none;
+	}
+	.empty_on_print td{
+		color:transparent;
+	}
+	.empty_on_print img{
+		visibility:hidden;
+	}
+}</style>  </head>  <body class="section">  <a name="heading"><h1>Коллекции</h1></a>
+<div class="lab_nav">
+	Другие темы:
+	<ol>
+		<li>1. <a href="[1] лаб. ОСАЛП.html">Ввод и вывод информации</a></li>
+		<li>2. <a href="[2] лаб. ОСАЛП.html">Арифметические операторы и методы</a></li>
+		<li>5. <a href="[5] лаб. ОСАЛП.html">Условия</a></li>
+		<li>6. <a href="[6] лаб. ОСАЛП.html">Циклы</a></li>
+		<li>7. <a href="[7] лаб. ОСАЛП.html">Массивы</a></li>
+		<li>8. <a href="[8] лаб. ОСАЛП.html">Строки</a></li>
+		<li>9. <a href="[9] лаб. ОСАЛП.html">Чтение файлов</a></li>
+		<li>10. <a href="[10] лаб. ОСАЛП.html">Запись в файлы</a></li>
+		<li>12. <a href="[12] лаб. ОСАЛП.html">Методы</a></li>
+		<li>13. <a href="[13] лаб. ОСАЛП.html">Исключения</a></li>
+		<li>14. <a href="[14] лаб. ОСАЛП.html">Классы и объекты</a></li>
+		<li>15. <a href="[15] лаб. ОСАЛП.html">Коллекции</a></li>
+		<li>16. <a href="[16] лаб. ОСАЛП.html">HTTP клиент</a></li>
+	</ol>
+</div><div class="nav">  <ul>  <li><a href="#heading">^</a></li>  <li><a href="#task5087" class="example">№ 1</a></li>  <li><a href="#task1056" class="example">№ 2</a></li>  <li><a href="#task9990">№ 3</a></li>  <li><a href="#task7738">№ 4</a></li>  <li><a href="#task8418">№ 5</a></li>  <li><a href="#task9512" class="example">№ 6</a></li>  <li><a href="#task9924">№ 7</a></li>  <li><a href="#task7657">№ 8</a></li>  <li><a href="#task8258" class="example">№ 9</a></li>  <li><a href="#task7186">№ 10</a></li>  <li><a href="#task1457">№ 11</a></li>  <li><a href="#task6876">№ 12</a></li>  <li><a href="#task5108">№ 13</a></li>  <li><a href="#task3956" class="example">№ 14</a></li>  <li><a href="#task2033">№ 15</a></li>  <li><a href="#task6981">№ 16</a></li>  <li><a href="#task1753">№ 17</a></li>  </ul>  </div>
+<div id="task5087" class="task_block empty_on_print">
+	<div class="task_id">5087</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Дан массив строк. Заполнить множество (Set) и список (List) элементами исходного массива. Вывести на экран содержимое обеих коллекций. Порядок элементов в множестве (Set) может отличаться. Проверить с помощью вспомогательной программы (Runner5087).</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Вводимые данные</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>q w e r q w</td>
+			<td class="preformatted">Set: q r e w
+List: q w e r q w</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>qw qw er er ty ty</td>
+			<td class="preformatted">Set: ty qw er
+List: qw qw er er ty ty</td>
+		</tr>
+	</table>
+</div><div id="task1056" class="task_block empty_on_print">
+	<div class="task_id">1056</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Дан массив строк. Посчитать сколько раз встречается каждый из элементов. Элементы в результате должны присутствовать не более одного раза. Порядок вывода может отличаться.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Вводимые данные</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>q w e r q w q</td>
+			<td class="preformatted">a 3
+s 2
+d 1
+f 1</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>qw qw er er ty ty</td>
+			<td class="preformatted">gh 2
+as 2
+df 2</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task9990">
+	<div class="task_id">9990</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит записи, написанные в столбик без дополнительного оформления. Нужно вывести слова через запятую без повторений. Порядок слов может отличаться.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test1.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">сталь, медь, железо, алюминий, ртуть, золото</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test2.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">пластик, пластмасса, полиэтилен, полистирол, поролон, пенопласт</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test3.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test4.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">один, два, три, четыре</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task7738">
+	<div class="task_id">7738</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит слова, написанные в столбик без дополнительного оформления. Нужно вывести слово, которое встречается чаще других. Если таких слов несколько, вывести любое из них.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test1.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">алюминий</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test2.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">пластмасса</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test3.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9990/test4.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Любое из: один, два, три, четыре</td>
+		</tr>
+	</table>
+</div><div id="task8418" class="task_block empty_on_print">
+	<div class="task_id">8418</div>
+	<h3>Задача</h3>
+<h4>Реализуйте метод для решения задачи <a href="[6] лаб. ОСАЛП.html#task8418" target="_blank">ЛР6#8418 (открыть в новой вкладке)</a></h4>
+<ul>
+<li>В классе Lab06 реализуйте публичный статический метод task8418.</li>
+<li>Он принимает в качестве аргумента 1 целое число и возвращает List целых чисел.</li>
+<li>В теле метода task8418 в случае получения некорректных значений аргументов, нужно выбросить исключение IllegalArgumentException и указать при этом текст ошибки из задачи.</li>
+</ul>
+
+<h4>Проверьте с помощью юнит-теста результат работы метода task8418 в случаях с корректными данными.</h4>
+<ul>
+<li>В классе Lab06Suite реализуйте публичный метод task8418test, который ничего не возвращает. Пометьте его аннотацией @Test.</li>
+<li>В теле метода task8418 создайте переменные с названиями expected и actual типа List для целых чисел.</li>
+<li>Инициализируйте переменную expected результатом вызова статического метода asList класса Arrays. В качестве аргументов передайте числа, ожидаемые в первом тесте.</li>
+<li>Инициализируйте переменную actual результатом вызова метода task8418.</li>
+<li>Вызовите статический метод assertEquals класса Assert и передайте ему переменные expected и actual в качестве аргументов.</li>
+<li>Повторите эти действия для других тестов.</li>
+<li>Создайте публичные методы shouldNotAcceptNegativeArg и shouldNotAcceptZero и пометьте каждый из них аннотацией @Test с элементом expected, равным IllegalArgumentException.class. </li>
+<li>В теле метода shouldNotAcceptNegativeArg проверьте, что метод task8418 выбрасывает исключение в случае, когда первый аргумент - отрицательное число.</li>
+<li>В теле метода shouldNotAcceptNegativeArg проверьте, что метод task8418 выбрасывает исключение в случае, когда первый аргумент - ноль.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+</div><div class="task_block" id="task9512">
+	<div class="task_id">9512</div>
+	<h3>Задача</h3>
+	<h4>Переопределите стандартный метод hashCode для расчета хеша экземпляра класса Point</h4>
+<ul>
+<li>Убедитесь, что у класса Point объявлены поля для целочисленных значений "x" и "y".</li>
+<li>В классе Point добавьте еще одно поле "color", которое будет хранить строку.</li>
+<li>Создайте публичный метод hashCode и пометьте его аннотацией @Override.</li>
+<li>Он не принимает аргументов и возвращает целое число.</li>
+<li>В теле метода верните значение, вычисляемое по формуле x+31y.</li>
+</ul>
+
+<h4>Проверьте, что хеши одинаковых экземпляров одинаковы</h4>
+<ul>
+<li>Добавьте юнит-тест samePointsHaveSameHashcode. В нем создайте два экземпляра класса Point с координатами (0;0) и (0;0).</li>
+<li>Передайте результаты вызовов метода hashCode у экземпляров класса Point в качестве аргументов при вызове статического метода assertEquals класса Assert.</li>
+<li>Проверьте, что вызов метода equals возвращает истину с помощью метода assertTrue класса Assert.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Проверьте, что одинаковые экземпляры точек заменяют друг друга при помещении в set</h4>
+<ul>
+<li>Добавьте юнит-тест hashSetContainsOnlyOneOfSamePoints. В нем создайте два экземпляра класса Point с координатами (0;0) и (0;0)</li>
+<li>Создайте коллекцию pts типа HashSet для экземпляров класса Point.</li>
+<li>Добавьте экземпляры класса Point в pts с помощью метода add.</li>
+<li>Передайте результат вызова метода size() в качестве второго аргумента статического метода assertEquals. Первый аргумент - число 1.</li>
+<li>Для каждого экземпляра точки, вызовите метод contains у экземпляра коллекции и передайте ему экземпляр точек в качестве аргумента.</li>
+<li>Результат вызова contains с каждой из точек передайте в качестве аргумента статического метода assertTrue класса Assert.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Проверьте, что хеши различных экземпляров как правило различны</h4>
+<ul>
+<li>Добавьте юнит-тест differentPointsHaveDifferentHashcode. В нем создайте два экземпляра класса Point с координатами (0;0) и (5;5).</li>
+<li>Передайте результаты вызовов метода hashCode у экземпляров класса Point в качестве аргументов при вызове статического метода assertNotEquals класса Assert.</li>
+<li>Проверьте, что вызов метода equals возвращает ложь с помощью метода assertFalse класса Assert.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Проверьте, что различные экземпляры точек существуют отдельно при помещении в set</h4>
+<ul>
+<li>Добавьте юнит-тест hashSetContainsAllDifferentPoints. В нем создайте два экземпляра класса Point с координатами (0;0) и (5;5).</li>
+<li>Создайте коллекцию pts типа HashSet для экземпляров класса Point.</li>
+<li>Добавьте экземпляры класса Point в pts с помощью метода add.</li>
+<li>Передайте результат вызова метода size() в качестве второго аргумента статического метода assertEquals. Первый аргумент - число 2.</li>
+<li>Для каждого экземпляра точки, вызовите метод contains у экземпляра коллекции и передайте ему экземпляр точек в качестве аргумента.</li>
+<li>Результат вызова contains с каждой из точек передайте в качестве аргумента статического метода assertTrue класса Assert.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Проверьте, что хеши различных экземпляров могут быть одинаковы</h4>
+<ul>
+<li>Добавьте юнит-тест samePointsHaveSameHashcode. В нем создайте два экземпляра класса Point с координатами (0;1) и (31;0).</li>
+<li>Передайте результаты вызовов метода hashCode у экземпляров класса Point в качестве аргументов при вызове статического метода assertEquals класса Assert.</li>
+<li>Проверьте, что вызов метода equals возвращает ложь с помощью метода assertFalse класса Assert.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Проверьте, что различные экземпляры точек с одинаковыми хешами существуют отдельно при помещении в set</h4>
+<ul>
+<li>Добавьте юнит-тест hashSetContainsAllDifferentPointsWithSameHashcode. В нем создайте два экземпляра класса Point с координатами (0;1) и (31;0).</li>
+<li>Создайте коллекцию pts типа HashSet для экземпляров класса Point.</li>
+<li>Добавьте экземпляры класса Point в pts с помощью метода add.</li>
+<li>Передайте результат вызова метода size() в качестве второго аргумента статического метода assertEquals. Первый аргумент - число 2.</li>
+<li>Для каждого экземпляра точки, вызовите метод contains у экземпляра коллекции и передайте ему экземпляр точек в качестве аргумента.</li>
+<li>Результат вызова contains с каждой из точек передайте в качестве аргумента статического метода assertTrue класса Assert.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+</div><div class="task_block" id="task9924">
+	<div class="task_id">9924</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Файлы с исходными данными содержат информацию точках в формате CSV с разделителем &quot;;&quot;(<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка в новой вкладке</a>). О каждой точке известны ее координаты X и Y, а также цвет. Точка уникально идентифицируется координатами X и Y. Например &quot;0;0;yellow&quot; считается дубликатом точки &quot;0;0;green&quot;. Вывести информацию обо всех уникальных точках. Порядок вывода может отличаться от указанного в тестах. Если в файле было две записи об одной и той же точке, вывести первую встретившуюся. При возникновении ошибки, прекращать обработку файла.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr><!--{&quot;x&quot;: , &quot;y&quot;: , &quot;color&quot;:&quot;&quot; }-->
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{&quot;x&quot;:0, &quot;y&quot;:0, &quot;color&quot;:&quot;yellow&quot; }
+{&quot;x&quot;:0, &quot;y&quot;:1, &quot;color&quot;:&quot;yellow&quot; }
+{&quot;x&quot;:1, &quot;y&quot;:0, &quot;color&quot;:&quot;red&quot; }
+{&quot;x&quot;:1, &quot;y&quot;:1, &quot;color&quot;:&quot;red&quot; }</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{&quot;x&quot;:10 , &quot;y&quot;:10 , &quot;color&quot;:&quot;red&quot; }</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{&quot;x&quot;:5, &quot;y&quot;:5, &quot;color&quot;:&quot;blue&quot; }
+{&quot;x&quot;:10, &quot;y&quot;:5, &quot;color&quot;:&quot;yellow&quot; }
+{&quot;x&quot;:5, &quot;y&quot;:10, &quot;color&quot;:&quot;orange&quot; }</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{&quot;x&quot;:4, &quot;y&quot;:5, &quot;color&quot;:&quot;cyan&quot;}
+{&quot;x&quot;:4, &quot;y&quot;:6, &quot;color&quot;:&quot;violet&quot;}
+{&quot;x&quot;:2, &quot;y&quot;:5, &quot;color&quot;:&quot;green&quot;}
+{&quot;x&quot;:4, &quot;y&quot;:7, &quot;color&quot;:&quot;blue&quot;}
+{&quot;x&quot;:2, &quot;y&quot;:6, &quot;color&quot;:&quot;green&quot;}
+{&quot;x&quot;:4, &quot;y&quot;:8, &quot;color&quot;:&quot;orange&quot;}
+{&quot;x&quot;:2, &quot;y&quot;:7, &quot;color&quot;:&quot;violet&quot;}
+{&quot;x&quot;:4, &quot;y&quot;:9, &quot;color&quot;:&quot;cyan&quot;}
+{&quot;x&quot;:0, &quot;y&quot;:5, &quot;color&quot;:&quot;yellow&quot;}
+{&quot;x&quot;:2, &quot;y&quot;:8, &quot;color&quot;:&quot;yellow&quot;}
+{&quot;x&quot;:0, &quot;y&quot;:6, &quot;color&quot;:&quot;orange&quot;}
+{&quot;x&quot;:2, &quot;y&quot;:9, &quot;color&quot;:&quot;yellow&quot;}
+{&quot;x&quot;:0, &quot;y&quot;:7, &quot;color&quot;:&quot;cyan&quot;}
+{&quot;x&quot;:0, &quot;y&quot;:8, &quot;color&quot;:&quot;yellow&quot;}
+{&quot;x&quot;:0, &quot;y&quot;:9, &quot;color&quot;:&quot;cyan&quot;}
+{&quot;x&quot;:3, &quot;y&quot;:5, &quot;color&quot;:&quot;blue&quot;}
+{&quot;x&quot;:3, &quot;y&quot;:6, &quot;color&quot;:&quot;blue&quot;}
+{&quot;x&quot;:1, &quot;y&quot;:5, &quot;color&quot;:&quot;orange&quot;}
+{&quot;x&quot;:3, &quot;y&quot;:7, &quot;color&quot;:&quot;cyan&quot;}
+{&quot;x&quot;:3, &quot;y&quot;:8, &quot;color&quot;:&quot;red&quot;}
+{&quot;x&quot;:1, &quot;y&quot;:6, &quot;color&quot;:&quot;red&quot;}
+{&quot;x&quot;:1, &quot;y&quot;:7, &quot;color&quot;:&quot;cyan&quot;}
+{&quot;x&quot;:3, &quot;y&quot;:9, &quot;color&quot;:&quot;green&quot;}
+{&quot;x&quot;:1, &quot;y&quot;:8, &quot;color&quot;:&quot;blue&quot;}
+{&quot;x&quot;:1, &quot;y&quot;:9, &quot;color&quot;:&quot;yellow&quot;}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Некорректный формат</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Некорректный формат</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test8.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Не удается считать число</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9924/test9.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Не удается считать число</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task7657">
+	<div class="task_id">7657</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Файлы с исходными данными содержат информацию точках в формате CSV с разделителем &quot;;&quot;(<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка в новой вкладке</a>). О каждой точке известны ее координаты X и Y, а также цвет. Точка уникально идентифицируется координатами X и Y. Например &quot;0;0;yellow&quot; считается дубликатом точки &quot;0;0;green&quot;. Нужно учитывать последний из дубликатов точек. Вывести информацию о каждой уникальной точке и посчитать количество ее дубликатов. Отдельно вывести количество ошибочных записей.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{"x":1, "y":2, "color":"violet"} 9
+{"x":1, "y":3, "color":"blue"} 2
+{"x":0, "y":3, "color":"cyan"} 3
+Некорректных записей: 0</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{"x":2, "y":2, "color":"orange"} 1
+{"x":1, "y":2, "color":"violet"} 3
+{"x":2, "y":3, "color":"cyan"} 4
+{"x":1, "y":3, "color":"violet"} 3
+{"x":0, "y":2, "color":"cyan"} 7
+{"x":2, "y":4, "color":"red"} 4
+{"x":1, "y":4, "color":"green"} 6
+{"x":0, "y":3, "color":"violet"} 4
+{"x":0, "y":4, "color":"blue"} 3
+Некорректных записей: 0</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{"x":8356, "y":4363, "color":"violet"} Замен:16
+{"x":7348, "y":4363, "color":"orange"} Замен:18
+{"x":7348, "y":2542, "color":"green"} Замен:13
+{"x":8356, "y":2542, "color":"orange"} Замен:10
+Некорректных записей: 0</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{"x":3732, "y":3732, "color":"green"} Замен:750
+{"x":7460, "y":3732, "color":"red"} Замен:758
+{"x":3894, "y":2366, "color":"cyan"} Замен:747
+{"x":7460, "y":2366, "color":"green"} Замен:765
+{"x":3732, "y":2366, "color":"cyan"} Замен:728
+{"x":3894, "y":3732, "color":"red"} Замен:752
+</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{"x":1401, "y":1401, "color":"cyan"} Замен: 3
+{"x":1352, "y":1401, "color":"green"} Замен: 5
+{"x":8887, "y":1401, "color":"red"} Замен: 2
+{"x":8887, "y":9126, "color":"red"} Замен: 5
+{"x":1401, "y":9126, "color":"green"} Замен: 2
+{"x":1352, "y":9126, "color":"violet"} Замен: 2
+Некорректных записей: 4</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task7657/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">{"x":7661, "y":8431, "color":"blue"} Замен: 4
+{"x":7661, "y":6254, "color":"green"} Замен: 3
+{"x":8431, "y":8431, "color":"blue"} Замен: 4
+{"x":8431, "y":6254, "color":"red"} Замен: 1
+{"x":2032, "y":8431, "color":"red"} Замен: 4
+{"x":2032, "y":6254, "color":"yellow"} Замен: 6
+Некорректных записей: 9</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task8258">
+	<div class="task_id">8258</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Реализовать класс Comparator8258 для сортировки элементов коллекции по удаленности от числа 6.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">-1</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">1</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">0</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">[7, 3, 10, 1]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">[6, 5, 7, 4, 8, 3, 9, 2, 10, 1, 0, -1, -2, -3, -4, -5]</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task7186">
+	<div class="task_id">7186</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Реализовать класс Comparator7186 для сортировки элементов коллекции по удаленности от указанного числа.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">-1</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">1</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">99 109 90 118 80 127 70 136 60 50 </td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">[-49, -47, -55, -55, -60, -60, -39, -65, -28, -16, -14, -12, 1, 4, 15, 22, 61, 66, 74, 80]</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">8	7	9	6	10	5	11	12	13	14	15	
+11	10	12	9	13	8	14	7	15	6	5	</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task1457">
+	<div class="task_id">1457</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Реализовать класс Comparator1457 для сортировки точек, находящихся в коллекции, по удаленности от указанной точки.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">Целевая точка (0;0)
+(1;2) 2,2361
+(3;2) 3,6056
+(2;5) 5,3852
+(6;1) 6,0828
+(5;4) 6,4031
+(7;3) 7,6158
+(3;7) 7,6158
+(8;7) 10,6301
+Произведено ХХ сравнений</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">Целевая точка (5;5)
+(5;4) 1,0000
+(7;3) 2,8284
+(3;7) 2,8284
+(2;5) 3,0000
+(3;2) 3,6056
+(8;7) 3,6056
+(6;1) 4,1231
+(1;2) 5,0000
+Произведено ХХ сравнений</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">Целевая точка не инициализирована</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">Конечная точка не инициализирована</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">Конечная точка не инициализирована</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">Конечная точка не инициализирована</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task6876">
+	<div class="task_id">6876</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Реализовать класс Comparator6876 для сортировки фигур по убыванию площади.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">&lt;svg width="150" height="150"&gt;
+&lt;circle cx='70' cy='50' r='40' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;circle cx='50' cy='80' r='20' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;circle cx='40' cy='30' r='10' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;/svg&gt;</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">&lt;svg width="150" height="150"&gt;
+&lt;rect x='50' y='30' width='40' height='40' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;rect x='30' y='0' width='10' height='40' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;rect x='50' y='10' width='30' height='10' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;rect x='10' y='50' width='20' height='10' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;/svg&gt;</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="preformatted">&lt;svg width="150" height="150"&gt;
+&lt;circle cx='80' cy='30' r='20' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;rect x='10' y='60' width='30' height='20' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;circle cx='20' cy='30' r='10' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;rect x='40' y='20' width='10' height='30' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;rect x='50' y='60' width='20' height='10' stroke='black' stroke-width='1' fill='transparent'/&gt;
+&lt;/svg&gt;</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task5108">
+	<div class="task_id">5108</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит список действий в формате CSV (<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка в новой вкладке</a>) с разделителем &quot;;&quot;. Каждое действие описывается на отдельной строчке: наименование и необходимые значения. Действия описываются в следующем формате:
+	<ul>
+		<li>Создать. Наименование create. Значения: id нового прямоугольника, его координаты x, y, ширина и высота.</li>
+		<li>Переместить по горизонтали. Наименование shiftX. Значения: id, изменение Х. Ширина прямоугольника остается прежней.</li>
+		<li>Переместить по вертикали. Наименование shiftY. Значения: id, изменение Y. Высота прямоугольника остается прежней. </li>
+		<li>Изменить ширину. Наименование stretchX. Значения: id, изменение ширины. Координата верхнего-левого угла при этом не меняется.</li>
+		<li>Изменить высоту. Наименование stretchY. Значения: id, изменение высоты. Координата верхнего-левого угла при этом не меняется.</li>
+	</ul>
+	Нужно вывести в HTML файл: идентификатор каждого прямоугольника, количество корректных действий над ним, а также получившиеся фигуры в виде картинки. Порядок вывода информации о прямоугольниках не важен. При попытке совершить некорректное действие, прекратить обработку, вывести последний корректный результат и добавить в файл сообщение об ошибке.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>r2 действий: 1</p><p>r1 действий: 1</p>
+<svg width="500" height="350">
+<rect x='100' y='217' width='100' height='100' fill='transparent' stroke='black'/><rect x='113' y='100' width='100' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>r2 действий: 2</p><p>r1 действий: 2</p>
+<svg width="500" height="350">
+<rect x='100' y='217' width='100' height='120' fill='transparent' stroke='black'/><rect x='113' y='100' width='150' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>r2 действий: 1</p><p>r3 действий: 1</p><p>r4 действий: 1</p><p>r1 действий: 1</p>
+<svg width="500" height="350">
+<rect x='0' y='10' width='10' height='10' fill='transparent' stroke='black'/><rect x='0' y='0' width='10' height='10' fill='transparent' stroke='black'/><rect x='10' y='10' width='10' height='10' fill='transparent' stroke='black'/><rect x='10' y='0' width='10' height='10' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Идентификатор не должен повторяться (r1)</p><p>r1 действий: 0</p>
+<svg width="500" height="350">
+<rect x='100' y='100' width='100' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Операция над неопознанным объектом (r2)</p><p>r1 действий: 4</p>
+<svg width="500" height="350">
+<rect x='120' y='120' width='110' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Координата Y должна быть неотрицательной</p><p>r1 действий: 2</p>
+<svg width="500" height="350">
+<rect x='110' y='80' width='100' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Координата X должна быть неотрицательной</p><p>r1 действий: 11</p>
+<svg width="500" height="350">
+<rect x='10' y='80' width='100' height='120' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test8.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Высота должна быть положительной</p><p>r1 действий: 8</p>
+<svg width="500" height="350">
+<rect x='130' y='120' width='50' height='60' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test9.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Ширина должна быть положительной</p><p>r1 действий: 2</p>
+<svg width="500" height="350">
+<rect x='100' y='120' width='110' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test10.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>r2 действий: 110</p><p>r10 действий: 187</p><p>r3 действий: 119</p><p>r4 действий: 103</p><p>r5 действий: 181</p><p>r6 действий: 163</p><p>r7 действий: 141</p><p>r8 действий: 197</p><p>r9 действий: 184</p><p>r0 действий: 198</p><p>r1 действий: 195</p>
+<svg width="500" height="350">
+<rect x='297' y='170' width='3' height='69' fill='transparent' stroke='black'/><rect x='244' y='201' width='217' height='27' fill='transparent' stroke='black'/><rect x='76' y='161' width='11' height='1' fill='transparent' stroke='black'/><rect x='434' y='186' width='44' height='11' fill='transparent' stroke='black'/><rect x='76' y='144' width='200' height='27' fill='transparent' stroke='black'/><rect x='153' y='1' width='53' height='144' fill='transparent' stroke='black'/><rect x='189' y='86' width='269' height='199' fill='transparent' stroke='black'/><rect x='207' y='54' width='273' height='58' fill='transparent' stroke='black'/><rect x='310' y='4' width='145' height='275' fill='transparent' stroke='black'/><rect x='90' y='235' width='126' height='9' fill='transparent' stroke='black'/><rect x='28' y='87' width='63' height='185' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test11.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Некорректное действие: destroy</p><p>r1 действий: 3</p>
+<svg width="500" height="350">
+<rect x='100' y='100' width='80' height='120' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test12.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test13.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted"><p>Ошибка: Некорректный формат</p><p>r1 действий: 0</p>
+<svg width="500" height="350">
+<rect x='100' y='100' width='100' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5108/test14.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Ошибка: Некорректный формат</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task3956">
+    <div class="task_id">3956</div>
+    <h3>Задача</h3>
+    <div class="task_desc">Реализовать класс Shape так, чтобы при выполнении данного сценария на экран был выведен указанный результат.</div>
+    <table class="check_values">
+        <tr>
+            <th>Номер по порядку</th>
+            <th>Результат</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">(10;10)
+(100;100)
+Различаются</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">(10;10)
+(100;100)
+(100;10)
+(100;10)
+Совпадают</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">23186.2901</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="preformatted">&lt;rect x='0' y='0' width='10' height='10'
+  stroke='blue' stroke-width='5' fill='red'/&gt;
+&lt;circle cx='50' cy='50' r='40'
+  stroke='green' stroke-width='4' fill='yellow'/&gt;</td>
+        </tr>
+    </table>
+</div><div class="task_block" id="task2033">
+	<div class="task_id">2033</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит список действий в формате CSV (<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка в новой вкладке</a>) с разделителем &quot;;&quot;. Каждое действие описывается на отдельной строчке: наименование и необходимые значения. Действия описываются в следующем формате:
+	<ul>
+		<li>Создать. Наименование create. Значения: id новой фигуры, ее тип и остальные параметры. Для круга это координаты центра и радиус. Для прямоугольника: координаты верхнего-левого угла, ширина и высота.</li>
+		<li>Переместить по горизонтали. Наименование shiftX. Значения: id, изменение Х.</li>
+		<li>Переместить по вертикали. Наименование shiftY. Значения: id, изменение Y.</li>
+		<li>Изменить ширину. Наименование stretchX. Значения: id, изменение ширины.</li>
+		<li>Изменить высоту. Наименование stretchY. Значения: id, изменение высоты.</li>
+	</ul><!-- действий: {"id":1234, "x":100,"y":100,"w":100,"h":100}--->
+	Нужно вывести на экран: идентификатор каждой фигуры, количество корректных действий над ней, а также получившиеся координаты и размеры. Порядок вывода информации о фигурах не важен. При попытке совершить некорректное действие, вывести сообщение об ошибке и прекратить обработку.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">c1 Действий:1
+r1 Действий:1
+<svg width="500" height="350">
+<circle cx='150' cy='130' r='50' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='150' y='100' width='100' height='100' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">c1 Действий:2
+r1 Действий:2
+<svg width="500" height="350">
+<circle cx='60' cy='210' r='20' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='100' y='100' width='50' height='150' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">c1 Действий:1
+c2 Действий:1
+r1 Действий:1
+<svg width="500" height="350">
+<circle cx='43' cy='43' r='23' stroke='black' stroke-width='1' fill='transparent'/>
+<circle cx='55' cy='55' r='15' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='100' y='10' width='40' height='40' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Операция над неопознанным объектом</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Идентификатор не должен повторяться</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Координата Y должна быть неотрицательной</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Координата X должна быть неотрицательной</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test8.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Ширина должна быть положительной</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test9.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Высота должна быть положительной</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test10.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Левая точка круга должна иметь неотрицательные координаты</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test11.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Верхняя точка круга должна иметь неотрицательные координаты</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test12.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Ширина должна быть положительной</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test13.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Высота должна быть положительной</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test14.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">f6 Действий:753
+f7 Действий:785
+f8 Действий:801
+f9 Действий:797
+f0 Действий:809
+f1 Действий:816
+f2 Действий:798
+f3 Действий:789
+f4 Действий:790
+f5 Действий:842
+<svg width="500" height="350">
+<circle cx='287' cy='119' r='119' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='88' y='249' width='327' height='61' fill='transparent' stroke='black'/>
+<circle cx='302' cy='165' r='131' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='3' y='281' width='483' height='47' fill='transparent' stroke='black'/>
+<circle cx='235' cy='228' r='114' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='195' y='82' width='187' height='44' fill='transparent' stroke='black'/>
+<rect x='173' y='184' width='95' height='11' fill='transparent' stroke='black'/>
+<rect x='378' y='135' width='28' height='143' fill='transparent' stroke='black'/>
+<circle cx='152' cy='301' r='38' stroke='black' stroke-width='1' fill='transparent'/>
+<rect x='45' y='189' width='71' height='46' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test15.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Неизвестная фигура</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test16.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Некорректный формат</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test17.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task2033/test18.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Некорректный формат</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task6981">
+	<div class="task_id">6981</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит список действий в формате CSV (<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка в новой вкладке</a>) с разделителем &quot;;&quot;. Каждое действие описывается на отдельной строчке: наименование и необходимые значения. Действия описываются в следующем формате:
+	<ul>
+		<li>Создать. Наименование create. Значения: id новой фигуры, ее тип и остальные параметры. Для круга это координаты центра и радиус. Для прямоугольника: координаты верхнего-левого угла, ширина и высота.</li>
+		<li>Переместить по горизонтали. Наименование shiftX. Значения: id, изменение Х.</li>
+		<li>Переместить по вертикали. Наименование shiftY. Значения: id, изменение Y.</li>
+		<li>Изменить ширину. Наименование stretchX. Значения: id, изменение ширины.</li>
+		<li>Изменить высоту. Наименование stretchY. Значения: id, изменение высоты.</li>
+	</ul>
+	Нужно вывести на экран: идентификатор каждой фигуры, количество корректных действий над ней, а также получившиеся координаты и размеры. Порядок вывода информации о фигурах не важен. При попытке совершить некорректное действие, проигнорировать его и продолжить обработку файла. Вывести количество некорректных действий.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6981/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">id780 Действий:7<br/>id807 Действий:1<br/>id458 Действий:2<br/>id986 Действий:3<br/>id604 Действий:1<br/>id537 Действий:4<br/>id290 Действий:2<br/>id422 Действий:1<br/>id466 Действий:1<br/>id498 Действий:2<br/>Некорректных записей: 8
+<svg width="500" height="350">
+<rect x='106' y='84' width='133' height='22' fill='transparent' stroke='black'/><circle cx='174' cy='174' r='124' stroke='black' stroke-width='1' fill='transparent'/><circle cx='90' cy='90' r='490' stroke='black' stroke-width='1' fill='transparent'/><rect x='82' y='100' width='84' height='100' fill='transparent' stroke='black'/><rect x='100' y='100' width='147' height='100' fill='transparent' stroke='black'/><rect x='54' y='108' width='66' height='70' fill='transparent' stroke='black'/><rect x='100' y='100' width='73' height='103' fill='transparent' stroke='black'/><rect x='100' y='100' width='100' height='86' fill='transparent' stroke='black'/><rect x='100' y='75' width='100' height='100' fill='transparent' stroke='black'/><circle cx='135' cy='135' r='535' stroke='black' stroke-width='1' fill='transparent'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6981/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">id671 Действий:5<br/>id397 Действий:9<br/>id979 Действий:3<br/>id645 Действий:1<br/>id722 Действий:2<br/>id280 Действий:3<br/>id945 Действий:4<br/>id798 Действий:4<br/>id534 Действий:1<br/>Некорректных записей: 2
+<svg width="500" height="350">
+<circle cx='104' cy='894' r='76' stroke='black' stroke-width='1' fill='transparent'/><rect x='41' y='123' width='157' height='42' fill='transparent' stroke='black'/><rect x='100' y='110' width='62' height='136' fill='transparent' stroke='black'/><circle cx='200' cy='218' r='100' stroke='black' stroke-width='1' fill='transparent'/><rect x='64' y='100' width='100' height='100' fill='transparent' stroke='black'/><rect x='150' y='75' width='100' height='110' fill='transparent' stroke='black'/><rect x='87' y='100' width='100' height='145' fill='transparent' stroke='black'/><rect x='136' y='100' width='101' height='81' fill='transparent' stroke='black'/><circle cx='113' cy='113' r='113' stroke='black' stroke-width='1' fill='transparent'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6981/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">f6 Действий:2445<br/>f7 Действий:2451<br/>f8 Действий:2533<br/>f9 Действий:2528<br/>f0 Действий:2370<br/>f1 Действий:2387<br/>f2 Действий:2519<br/>f3 Действий:2359<br/>f4 Действий:2423<br/>f5 Действий:2534<br/>Некорректных записей: 41884
+<svg width="500" height="350">
+<circle cx='190' cy='252' r='68' stroke='black' stroke-width='1' fill='transparent'/><rect x='228' y='51' width='66' height='228' fill='transparent' stroke='black'/><rect x='219' y='185' width='112' height='88' fill='transparent' stroke='black'/><rect x='85' y='118' width='163' height='104' fill='transparent' stroke='black'/><circle cx='125' cy='134' r='124' stroke='black' stroke-width='1' fill='transparent'/><rect x='106' y='23' width='361' height='53' fill='transparent' stroke='black'/><rect x='21' y='57' width='280' height='89' fill='transparent' stroke='black'/><circle cx='55' cy='98' r='33' stroke='black' stroke-width='1' fill='transparent'/><circle cx='320' cy='96' r='60' stroke='black' stroke-width='1' fill='transparent'/><rect x='273' y='67' width='139' height='162' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6981/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">id919 Действий:3<br/>id171 Действий:2<br/>id568 Действий:0<br/>id787 Действий:1<br/>id897 Действий:0<br/>id379 Действий:3<br/>Некорректных записей: 8
+<svg width="500" height="350">
+<rect x='100' y='164' width='10' height='63' fill='transparent' stroke='black'/><rect x='159' y='100' width='100' height='100' fill='transparent' stroke='black'/><circle cx='100' cy='100' r='10' stroke='black' stroke-width='1' fill='transparent'/><rect x='100' y='101' width='10' height='10' fill='transparent' stroke='black'/><circle cx='100' cy='100' r='100' stroke='black' stroke-width='1' fill='transparent'/><rect x='87' y='100' width='100' height='75' fill='transparent' stroke='black'/>
+</svg></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6981/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6981/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">id110 Действий:2<br/>id552 Действий:1<br/>id270 Действий:2<br/>id915 Действий:1<br/>id899 Действий:3<br/>id758 Действий:1<br/>id587 Действий:2<br/>id576 Действий:1<br/>Некорректных записей: 6
+<svg width="500" height="350">
+<rect x='100' y='100' width='41' height='91' fill='transparent' stroke='black'/><circle cx='100' cy='125' r='100' stroke='black' stroke-width='1' fill='transparent'/><rect x='100' y='61' width='143' height='10' fill='transparent' stroke='black'/><circle cx='100' cy='118' r='100' stroke='black' stroke-width='1' fill='transparent'/><rect x='378' y='901' width='139' height='113' fill='transparent' stroke='black'/><rect x='100' y='100' width='100' height='84' fill='transparent' stroke='black'/><rect x='73' y='133' width='100' height='10' fill='transparent' stroke='black'/><circle cx='78' cy='78' r='78' stroke='black' stroke-width='1' fill='transparent'/>
+</svg></td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task1753">
+	<div class="task_id">1753</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит информацию о длине дорог между городами. Нужно вывести список маршрутов для междугороднего автобуса, которые можно проложить по этим дорогам. Маршрут начинается в любом городе, проходит через любой другой город и заканчивается в третьем городе. Третий и первый город не должны совпадать. Запись о маршруте оформлять в виде "Гор1 - Гор2 - Гор3 (X км)", где Гор1, Гор2, Гор3 - названия городов, X - суммарная длина маршрута. Маршруты отсортировать по убыванию протяженности. При равной протяженности - по алфавиту</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Владивосток - Омск - Москва (9000 км}
+Москва - Омск - Владивосток (9000 км}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Москва - Омск - Новосибирск (3240 км}
+Новосибирск - Омск - Москва (3240 км}
+Владивосток - Новосибирск - Омск (6440 км}
+Омск - Новосибирск - Владивосток (6440 км}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Караганда - Омск - Новосибирск (1490 км}
+Новосибирск - Омск - Караганда (1490 км}
+Москва - Омск - Новосибирск (3240 км}
+Новосибирск - Омск - Москва (3240 км}
+Караганда - Омск - Москва (3450 км}
+Москва - Омск - Караганда (3450 км}
+Владивосток - Новосибирск - Омск (6440 км}
+Омск - Новосибирск - Владивосток (6440 км}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Тюмень - Курган - Челябинск (470 км}
+Челябинск - Курган - Тюмень (470 км}
+Челябинск - Екатеринбург - Челябинск (480 км}
+Челябинск - Курган - Челябинск (480 км}
+Екатеринбург - Тюмень - Курган (530 км}
+Курган - Тюмень - Екатеринбург (530 км}
+Тюмень - Екатеринбург - Челябинск (540 км}
+Челябинск - Екатеринбург - Тюмень (540 км}
+Пермь - Екатеринбург - Челябинск (570 км}
+Челябинск - Екатеринбург - Пермь (570 км}
+Екатеринбург - Челябинск - Уфа (630 км}
+Уфа - Челябинск - Екатеринбург (630 км}
+Курган - Челябинск - Уфа (690 км}
+Пермь - Екатеринбург - Тюмень (690 км}
+Тюмень - Екатеринбург - Пермь (690 км}
+Уфа - Челябинск - Курган (690 км}
+Казань - Нижний Новгород - Москва (830 км}
+Курган - Тюмень - Омск (830 км}
+Москва - Нижний Новгород - Казань (830 км}
+Омск - Тюмень - Курган (830 км}
+Курган - Тюмень - Ханты-Мансийск (880 км}
+Ханты-Мансийск - Тюмень - Курган (880 км}
+Пенза - Самара - Уфа (890 км}
+Самара - Уфа - Челябинск (890 км}
+Саратов - Самара - Уфа (890 км}
+Уфа - Самара - Пенза (890 км}
+Уфа - Самара - Саратов (890 км}
+Челябинск - Уфа - Самара (890 км}
+Нижний Новгород - Казань - Уфа (930 км}
+Уфа - Казань - Нижний Новгород (930 км}
+Воронеж - Саратов - Самара (940 км}
+Москва - Воронеж - Москва (940 км}
+Москва - Нижний Новгород - Москва (940 км}
+Самара - Саратов - Воронеж (940 км}
+Казань - Уфа - Челябинск (950 км}
+Челябинск - Уфа - Казань (950 км}
+Екатеринбург - Тюмень - Омск (960 км}
+Омск - Тюмень - Екатеринбург (960 км}
+Казань - Уфа - Самара (1000 км}
+Самара - Уфа - Казань (1000 км}
+Екатеринбург - Тюмень - Ханты-Мансийск (1010 км}
+Ханты-Мансийск - Тюмень - Екатеринбург (1010 км}
+Москва - Воронеж - Саратов (1030 км}
+Саратов - Воронеж - Москва (1030 км}
+Москва - Пенза - Самара (1060 км}
+Самара - Пенза - Москва (1060 км}
+Москва - Нижний Новгород - Москва (1070 км}
+Москва - Пенза - Москва (1070 км}
+Москва - Воронеж - Москва (1150 км}
+Москва - Пенза - Москва (1150 км}
+Новосибирск - Омск - Тюмень (1270 км}
+Тюмень - Омск - Новосибирск (1270 км}
+Омск - Тюмень - Ханты-Мансийск (1310 км}
+Ханты-Мансийск - Тюмень - Омск (1310 км}
+Караганда - Омск - Тюмень (1480 км}
+Тюмень - Омск - Караганда (1480 км}
+Караганда - Омск - Новосибирск (1490 км}
+Новосибирск - Омск - Караганда (1490 км}</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Расстояние должно быть неотрицательно</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Некорректный формат</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test8.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Недостаточно данных</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1753/test9.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Недостаточно данных</td>
+		</tr>
+	</table>
+</div></body>  </html>

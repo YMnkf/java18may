@@ -1,0 +1,587 @@
+<!DOCTYPE html>  <html>  <head>  <meta charset="utf-8"/>  <title>13 Исключения</title>  <style>
+.check_single {
+    margin:15px;
+	border:1px solid black;
+	padding:5px;
+    width:calc(100% - 40px);
+}
+sqrt val {
+	border-top: 1px solid black;
+}
+sqrt:before {
+	content:"\221A";
+}
+.section {
+	counter-reset:section;
+}
+.section h3:after {
+	counter-increment:section;
+	content: " " counter(section);
+}
+table {
+	border-collapse:collapse;
+}
+.check_values {
+	width:100%;
+	counter-reset:test_case;
+}
+.check_values td:first-child::before {
+	counter-increment:test_case;
+	content: counter(test_case);
+}
+table td, table th {
+	border:1px solid black;
+	text-align:center;
+}
+.check_values td:first-child{
+	width:40px;
+}
+.lab_nav ol {
+	list-style:none;
+}
+.nav {
+	position:fixed;
+	top:0px;
+	right:0px;
+	margin:15px;
+	clear:both;
+}
+.nav ul{
+	list-style-type:none;
+	padding:0px;
+	float:left;
+}
+.nav li {
+	margin:2px;
+	border:1px solid black;
+}
+.nav li a {
+	display:block;
+	padding:7px;
+}
+.task_block {
+	width:80%;
+	page-break-inside:avoid;
+	padding:10px;
+	display:block;
+}
+.task_block:target{
+	background-color:lightgrey;
+}
+.task_block:target .task_id{
+	color:white;
+}
+.task_id {
+	float:right;
+	color:lightgrey;
+}
+.quiz_block {
+	width:80%;
+}
+.quiz_block:target{
+	background-color:lightgrey;
+}
+.task_desc {
+	margin:5px;
+}
+.example_image {
+	width:200px;
+}
+.lab_nav {
+	width:80%;
+	overflow:auto;
+}
+.check_values .preformatted, .preformatted {
+	font-family:monospace;
+	white-space:pre;
+	text-align:left;
+	padding:10px;
+}
+formula {
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+}
+fraction {
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle;
+	font-weight:bold;
+}
+numerator {
+	display:block;
+	border-bottom:2px solid black;
+}
+denominator {
+	display:block;
+}
+.example::after{
+	content:"*";
+}
+.supervision::after{
+	content:"!";
+}
+spoiler {
+	color:darkgrey;
+}
+spoiler origin {
+	display:none;
+}
+spoiler:hover origin {
+	display:inline;
+}
+spoiler trans {
+	display:inline;
+}
+spoiler:hover trans {
+	display:none;
+}
+.comment{
+	color:darkgrey;
+}
+.step{
+	display:none;
+}
+.step:last-child, .step:target{
+	display:block;
+}
+.step:target ~ .step:last-child{
+	display:none;
+}
+.console{
+	background-color:black;
+	color:white;
+	width:300px;
+}
+zoom{
+	background-color:gray;
+	font-size:40pt;
+}
+@media print {
+	.nav {
+		display:none;
+	}
+	.lab_nav {
+		display:none;
+	}
+	ol li {
+		margin-bottom:30px;
+	}
+	.quiz_block {
+		width:100%;
+	}
+	.hide_on_print .check_values, .hide_on_print .check_single{
+		display:none;
+	}
+	.hide_on_print img{
+		display:none;
+	}
+	.empty_on_print td{
+		color:transparent;
+	}
+	.empty_on_print img{
+		visibility:hidden;
+	}
+}</style>  </head>  <body class="section">  <a name="heading"><h1>Исключения</h1></a>
+<div class="lab_nav">
+	Другие темы:
+	<ol>
+		<li>1. <a href="[1] лаб. ОСАЛП.html">Ввод и вывод информации</a></li>
+		<li>2. <a href="[2] лаб. ОСАЛП.html">Арифметические операторы и методы</a></li>
+		<li>5. <a href="[5] лаб. ОСАЛП.html">Условия</a></li>
+		<li>6. <a href="[6] лаб. ОСАЛП.html">Циклы</a></li>
+		<li>7. <a href="[7] лаб. ОСАЛП.html">Массивы</a></li>
+		<li>8. <a href="[8] лаб. ОСАЛП.html">Строки</a></li>
+		<li>9. <a href="[9] лаб. ОСАЛП.html">Чтение файлов</a></li>
+		<li>10. <a href="[10] лаб. ОСАЛП.html">Запись в файлы</a></li>
+		<li>12. <a href="[12] лаб. ОСАЛП.html">Методы</a></li>
+		<li>13. <a href="[13] лаб. ОСАЛП.html">Исключения</a></li>
+		<li>14. <a href="[14] лаб. ОСАЛП.html">Классы и объекты</a></li>
+		<li>15. <a href="[15] лаб. ОСАЛП.html">Коллекции</a></li>
+		<li>16. <a href="[16] лаб. ОСАЛП.html">HTTP клиент</a></li>
+	</ol>
+</div><div class="nav">  <ul>  <li><a href="#heading">^</a></li>  <li><a href="#task9020" class="example">№ 1</a></li>  <li><a href="#task3943">№ 2</a></li>  <li><a href="#task7799">№ 3</a></li>  <li><a href="#task9354">№ 4</a></li>  <li><a href="#task5170">№ 5</a></li>  <li><a href="#task6882" class="example">№ 6</a></li>  <li><a href="#task1212">№ 7</a></li>  <li><a href="#task9472">№ 8</a></li>  <li><a href="#task5081">№ 9</a></li>  </ul>  </div>
+<div id="link_c2_p8.4" class="task_block">
+	<div class="check_single">В данной лабораторной работе внимание уделяется оформлению исключений в изучаемом языке программирования. Однако использование исключений не всегда оправдано. Полезные советы о том, когда лучше использовать механизм исключений, содержатся в главе 8.4 "Исключения" части II книги "Совершенный код". <a href="Stiv_Makkonnell_-_Sovershenny_kod_2-e_izdanie.pdf#page=215" target="_blank">(открыть в новой вкладке)</a></div>
+</div><div class="task_block" id="task9020">
+	<div class="task_id">9020</div>
+    <h3>Задача</h3>
+<ul>
+<li>В классе Lab02 реализуйте публичный статический метод task9020 для решения задачи <a href="[2] лаб. ОСАЛП.html#task9020" target="_blank">ЛР2#9020 (открыть в новой вкладке)</a>.</li>
+<li>В теле метода task9020 в случае получения некорректных значений аргументов, нужно выбросить исключение IllegalArgumentException и указать при этом текст ошибки из задачи.</li>
+<li>Проверьте с помощью юнит-теста результат работы метода task9020 в случаях с корректными данными.</li>
+<li>Проверьте с помощью вспомогательной программы Runner9020 результат работы метода task9020 в случаях с корректными данными.</li>
+</ul>
+<div class="check_single preformatted">23.4307
+25.0998
+0.0000
+3.0000</div>
+
+<h4>Проверьте юнит-тестами, что метод выбрасывает исключение при некорректных данных</h4>
+<ul>
+<li>В классе Lab02Suite cоздайте 3 публичных нестатических метода, которые ничего не возвращают и не принимают аргументов.</li>
+<li>Имя выглядит как task9020assertionX, где X - цифра от 1 до 3.</li>
+<li>Пометьте их аннотацией @Test с элементом expected равным IllegalArgumentException.class.</li>
+<li>В теле метода task9020assertionX нужно вызвать метод task9020 класса Lab02 и указать значения, которые приводят к выбрасыванию исключения.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Добавьте во вспомогательную программу Runner9020 обработку исключений</h4>
+<ul>
+<li>Вызовите метод task9020 с аргументами из каждого теста, указанного в задаче.</li>
+<li>В случае успешного выполнения метода task9020, выведите в консоль результат с точностью до 4 знаков после запятой.</li>
+<li>В случае возникновения исключения, нужно его перехватить и вывести в консоль сообщение об ошибке.</li>
+<li>В результате запуска метода main класса Runner9020, в консоли должен появиться текст.</li>
+</ul>
+
+<div class="check_single preformatted">23.4307
+25.0998
+0.0000
+3.0000
+Подкоренное выражение должно быть неотрицательным
+Подкоренное выражение должно быть неотрицательным
+Подкоренное выражение должно быть неотрицательным</div>
+</div><div class="task_block" id="task3943">
+	<div class="task_id">3943</div>
+    <h3>Задача</h3>
+	
+<ul>
+<li>В классе Lab02 реализуйте публичный статический метод task3943 для решения задачи <a href="[2] лаб. ОСАЛП.html#task3943" target="_blank">ЛР2#3943 (открыть в новой вкладке)</a>.</li>
+<li>В теле метода task3943 в случае получения некорректных значений аргументов, нужно выбросить исключение IllegalArgumentException и указать при этом текст ошибки из задачи.</li>
+<li>Проверьте с помощью юнит-теста результат работы метода task3943 в случаях с корректными данными.</li>
+<li>Проверьте с помощью вспомогательной программы Runner3943 результат работы метода task3943 в случаях с корректными данными.</li>
+</ul>
+<div class="check_single preformatted">-10,000000
+-435,706230</div>
+
+<h4>Проверьте юнит-тестами, что метод выбрасывает исключение при некорректных данных</h4>
+<ul>
+<li>В классе Lab02Suite создайте 2 публичных нестатических метода, которые ничего не возвращают и не принимают аргументов.</li>
+<li>Имя выглядит как task3943assertionX, где X - цифра от 1 до 2.</li>
+<li>Пометьте их аннотацией @Test с элементом expected равным IllegalArgumentException.class.</li>
+<li>В теле метода task3943assertionX нужно вызвать метод task3943 класса Lab02 и указать значения, которые приводят к выбрасыванию исключения.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Добавьте во вспомогательную программу Runner3943 обработку исключений</h4>
+<ul>
+<li>Вызовите метод task3943 с аргументами из каждого теста, указанного в задаче.</li>
+<li>В случае успешного выполнения метода task3943, выведите в консоль результат с точностью до 6 знаков после запятой.</li>
+<li>В случае возникновения исключения, выведите в консоль сообщение об ошибке.</li>
+<li>В результате запуска метода main класса Runner3943, в консоли должен появиться текст.</li>
+</ul>
+<div class="check_single preformatted">-10,000000
+-435,706230
+Значение y должно быть неотрицательным
+Подкоренное выражение должно быть неотрицательным</div>
+</div><div class="task_block" id="task7799">
+	<div class="task_id">7799</div>
+    <h3>Задача</h3>
+<ul>
+<li>В классе Lab02 реализуйте публичный статический метод task7799 для решения задачи <a href="[2] лаб. ОСАЛП.html#task7799" target="_blank">ЛР2#7799 (открыть в новой вкладке)</a>.</li>
+<li>В теле метода в случае получения некорректных значений аргументов, нужно выбросить исключение IllegalArgumentException и указать при этом текст ошибки из задачи.</li>
+<li>Проверьте с помощью юнит-теста результат работы метода task7799 в случаях с корректными данными.</li>
+<li>Проверьте с помощью вспомогательной программы Runner7799 результат работы метода task7799 в случаях с корректными данными.</li>
+</ul>
+<div class="check_single preformatted">34,671920
+61972,336135
+0,000000
+0,000000
+0,000000</div>
+
+<h4>Проверьте юнит-тестами, что метод выбрасывает исключение при некорректных данных</h4>
+<ul>
+<li>В классе Lab02Suite cоздайте 1 публичный нестатический метод, который ничего не возвращает и не принимает аргументов и называется task7799assertion.
+Пометьте их аннотацией @Test с элементом expected равным IllegalArgumentException.class.</li>
+<li>В теле метода task7799assertion нужно вызвать метод task7799 класса Lab02 и указать значения, которые приводят к выбрасыванию исключения.</li>
+<li>После запуска тестового метода, он должен быть отмечен зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Добавьте во вспомогательную программу Runner7799 обработку исключений</h4>
+<ul>
+<li>Вызовите метод task7799 с аргументами из каждого теста, указанного в задаче.</li>
+<li>В случае успешного выполнения метода task7799, выведите в консоль результат с точностью до 6 знаков после запятой.</li>
+<li>В случае возникновения исключения, нужно его перехватить и вывести в консоль сообщение об ошибке.</li>
+<li>В результате запуска метода main класса Runner7799, в консоли должен появиться текст.</li>
+</ul>
+<div class="check_single preformatted">34,671920
+61972,336135
+0,000000
+0,000000
+0,000000
+Масса должна быть положительной</div>
+</div><div class="task_block" id="task9354">
+	<div class="task_id">9354</div>
+    <h3>Задача</h3>
+<ul>
+<li>В классе Lab02 реализуйте публичный статический метод task9354 для решения задачи <a href="[2] лаб. ОСАЛП.html#task9354" target="_blank">ЛР2#9354 (открыть в новой вкладке)</a>.</li>
+<li>В теле метода task9354 в случае получения некорректных значений аргументов, нужно выбросить исключение IllegalArgumentException и указать при этом текст ошибки из задачи.</li>
+<li>Проверьте с помощью юнит-теста результат работы метода task9354 в случаях с корректными данными.</li>
+<li>Проверьте с помощью вспомогательной программы Runner9354 результат работы метода task9354 в случаях с корректными данными.</li>
+</ul>
+<div class="check_single preformatted">-10,000000
+-435,706230</div>
+
+<h4>Проверьте юнит-тестами, что метод выбрасывает исключение при некорректных данных</h4>
+<ul>
+<li>В классе Lab02Suite создайте 2 публичных нестатических метода, которые ничего не возвращают и не принимают аргументов.</li>
+<li>Имя выглядит как task9354assertionX, где X - цифра от 1 до 2.</li>
+<li>Пометьте их аннотацией @Test с элементом expected равным IllegalArgumentException.class.</li>
+<li>В теле метода task9354assertionX нужно вызвать метод task9354 класса Lab02 и указать значения, которые приводят к выбрасыванию исключения.</li>
+<li>После запуска тестовых методов, они должны быть отмечены зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Добавьте во вспомогательную программу Runner9354 обработку исключений</h4>
+<ul>
+<li>Вызовите метод task9354 с аргументами из каждого теста, указанного в задаче.</li>
+<li>В случае успешного выполнения метода task9354, выведите в консоль результат с точностью до 6 знаков после запятой.</li>
+<li>В случае возникновения исключения, нужно его перехватить и вывести в консоль сообщение об ошибке.</li>
+<li>В результате запуска метода main класса Runner9354, в консоли должен появиться текст.</li>
+</ul>
+</ul>
+<div class="check_single preformatted">-10,000000
+-435,706230
+Значение y должно быть неотрицательным
+Подкоренное выражение должно быть неотрицательным</div>
+</div><div class="task_block" id="task5170">
+	<div class="task_id">5170</div>
+    <h3>Задача</h3>
+<ul>
+<li>В классе Lab06 реализуйте публичный статический метод task5170 для решения задачи <a href="[6] лаб. ОСАЛП.html#task5170" target="_blank">ЛР6#5170 (открыть в новой вкладке)</a>.</li>
+<li>В теле метода task5170 в случае получения некорректных значений аргументов, нужно выбросить исключение IllegalArgumentException и указать при этом текст ошибки из задачи.</li>
+<li>Проверьте с помощью юнит-теста результат работы метода task5170 в случаях с корректными данными.</li>
+<li>Проверьте с помощью вспомогательной программы Runner5170 результат работы метода task5170 в случаях с корректными данными.</li>
+</ul>
+<div class="check_single preformatted">Число не простое
+Число не простое
+Число простое
+Число простое</div>
+
+<h4>Проверьте юнит-тестами, что метод выбрасывает исключение при некорректных данных</h4>
+<ul>
+<li>В классе Lab06Suite создайте публичный нестатический метод, который ничего не возвращает, не принимает аргументов и называется task5170assertion.</li>
+<li>Пометьте его аннотацией @Test с элементом expected равным IllegalArgumentException.class.</li>
+<li>В теле метода task5170assertion нужно вызвать метод task5170 класса Lab06 и указать значения, которые приводят к выбрасыванию исключения.</li>
+<li>После запуска тестового метода, он должен быть отмечен зеленым знаком в списке методов.</li>
+</ul>
+
+<h4>Добавьте во вспомогательную программу Runner5170 обработку исключений</h4>
+<ul>
+<li>Вызовите метод task5170 с аргументами из каждого теста, указанного в задаче.</li>
+<li>Если вызов метода task5170 вернул true, выведите в консоль фразу "число простое".</li>
+<li>Если вызов вернул false, то выведите "число не простое".</li>
+<li>В случае поимки исключения, выведите в консоль сообщение об ошибке.</li>
+<li>В результате запуска метода main класса Runner5170, в консоли должен появиться текст.</li>
+</ul>
+<div class="check_single preformatted">Число не простое
+Число не простое
+Число простое
+Число простое
+Значение Y должно быть положительным</div>
+</div><div class="task_block" id="task6882">
+	<div class="task_id">6882</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит целые числа, написаные в столбик без дополнительного оформления. Количество чисел заранее не известно. Определить минимальное число в файле. Обработайте потенциальные исключения.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test1.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test2.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test3.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test4.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>Не удается считать число</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test5.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>Не удается считать число</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test6.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл пуст</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test7.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task6882/test8.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td>Не удается считать число</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task1212">
+	<div class="task_id">1212</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Найти самую большую площадь прямоугольника.
+Информация о прямоугольниках находится в CSV файле (<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка</a>) с разделителем &quot;;&quot;.
+Общее количество прямоугольников заранее неизвестно.
+В каждой строчке находится информация об отдельном прямоугольнике: x и y его верхнего-левого угла, ширина и высота.
+Например "68;59;32;15" значит что x = 68, y = 59, ширина = 32, высота = 15.
+Обработайте потенциальные исключения.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Выражение</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>875</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>129276</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл пуст</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>3691856</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Некорректный формат данных</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test8.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Не удается считать число</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task1212/test9.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Некорректный формат данных</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task9472">
+	<div class="task_id">9472</div>
+    <h3>Задача</h3>
+	<div class="task_desc">Найти самую большую площадь фигуры.
+Информация о фигурах находится в CSV файле (<a href="https://ru.wikipedia.org/wiki/CSV" target="_blank">справка в новой вкладке</a>) с разделителем &quot;;&quot;.
+Общее количество фигур заранее неизвестно. В каждой строчке находится информация об отдельной фигуре: ее наименование и свойства.
+Обработайте потенциальные исключения.
+	<ul>
+		<li>Прямоугольник. Наименование rect, свойства: x и y его верхнего-левого угла, ширина и высота. Например "rect;68;59;32;15" - прямоугольник, x = 68, y = 59, ширина 32, высота 15</li>
+		<li>Круг. Наименование circle, свойства: x и y центра, радиус. Например "circle;72;98;14" - круг, x = 72, y = 98, радиус = 14</li>
+	</ul></div>
+	<table class="check_values">
+		<tr>
+			<th>Номер по порядку</th>
+			<th>Выражение</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test1.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>1480,0000</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test2.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>907,9203</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test3.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл не существует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test4.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Файл пуст</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test5.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Сообщение об ошибке</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test6.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Некорректный формат данных</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test7.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Некорректный формат данных</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task9472/test8.csv" target="_blank">открыть в новой вкладке</a></td>
+			<td>Некорректный формат данных</td>
+		</tr>
+	</table>
+</div><div class="task_block" id="task5081">
+	<div class="task_id">5081</div>
+	<h3>Задача</h3>
+	<div class="task_desc">Исходный файл содержит множество строк с целыми числами. Внутри строки числа разделены запятой. Нужно найти сумму чисел в каждой строчке. Обработайте потенциальные исключения.</div>
+	<table class="check_values">
+		<tr>
+			<th>Номер теста</th>
+			<th>Содержимое файла</th>
+			<th>Результат</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5081/test1.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">15
+110
+31496</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5081/test2.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Не удается считать число
+Строка пуста
+8</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5081/test3.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Файл отсутствует</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><a href="files/task5081/test4.txt" target="_blank">открыть в новой вкладке</a></td>
+			<td class="preformatted">Не удается считать число
+Не удается считать число</td>
+		</tr>
+	</table>
+</div></body>  </html>
