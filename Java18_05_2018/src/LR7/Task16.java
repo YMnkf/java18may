@@ -13,24 +13,23 @@ public class Task16 {
   
     Scanner sc = new Scanner (System.in);
     String raw = sc.nextLine();
-    int offset = sc.nextInt();
     
     String[] arr = raw.split(" ");
-    
        
 if (arr.length == 0) {
-    System.out.print("Исходная строка пуста\n");
+    System.out.print("0\n");
     return;
 }   
 
-
+int count = 0;
+double s = 0;
 for (int i = 0; i < arr.length; i = i+1) {
-          arr1[(i+offset)%arr.length] = arr[i];
-   }
-       
-      
-       
-}
+    //int iv = Integer.parseInt(arr[i]);
+    double dv = Double.parseDouble(arr[i]);
+    count = count+1;
+    s=s+dv;
+    }
+System.out.printf("%.4f\n", s/count);        
 System.out.print("\n");
 }
 }
