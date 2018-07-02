@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class Task29 {
+public class Task14 {
 
     public static void main(String[] args) {
   
@@ -26,18 +26,17 @@ if (arr.length == 0) {
     return;
 }   
 
-Integer[] irr = new Integer[arr.length];
 
-for (int i = 0; i < arr.length; i++) {
-           int iv = Integer.parseInt(arr[i]);
-           irr[i] = iv;
-           }
-
-HashSet<Integer> set = new HashSet<>(); 
-       for (int i = 0; i < irr.length; i=i+1) {
-    set.add(irr[i]);
+HashSet<String> set = new HashSet<>(); 
+       for (int i = 0; i < arr.length; i=i+1) {
+    set.add(arr[i]);
     }
 
-                    
-System.out.print(set.size() + "\n");    }
+if (set.size() < arr.length) {
+    System.out.print("Повторения есть");
+    } else {
+     System.out.print("Повторений нет");
+}                   
+System.out.print("\n");    
+}
 }
