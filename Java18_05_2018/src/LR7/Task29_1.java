@@ -14,9 +14,9 @@ public class Task29_1 {
     public static void main(String[] args) {
   
     Scanner sc = new Scanner (System.in);
-    String raw1 = sc.nextLine();
+    String raw = sc.nextLine();
            
-    String[] arr = raw1.split(" ");
+    String[] arr = raw.split(" ");
     
 if (arr.length == 0) {
     System.out.print("Строка не должна быть пустой\n");
@@ -24,19 +24,37 @@ if (arr.length == 0) {
 }   
 
 Integer[] irr = new Integer[arr.length];
-
-int count1= 0;
 for (int i = 0; i < arr.length; i=i+1) {
-        int count = 0;
-            for (int j=0; j < arr.length; j=j+1) {   
-                if (arr[i].equals(arr[j])) {
+           int iv = Integer.parseInt(arr[i]);
+           irr[i] = iv;
+           }
+
+Integer[] irr1 = new Integer[arr.length];
+irr1[0] = irr [0];
+
+for (int i = 1; i < irr.length; i=i+1) {
+            int count = 0;
+            for (int j=0; j < i; j=j+1) {   
+                if (irr[i].equals(irr1[j])) {
                         count= count+1;
                         }
+            }
+            if (count == 0) {
+                   irr1[i] = irr[i];
+                  }             
+}
+
+int count1=0;
+for (int i = 0; i < irr1.length; i=i+1) {
+           System.out.print(irr1[i] + " ");
+           if (irr1[i] != null) {
+            count1 = count1+1;
                 }
-            if (count == 1) {
-                   count1 = count1 + 1;
-                  }    
-}         
+       }
+
+System.out.print("\n");
+
 System.out.print(count1 + "\n");
     }
 }
+
