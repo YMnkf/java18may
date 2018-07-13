@@ -13,8 +13,8 @@ public class Task8 {
   
     Scanner sc = new Scanner (System.in);
     String line = "abcdefwxyz";
-    Double a = sc.nextLine();
-    Double b = sc.nextLine();
+    Double a = sc.nextDouble();
+    Double b = sc.nextDouble();
     
     if (a < 0 || a>= line.length()) {
         System.out.print("Значение CA должно быть в интервале [0, длина строки)\n");
@@ -26,11 +26,7 @@ public class Task8 {
         return;
     }
     
-    if (indexb ==-1) {
-        System.out.print("Значение CB отсутствует в строке\n");
-        return;
-    }
-    
+       
         
     System.out.print("Код страны: " + line.substring(0, 2) + "\n"); // проверяем включительно от a до b
     System.out.print("Код изготовителя: " + line.substring(3, 6) + "\n"); // проверяем включительно от a до b
