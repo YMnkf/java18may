@@ -20,6 +20,26 @@ public class Methods {
         result = 3*Math.pow(61-a,0.5);
 return result;   
 }
+    
+ public static double task3943(double a, double b) {
+    double result;
+    if (b<0){
+        IllegalArgumentException exception1; //объявляем переменную exception1
+        exception1 = new IllegalArgumentException ("Значение y должно быть неотрицательным");//
+        //создаем экземпляр типа IllegalArgumentException и инициализируем переменную exception1
+        throw exception1;//выбросить исключение
+    }
+    
+    if (a+Math.sqrt(b)<0){
+        IllegalArgumentException exception2; //объявляем переменную exception2
+        exception2 = new IllegalArgumentException ("Подкоренное выражение должно быть неотрицательным");//
+        //создаем экземпляр типа IllegalArgumentException и инициализируем переменную exception2 
+        throw exception2;//выбросить исключение
+    }
+    
+        result = -5*Math.sqrt(a + Math.sqrt(b));
+return result;   
+}
 }
 
     
