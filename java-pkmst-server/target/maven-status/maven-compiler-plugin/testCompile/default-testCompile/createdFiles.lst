@@ -1,0 +1,5 @@
+com\prokarma\pkmst\controller\ClientApiTest.class
+com\prokarma\pkmst\cucumber\PkmstTest.class
+com\prokarma\pkmst\cucumber\report\ExecuteReport.class
+com\prokarma\pkmst\controller\PkmstIT.class
+com\prokarma\pkmst\cucumber\PkmstSteps.class
