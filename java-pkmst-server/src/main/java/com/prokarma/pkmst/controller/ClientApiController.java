@@ -72,17 +72,70 @@ public class ClientApiController implements ClientApi {
     public ResponseEntity<ClientCard> getClientCardById(@ApiParam(value = "ID of ClientCard to return",required=true ) @PathVariable("ClientCardId") Long clientCardId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
-
-        if (accept != null && accept.contains("application/xml")) {
-            return new ResponseEntity<ClientCard>(objectMapper.readValue("", ClientCard.class), HttpStatus.OK);
+        string docTypeQuery = "select " + //24.08.2018
+                "DocTypeID" +
+                ", DocName" +
+                " FROM DocTypes";
+        List<Map<String, Object>> docTypes = jdbcTemplate.queryForList(docTypeQuery);
+        Map<String,String> doctypesMap = new HashMap<>();
+        for (Map<String, Object> row: docTypes) {
+            String id = (String)row.get("DocTypeId");
+            String Name = (String) row.get("DocName");
+            doctypesMap.put(id,name);
         }
-
-
-        if (accept != null && accept.contains("application/json")) {
-            return new ResponseEntity<ClientCard>(objectMapper.readValue("", ClientCard.class), HttpStatus.OK);
+        
+        string persoDocQuery = "select " +
+                "PersonDocID" +
+                ", ClientCardID" +
+                " , DocTypeID" +
+                " , SeriaDoc" +
+                " , NumDoc" +
+                " , Issuer" +
+                " , IssueDate" +
+                " FROM PersonDoc" +
+                " WHERE ClientCardID = ?;";
+        Object[] args = new Object[] { clientCardID };
+        List<Map<String,Object>> rows = jdbcTemplate.queryForList(personDocQuery, args);
+        List<PersonDoc> docs = new ArrayList<>(); //Объект типа List<PersonDoc>
+        
+        for (Map<String, Object> row: rows) {
+            PersonDoc doc = new PersonDoc();
+            Object idObj = row.get("PersonDocId"); // преобразование данных
+            String idStr = (String) idObj;
+            Long id = Long.ParseLong(idstr);
+            doc.setId(id);
+            
+            String docTypeId = (String) row.get("DocTypeId");
+            String docTypeName = doctypesMap.get(docTypeId);
+            PersonDoc.TypeDocEnum type = PersonDoc.TypeDocEnum.fromValue(docTypeName);
+            doc.setTypeDoc(type);
+            
+            Long seriaDoc = Long.parseLong((String) row.get("SeriaDoc")));
+            doc.setSeriaDoc(seriaDoc);
+            docs.add(doc);
         }
+           
+        clientCard = new clientCard();
+        for (PersonDoc doc: docs) {
+            card.addPersonDocItems(doc);
+        }
+        
+        //выполняем запрос к БД
+        //обрабатывам результат по аналогии с PersonDoc
+        
+        return new ResponseEntity<ClientCard> (card, HttpStatus.OK); // 24.08.2018
+        
 
-        return new ResponseEntity<ClientCard>(HttpStatus.OK);
+        //if (accept != null && accept.contains("application/xml")) {
+        //    return new ResponseEntity<ClientCard>(objectMapper.readValue("", ClientCard.class), HttpStatus.OK);
+        //}
+
+
+        //if (accept != null && accept.contains("application/json")) {
+        //    return new ResponseEntity<ClientCard>(objectMapper.readValue("", ClientCard.class), HttpStatus.OK);
+        //}
+
+        //return new ResponseEntity<ClientCard>(HttpStatus.OK);
     }
 
 }

@@ -5,7 +5,7 @@
    <artifactId>pkmst-microservice</artifactId>
    <version>1.0.0</version>
    <packaging>jar</packaging>
-   <name>pkmst-microservice</name>
+   <name>pkmst-MS_service</name>
    <description>Demo project for Spring Boot Microservices</description>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
