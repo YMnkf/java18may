@@ -20,6 +20,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.sql.ResultSet; // 25.08.2018
+import java.sql.SQLException; // 25.08.2018
+import org.springframework.jdbc.core.RowMapper; // 25.08.2018
+
 /**
  * Api implemention
  * @author pkmst
@@ -72,19 +76,22 @@ public class ClientApiController implements ClientApi {
     public ResponseEntity<ClientCard> getClientCardById(@ApiParam(value = "ID of ClientCard to return",required=true ) @PathVariable("ClientCardId") Long clientCardId,
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
+        
         string docTypeQuery = "select " + //24.08.2018
                 "DocTypeID" +
                 ", DocName" +
                 " FROM DocTypes";
+        
         List<Map<String, Object>> docTypes = jdbcTemplate.queryForList(docTypeQuery);
         Map<String,String> doctypesMap = new HashMap<>();
+        
         for (Map<String, Object> row: docTypes) {
-            String id = (String)row.get("DocTypeId");
+            String id = (String) row.get("DocTypeId");
             String Name = (String) row.get("DocName");
             doctypesMap.put(id,name);
         }
         
-        string persoDocQuery = "select " +
+        string personDocQuery = "select " + //24.08.2018
                 "PersonDocID" +
                 ", ClientCardID" +
                 " , DocTypeID" +
@@ -94,7 +101,9 @@ public class ClientApiController implements ClientApi {
                 " , IssueDate" +
                 " FROM PersonDoc" +
                 " WHERE ClientCardID = ?;";
+        
         Object[] args = new Object[] { clientCardID };
+        
         List<Map<String,Object>> rows = jdbcTemplate.queryForList(personDocQuery, args);
         List<PersonDoc> docs = new ArrayList<>(); //Объект типа List<PersonDoc>
         
@@ -106,12 +115,23 @@ public class ClientApiController implements ClientApi {
             doc.setId(id);
             
             String docTypeId = (String) row.get("DocTypeId");
+            
             String docTypeName = doctypesMap.get(docTypeId);
             PersonDoc.TypeDocEnum type = PersonDoc.TypeDocEnum.fromValue(docTypeName);
             doc.setTypeDoc(type);
             
             Long seriaDoc = Long.parseLong((String) row.get("SeriaDoc")));
             doc.setSeriaDoc(seriaDoc);
+                        
+            Long numDoc = Long.parseLong((String) row.get("NumDoc")));
+            doc.setNumDoc(numDoc);
+            
+            Long issuer = Long.parseLong((String) row.get("Issuer")));
+            doc.setIssuer(issuer);
+            
+            Long issueDate = Long.parseLong((String) row.get("IssuerDate")));
+            doc.setIssuer(issuerDate);
+            
             docs.add(doc);
         }
            

@@ -38,7 +38,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         public JdbcTemplate JDBCTemplate (){
 		String URL = "jdbc:postgresql://localhost/postgres"; //postgres - имя базы данных 
                 String username = "postgress";
-                String password = "123";
+                String password = "1";
                 return new JdbcTemplate (new DriverManagerDataSource(URL, username, password));
                 };		
         }

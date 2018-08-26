@@ -1,0 +1,8 @@
+<DocumentElement>
+ <Calendar>
+    <Date></Date><Name></Name><Year></Year><Month></Month><Day></Day><Weekday></Weekday><Types></Types><Country></Country>
+ </Calendar>
+ <Calendar>
+    <Date></Date><Name></Name><Year></Year><Month></Month><Day></Day><Weekday></Weekday><Types></Types><Country></Country>
+ </Calendar>
+</DocumentElement>

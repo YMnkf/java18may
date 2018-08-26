@@ -1,0 +1,2306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0067)https://xreferat.com/33/3297-1-sozdanie-bazy-dannyh-biblioteka.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<title>Реферат: Создание базы данных "Библиотека" - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ</title>
+	
+	<meta name="description" content="Программирование базы данных &amp;quot;Библиотека&amp;quot;: составление диаграммы &amp;quot;сущность-связь&amp;quot;, построение таблиц, нормализация информации и установление между ними связи типа &amp;quot;Один-ко-многим&amp;quot;, разработка меню, форм и инструментальных панелей, запросов и отчетов.">
+	<meta name="keywords" content="Создание, базы, данных, &quot;Библиотека&quot;">
+	<link rel="stylesheet" href="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/style.css" type="text/css" media="screen, projection">
+	<script async="" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/analytics.js.загружено"></script><script src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/jquery-1.12.4.js.загружено" type="text/javascript"></script>
+	<script src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/js.js.загружено" type="text/javascript"></script>
+<style type="text/css" id="ya_share_style">.b-share-popup-wrap{z-index:1073741823;position:absolute;width:500px}.b-share-popup{position:absolute;z-index:1073741823;border:1px solid #888;background:#FFF;color:#000}.b-share-popup-wrap .b-share-popup_down{top:0}.b-share-popup-wrap .b-share-popup_up{bottom:0}.b-share-popup-wrap_state_hidden{position:absolute!important;top:-9999px!important;right:auto!important;bottom:auto!important;left:-9999px!important;visibility:hidden!important}.b-share-popup,x:nth-child(1){border:0;padding:1px!important}@media all and (resolution = 0dpi){.b-share-popup,x:nth-child(1),x:-o-prefocus{padding:0!important;border:1px solid #888}}.b-share-popup__i{display:-moz-inline-box;display:inline-block;padding:5px 0!important;overflow:hidden;vertical-align:top;white-space:nowrap;visibility:visible;background:#FFF;-webkit-box-shadow:0 2px 9px rgba(0,0,0,0.6);-moz-box-shadow:0 2px 9px rgba(0,0,0,0.6);box-shadow:0 2px 9px rgba(0,0,0,0.6)}.b-share-popup__item{font:1em/1.25em Arial,sans-serif;display:block;padding:5px 15px!important;white-space:nowrap;background:#FFF}.b-share-popup__item,a.b-share-popup__item:link,a.b-share-popup__item:visited{text-decoration:none!important;border:0!important}a.b-share-popup__item{cursor:pointer}a.b-share-popup__item .b-share-popup__item__text{display:inline;text-decoration:underline;color:#1a3dc1}a.b-share-popup__item:hover{word-spacing:0}a.b-share-popup__item:hover .b-share-popup__item__text{color:#F00;cursor:pointer}.b-share-popup__icon{display:-moz-inline-box;display:inline-block;margin:-3px 0 0 0;padding:0 5px 0 0!important;vertical-align:middle}.b-share-popup__icon_input{width:21px;height:16px;margin-top:-6px;padding:0!important}.b-share-popup__icon__input{margin-right:0;margin-left:2px;vertical-align:top}.b-share-popup__spacer{display:block;padding-top:10px!important}.b-share-popup__header{font:86%/1em Verdana,sans-serif;display:block;padding:10px 15px 5px 15px!important;color:#999}.b-share-popup__header_first{padding-top:5px!important}.b-share-popup__input{font:86%/1em Verdana,sans-serif;display:block;padding:5px 15px!important;color:#999;text-align:left}.b-share-popup__input__input{font:1em/1em Verdana,sans-serif;display:block;width:10px;margin:5px 0 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;resize:none;text-align:left;direction:ltr}.b-share-popup_down .b-share-popup_with-link .b-share-popup__input_link{position:absolute;top:5px;right:0;left:0}.b-share-popup_up .b-share-popup_with-link .b-share-popup__input_link{position:absolute;right:0;bottom:5px;left:0}.b-share-popup_down .b-share-popup_with-link{padding-top:55px!important}.b-share-popup_up .b-share-popup_with-link{padding-bottom:55px!important}.b-share-popup_down .b-share-popup_expandable .b-share-popup__main{padding-bottom:25px!important}.b-share-popup_up .b-share-popup_expandable .b-share-popup__main{padding-top:25px!important}.b-share-popup_down .b-share-popup_yandexed{padding-bottom:10px!important}.b-share-popup_up .b-share-popup_yandexed{padding-top:10px!important}.b-share-popup__yandex{position:absolute;right:4px;bottom:2px;font:78.125%/1em Verdana,sans-serif;padding:3px!important;background:transparent}a.b-share-popup__yandex:link,a.b-share-popup__yandex:visited{color:#c6c5c5;text-decoration:none}a.b-share-popup__yandex:link:hover,a.b-share-popup__yandex:visited:hover{color:#F00;text-decoration:underline}.b-share-popup_up .b-share-popup__yandex{top:2px;bottom:auto}.b-share-popup_expandable .b-share-popup__yandex{right:auto;left:4px}.b-share-popup_to-right .b-share-popup_expandable .b-share-popup__yandex{right:4px;left:auto}.b-share-popup__expander .b-share-popup__item{position:absolute;bottom:5px;font:86%/1em Verdana,sans-serif;margin:10px 0 0;padding:5px 10px!important;cursor:pointer;color:#999;background:transparent}.b-share-popup_to-right,.b-share-popup_to-right .b-share-popup__expander{direction:rtl}.b-share-popup_to-right .b-share-popup__expander .b-share-popup__icon{padding:0 0 0 5px!important}.b-share-popup_up .b-share-popup__expander .b-share-popup__item{top:-5px;bottom:auto}.b-share-popup__expander .b-share-popup__item:hover .b-share-popup__item__text{text-decoration:underline}.b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup__expander .b-ico_action_larr,.b-share-popup_full .b-share-popup__expander .b-ico_action_larr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup__expander .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__item__text_expand{display:none}.b-share-popup_to-right .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_full .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_larr{display:inline}.b-ico_action_rarr,.b-ico_action_larr{width:8px;height:7px;border:0}.b-share-popup__main,.b-share-popup__extra{direction:ltr;vertical-align:bottom;text-align:left}.b-share-popup_down .b-share-popup__main,.b-share-popup_down .b-share-popup__extra{vertical-align:top}.b-share-popup__main{display:-moz-inline-stack;display:inline-block}.b-share-popup__extra{display:none;margin:0 -10px 0 0}.b-share-popup_full .b-share-popup__extra{display:-moz-inline-stack;display:inline-block}.b-share-popup_to-right .b-share-popup__extra{margin:0 0 0 -10px}.b-share-popup__tail{position:absolute;width:21px;height:10px;margin:0 0 0 -11px}.b-share-popup_down .b-share-popup__tail{top:-10px;background:url(//xreferat.com/share/b-share-popup_down__tail.gif) 0 0 no-repeat}.b-share-popup_up .b-share-popup__tail{bottom:-10px;background:url(//xreferat.com/share/b-share-popup_up__tail.gif) 0 0 no-repeat}.b-share-popup_down .b-share-popup__tail,x:nth-child(1){top:-9px;background-image:url(//xreferat.com/share/b-share-popup_down__tail.png)}.b-share-popup_up .b-share-popup__tail,x:nth-child(1){bottom:-9px;background-image:url(//xreferat.com/share/b-share-popup_up__tail.png)}@media all and (resolution = 0dpi){.b-share-popup_down .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{top:-10px;background-image:url(//xreferat.com/share/b-share-popup_down__tail.gif)}.b-share-popup_up .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{bottom:-10px;background-image:url(//xreferat.com/share/b-share-popup_up__tail.gif)}}.b-share-popup .b-share-popup_show_form_mail,.b-share-popup .b-share-popup_show_form_html{padding:0!important}.b-share-popup .b-share-popup_show_form_mail .b-share-popup__main,.b-share-popup .b-share-popup_show_form_html .b-share-popup__main,.b-share-popup .b-share-popup_show_form .b-share-popup__main,.b-share-popup .b-share-popup_show_form_mail .b-share-popup__extra,.b-share-popup .b-share-popup_show_form_html .b-share-popup__extra,.b-share-popup .b-share-popup_show_form .b-share-popup__extra{height:15px;padding:0!important;overflow:hidden;visibility:hidden}.b-share-popup_show_form_mail .b-share-popup__expander,.b-share-popup_show_form_html .b-share-popup__expander,.b-share-popup_show_form .b-share-popup__expander,.b-share-popup_show_form_mail .b-share-popup__input_link,.b-share-popup_show_form_html .b-share-popup__input_link,.b-share-popup_show_form .b-share-popup__input_link{display:none}.b-share-popup__form{position:relative;display:none;overflow:hidden;padding:5px 0 0!important;margin:0 0 -15px;white-space:normal}.b-share-popup_show_form_mail .b-share-popup__form_mail,.b-share-popup_show_form_html .b-share-popup__form_html,.b-share-popup_show_form .b-share-popup__form{display:block}.b-share-popup__form__link{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline;padding:5px!important;margin:0 0 5px 10px;text-decoration:underline;cursor:pointer;color:#1a3dc1}.b-share-popup__form__button{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline;margin:5px 0 0 15px}.b-share-popup__form__close{font:86%/1.4545em Verdana,sans-serif;float:right;display:inline;padding:5px!important;margin:0 10px 5px 0;cursor:pointer;color:#999}a.b-share-popup__form__link:hover,a.b-share-popup__form__close:hover{text-decoration:underline;color:#F00}.b-share-popup_font_fixed .b-share-popup__item{font-size:12.8px}.b-share-popup_font_fixed .b-share-popup__header,.b-share-popup_font_fixed .b-share-popup__input,.b-share-popup_font_fixed .b-share-popup__expander .b-share-popup__item,.b-share-popup_font_fixed .b-share-popup__form__link,.b-share-popup_font_fixed .b-share-popup__form__button,.b-share-popup_font_fixed .b-share-popup__form__close{font-size:11px}.b-share-popup_font_fixed .b-share-popup__yandex{font-size:10px}.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url(//xreferat.com/share/b-share-form-button.png) 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url(//xreferat.com/share/b-share-form-button.png)}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url(//yandex.st/share/static/b-share-icon_size_14.png)}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 1px 1px 1px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;cursor:pointer;text-align:left;text-decoration:none!important;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:#F00}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #e4e4e4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#e4e4e4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1a3dc1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url(//xreferat.com/share/b-share-form-button_share__icon.png) 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7b7b7b}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url(//xreferat.com/share/b-share-icon.png) 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_greader{background-position:0 -204px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}</style></head>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-65302985-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<div id="wrapper">
+	<div id="header">
+		<div class="logo"><a href="https://xreferat.com/"><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/logo.jpg" alt="Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ." title="Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ."></a>
+        </div>
+		<div class="link"><script type="text/javascript">xreferatls();</script><script type="text/javascript" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/links.php"></script><a class="link" href="https://xreferat.com/js/order.php" target="_blank">Заказывайте: <span class="red">рефераты - 150 р.</span> курсовые - 700 р. <span class="red">дипломы - 2500 р.</span></a></div>
+	</div>
+	<div id="middle">
+		<div id="container">
+			<div id="content">
+			<div class="rebox" id="sb"><a href="https://xreferat.com/">Xreferat.com</a> » <a href="https://xreferat.com/33/">Рефераты по информатике и программированию</a> » Создание базы данных "Библиотека"</div>
+                		
+					<!--noindex--><div class="center">
+					<link rel="stylesheet" href="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/style(1).css">
+    <style type="text/css">
+        h1, h2, h3 {
+            margin-top: 0px;
+        }
+        #multiwork_form, 
+        #pnlFirst,
+        #pnlSec,
+        #pnlTh {
+            width: 728px !important;
+        }
+        
+        #pnlFirst,
+        #pnlSec,
+        #pnlTh {
+            box-sizing: border-box;
+            height: 90px;
+        }
+
+        #type, #subject {
+            left: 407px;
+            width: 233px;
+        }
+        #theme {
+            width: 238px;
+        }
+
+        #subject {
+            width: 227px;
+        }
+
+        #year {
+            left: 560px;
+            width: 80px;
+        }
+        #month {
+            left: 471px;
+            width: 90px;
+        }
+        #day {
+            left: 407px;
+            width: 65px;
+        }
+
+        #pnlSec, #pnlTh {
+            display: none;
+        }
+
+        .req-fld {
+            background-color: #ffcdcd;
+        }
+        #email, #phone {
+            width: 225px;
+        }
+
+        #btnSec {
+            width: 180px;
+            right: 35px;
+        }
+
+        span.bonus {
+            right: 68px !important;
+        }
+
+        div#pnlTh > p {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    
+    <form method="POST" id="multiwork_form">
+        <div id="pnlFirst" class="formdiv">
+
+            <h1>А сколько<br><span>стоит написать</span> твою работу?</h1>
+
+            <textarea name="theme" rows="10" cols="10" id="theme" placeholder="Тема вашей работы" required=""></textarea>
+
+            <input name="subject" type="text" id="subject" placeholder="Предмет">
+
+            <select name="type" id="type">
+                <option value="">Тип работы</option>
+                <option value="Дипломная работа (бакалавр/специалист)">Дипломная работа (бакалавр/специалист)</option>
+                <option value="Курсовая с практикой">Курсовая с практикой</option>
+                <option value="Курсовая теория">Курсовая теория</option>
+                <option value="Реферат">Реферат</option>
+                <option value="Контрольная работа">Контрольная работа</option>
+                <option value="Задачи">Задачи</option>
+                <option value="Эссе">Эссе</option>
+                <option value="Аттестационная работа (ВАР/ВКР)">Аттестационная работа (ВАР/ВКР)</option>
+                <option value="Бизнес-план">Бизнес-план</option>
+                <option value="Вопросы к экзамену">Вопросы к экзамену</option>
+                <option value="Диплом МВА">Диплом МВА</option>
+                <option value="Дипломная работа (колледж/техникум)">Дипломная работа (колледж/техникум)</option>
+                <option value="Другое">Другое</option>
+                <option value="Кейсы">Кейсы</option>
+                <option value="Лабораторная работа, РГР">Лабораторная работа, РГР</option>
+                <option value="Магистерский диплом">Магистерский диплом</option>
+                <option value="Он-лайн помощь">Он-лайн помощь</option>
+                <option value="Отчёт по практике">Отчёт по практике</option>
+                <option value="Поиск информации">Поиск информации</option>
+                <option value="Презентация в PowerPoint">Презентация в PowerPoint</option>
+                <option value="Реферат для аспирантуры">Реферат для аспирантуры</option>
+                <option value="Сопроводительные материалы к диплому">Сопроводительные материалы к диплому</option>
+                <option value="Статья">Статья</option>
+                <option value="Тест">Тест</option>
+                <option value="Часть дипломной работы">Часть дипломной работы</option>
+                <option value="Чертежи">Чертежи</option>
+
+            </select>
+
+            <select name="day" id="day">
+                <option value="1">Срок</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+
+            </select>
+
+            <select name="month" id="month">
+                <option value="1">Сдачи</option>
+                <option value="1">Январь</option>
+                <option value="2">Февраль</option>
+                <option value="3">Март</option>
+                <option value="4">Апрель</option>
+                <option value="5">Май</option>
+                <option value="6">Июнь</option>
+                <option value="7">Июль</option>
+                <option value="8">Август</option>
+                <option value="9">Сентябрь</option>
+                <option value="10">Октябрь</option>
+                <option value="11">Ноябрь</option>
+                <option value="12">Декабрь</option>
+
+            </select>
+
+            <select name="year" id="year"><option value="2017">2017</option><option value="2018">2018</option></select>
+
+            <input type="submit" name="btnSendFist" value="Узнать" id="btnSendFist">
+            <span class="price">цену</span>
+
+        </div>
+
+        <div id="pnlSec" class="formdiv">
+            <h2>
+                Вместе с оценкой стоимости вы получите бесплатно<br>
+                <em>БОНУС: <u>спец доступ</u> к платной базе работ!</em>
+            </h2>
+            <label class="email">Обязательное поле:</label>
+            <label class="phone">Для уточнения деталей:</label>
+            <input type="text" name="email" id="email" placeholder="e-mail">
+            <input type="text" name="phone" id="phone" placeholder="телефон, icq или skype">
+            <input id="btnSec" class="btnSec" type="submit" name="btnSec" value="Узнать цену">
+            <span class="bonus">и получить бонус</span>
+        </div>
+
+        <div id="pnlTh" class="formdiv">
+            <h3>Спасибо, вам отправлено письмо. Проверьте почту.</h3>
+            <p>Если в течение 5 минут не придет письмо, возможно, допущена ошибка в адресе.</p>
+            <p>В таком случае, пожалуйста, <a href="http://multiwork.org/formacost.aspx?from=formalink7" target="_blank" rel="nofollow">повторите заявку</a>.</p>
+
+        </div>
+    </form>
+    
+    <script type="text/javascript">
+        
+        $(function () {
+            var yearToday = new Date().getFullYear();
+
+            for (var i = 0; i < 2; i++) {
+                $("#year").append(
+                    $("<option></option>").attr("value", yearToday + i)
+                        .text((yearToday + i))
+                );
+            }
+
+            $("#btnSendFist").on("click", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+
+                $("#theme, #type").removeClass("req-fld");
+                
+                if ($("#theme").val().length == 0) {
+                    $("#theme").addClass("req-fld");
+                    return false;
+                }
+
+                if ($("#type").prop("selectedIndex") == 0) {
+                    $("#type").addClass("req-fld");
+                    return false;
+                }
+
+                $("#pnlFirst").hide();
+                $("#pnlSec").show();
+
+            });
+
+            $('#multiwork_form').submit(function (e) {
+                $("#btnSec").prop("disabled", true);
+                e.preventDefault();
+
+                $(".email, #email").removeClass("req-fld");
+                if ($("#email").val().length == 0)
+                {
+                    $(".email, #email").addClass("req-fld");
+                    $("#btnSec").prop("disabled", false);
+                    return false;
+                }
+
+                var m_method = $(this).attr('method');
+                var m_action = "http://www.multiwork.org/orderfrompost.aspx?from=xreferat";
+                //var m_data = $(this).serialize();
+                var m_data = {
+                    "input_subject" : $("#subject").val(),
+                    "input_topic": $("#theme").val(),
+                    "input_date": $("#day").val() + "." + $("#month").val() + "." + $("#year").val(),
+                    "input_email" : $("#email").val(),
+                    "input_phone": $("#phone").val(),
+                    "input_type" : $("#type").val()
+                };
+
+                $.ajax({
+                    type: m_method,
+                    url: m_action,
+                    data: m_data,
+                    success: function (r) {
+
+                        if (r != "OK") {
+                            $('#pnlTh').html(r);
+                        }
+
+                        $("#pnlSec").hide();
+                        $("#pnlTh").show();
+
+                    },
+                    error: function () {
+                        $("#pnlSec").hide();
+                        $('#pnlTh').html('При отправке формы произошла ошибка.');
+                        $("#pnlTh").show();
+                    }
+                });
+            });
+        });
+    </script>
+					</div><!--/noindex-->
+				
+				                <div class="rebox">
+				<div id="fullstory">
+					<h1 class="hfullstory">Создание базы данных "Библиотека"</h1>
+					<div class="fullstorytext">
+						<p><b>Содержание</b></p><br><p>Введение</p>
+<p>1.
+Задание</p>
+<p>2.
+Диаграмма
+"сущность -
+связь"</p>
+<p>3.
+Нормализация
+отношений
+(таблиц)</p>
+<p>4.
+Структура базы
+данных (таблицы,
+связи, поля,
+типы и размеры
+полей)</p>
+<p>5.
+Основные
+характеристики
+используемой
+СУБД</p>
+<p>6.
+Разработка
+меню, форм,
+инструментальных
+панелей и др.</p>
+<p>7.
+Разработка
+запросов</p>
+<p>8.
+Примеры обработки
+запросов</p>
+<p>9.
+Разработка
+отчета</p>
+<p>Заключение</p>
+<p>Список
+используемой
+литературы</p><br><p>
+<b>Введение</b></p><br><p>
+Актуальность.
+Основные идеи
+современной
+информационной
+технологии
+базируются
+на концепции,
+согласно которой
+данные должны
+быть организованы
+в базы данных
+с целью адекватного
+отображения
+изменяющегося
+реального мира
+и удовлетворения
+информационных
+потребностей
+пользователей.
+Эти базы данных
+создаются и
+функционируют
+под управлением
+специальных
+программных
+комплексов,
+называемых
+системами
+управления
+базами данных
+(СУБД).</p>
+<p>
+Одним
+из ключевых
+направлений
+в области
+автоматизация
+бизнес-процессов
+с использованием
+информационных
+технологий
+является разработка
+баз данных,
+позволяющих
+решить проблему
+хранения и
+систематизации
+информации
+согласно
+индивидуальным
+требованиям
+компании.</p>
+<p>
+Увеличение
+объема и структурной
+сложности
+хранимых данных,
+расширение
+круга пользователей
+информационных
+систем привели
+к широкому
+распространению
+наиболее удобных
+и сравнительно
+простых для
+понимания
+реляционных
+(табличных)
+СУБД. Для обеспечения
+одновременного
+доступа к данным
+множества
+пользователей,
+нередко расположенных
+достаточно
+далеко друг
+от друга и от
+места хранения
+баз данных,
+созданы сетевые
+мультипользовательские
+версии БД основанных
+на реляционной
+структуре. В
+них тем или
+иным путем
+решаются
+специфические
+проблемы параллельных
+процессов,
+целостности
+(правильности)
+и безопасности
+данных, а также
+санкционирования
+доступа.</p>
+<p>
+Цель работы:
+разработать
+базу данных
+"библиотека".</p>
+<p>
+Задачи работы:</p>
+<p>
+- разработать
+базу данных;</p>
+<p>
+- создать
+отчеты;</p>
+<p>
+- создать
+запросы.</p>
+<p>
+<b>1. Задание</b></p><br><p>
+Разработать
+базу данных
+"Библиотека".
+Сведения:</p>
+<p>
+- Номер читательского
+билета абонента;</p>
+<p>
+- Фамилия,
+имя, отчество;</p>
+<p>
+- Домашний
+адрес;</p>
+<p>
+- Телефон;</p>
+<p>
+- Название
+книги;</p>
+<p>
+- Авторы;</p>
+<p>
+- Издательство,
+место, год издания;</p>
+<p>
+- Объем книги;</p>
+<p>
+- Библиотечный
+шифр;</p>
+<p>
+- Цена;</p>
+<p>
+- Количество
+экземпляров
+в фондах библиотеки;</p>
+<p>
+- Дата выдачи
+книги;</p>
+<p>
+- Дата возврата;</p>
+<p>
+- Заказы на
+бронирование
+книг (данные
+книги, номер
+билета читателя,
+дата заказа).</p>
+<p>
+Запросы:</p>
+<p>
+- Вывод сведений
+о книгах, взятых
+определенным
+читателем;</p>
+<p>
+- Сведения
+о читателях,
+у которых находится
+определенная
+книга;</p>
+<p>
+- Сведения
+о читателе,
+прочитавшем
+за определенный
+интервал времени
+максимальное
+количество
+книг;</p>
+<p>
+- Сведения
+о наличии
+определенной
+книги в фондах
+библиотеки;</p>
+<p>
+- Вывод сведений
+о домашнем
+адресе и телефоне
+определенного
+читателя.</p>
+<p>
+Отчет:</p>
+<p>
+Заказы на
+бронирование
+книг с группировкой
+и сортировкой
+по датам заказа.</p>
+<p>
+<b>2. Диаграмма
+"сущность -
+связь"</b></p><br><p>
+Диаграмма
+сущность-связь
+- инструмент
+разработки
+моделей данных,
+обеспечивающий
+стандартный
+способ определения
+данных и отношений
+между ними.</p>
+<p>
+Выделим
+основные сущности
+и установим
+между ними
+связи. На рисунке
+1 представлена
+диаграмма
+"сущность-связь".</p><br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969062_1.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="468" height="418" border="0"></p>
+<p>
+Рисунок 1 –
+Диаграмма
+"сущность-связь"</p><br><p>
+<b>3. Нормализация
+отношений
+(таблиц)</b></p><br><p>
+Отношение
+находится в
+первой нормальной
+форме (1НФ), если
+значения атрибутов
+(то есть домены),
+из которых
+построено
+данное отношение,
+являются простыми,
+неделимыми,
+иначе говоря,
+атомарными
+значениями.</p>
+<p>
+Приведем
+к первой нормальной
+форме. Выделим
+следующие
+самостоятельные
+группы полей
+и поместим их
+в отдельные
+таблицы. На
+первый взгляд
+их 4: Информация
+о читателе,
+Информация
+и книге, Выдача
+книг, Бронирование
+книг. Добьемся
+атомарности
+всех полей.</p><br><p>
+Таблица 1
+Таблица "Информация
+о читателе"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Номер
+				билета</td>
+			<td>Номер
+				читательского
+				билета</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Фамилия</td>
+			<td>Фамилия
+				читателя</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Имя</td>
+			<td>Имя читателя</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Отчество</td>
+			<td>Отчество
+				читателя</td>
+		</tr>
+		<tr valign="TOP">
+			<td>5</td>
+			<td>Телефон</td>
+			<td>Телефон
+				для связи с
+				читателем</td>
+		</tr>
+		<tr valign="TOP">
+			<td>6</td>
+			<td>Адрес</td>
+			<td>Адрес
+				читателя</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таблица 2
+Таблица "Информация
+о книге"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Шифр
+				книги</td>
+			<td>Библиотечный
+				шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Название</td>
+			<td>Название
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код
+				издательства</td>
+			<td>Ссылка
+				на код издательства</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Год издания</td>
+			<td>Год издания
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>5</td>
+			<td>Объем
+				книги</td>
+			<td>Объем
+				книги в листах</td>
+		</tr>
+		<tr valign="TOP">
+			<td>6</td>
+			<td>Цена</td>
+			<td>Цена
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>7</td>
+			<td>Количество</td>
+			<td>Количество
+				экземпляров
+				в фондах библиотеки</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таблица 3
+Таблица "Выдача
+книг"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код выдачи</td>
+			<td>Код выдачи
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Шифр
+				книги</td>
+			<td>Ссылка
+				на библиотечный
+				шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код
+				читательского
+				билета</td>
+			<td>Ссылка
+				на код читательского
+				билета</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Дата
+				выдачи книги</td>
+			<td>Дата
+				выдачи книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>5</td>
+			<td>Дата
+				возврата книги</td>
+			<td>Дата
+				возврата книги</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таблица 4
+Таблица
+"Бронирование
+книг"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код брони</td>
+			<td>Код брони
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Шифр
+				книги</td>
+			<td>Ссылка
+				на библиотечный
+				шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код
+				читательского
+				билета</td>
+			<td>Ссылка
+				на код читательского
+				билета</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Дата
+				заказа</td>
+			<td>Дата
+				заказа книги</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таблица 5
+Таблица
+"Издательства"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код
+				издательства</td>
+			<td>Код
+				издательства</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Наименование</td>
+			<td>Наименование
+				издательства</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код города</td>
+			<td>Ссылка
+				на город издательства</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таблица 6
+Таблица "Города"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код города</td>
+			<td>Код города</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Наименование</td>
+			<td>Наименование
+				города</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таблица 7
+Таблица "Авторы"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код автора</td>
+			<td>Код автора</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Фамилия</td>
+			<td>Фамилия
+				автора</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Имя</td>
+			<td>Имя автора</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Отчество</td>
+			<td>Отчество
+				автора</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Так как авторами
+одной книги
+могут выступать
+множество
+авторов, создадим
+дополнительную
+таблицу, которая
+позволит присваивать
+одной книге
+неограниченное
+число авторов.</p><br><p>
+Таблица 8
+Таблица "Авторы
+книг"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код записи</td>
+			<td>Код записи</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Шифр
+				книги</td>
+			<td>Ссылка
+				на шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код автора</td>
+			<td>Ссылка
+				на код автора</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таким образом,
+мы получили
+8 таблиц, удовлетворяющих
+требованиям
+первой нормальной
+формы. Значения
+всех таблиц
+– атомарные.</p>
+<p>
+Отношение
+находится во
+второй нормальной
+форме, если оно
+находится в
+первой нормальной
+форме и значения
+в каждом неключевом
+атрибуте однозначно
+определяются
+значением
+первичного
+ключа.</p>
+<p>
+Приведем
+ко второй нормальной
+форме. Определим
+ключи.</p><br><p>
+Таблица 9
+Ключевые поля
+таблиц</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>Таблица</td>
+			<td>Первичный
+				ключ</td>
+			<td>Простой
+				ключ</td>
+		</tr>
+		<tr valign="TOP">
+			<td>Информация
+				о читателе</td>
+			<td>Номер
+				билета</td>
+			<td><br></td>
+		</tr>
+		<tr valign="TOP">
+			<td>Информация
+				о книге</td>
+			<td>Шифр
+				книги</td>
+			<td>
+				<p>1) Код
+				автора</p>
+				<p>2) Код
+				издательства</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td>Выдача
+				книг</td>
+			<td>Код выдачи</td>
+			<td>
+				<p>1)
+				Шифр книги</p>
+				<p>2) Код
+				читательского
+				билета</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td>Бронирование
+				книг</td>
+			<td>Код брони</td>
+			<td>
+				<p>1)
+				Шифр книги</p>
+				<p>2) Код
+				читательского
+				билета</p>
+			</td>
+		</tr>
+		<tr valign="TOP">
+			<td>Издательства</td>
+			<td>Код
+				издательства</td>
+			<td>1) Код города</td>
+		</tr>
+		<tr valign="TOP">
+			<td>Города</td>
+			<td>Код города</td>
+			<td><br></td>
+		</tr>
+		<tr valign="TOP">
+			<td>Авторы</td>
+			<td>Код автора</td>
+			<td><br></td>
+		</tr>
+		<tr valign="TOP">
+			<td>Авторы
+				книг</td>
+			<td>Код записи</td>
+			<td>
+				<p>1)
+				Шифр книги</p>
+				<p>2) Код автора</p>
+			</td>
+		</tr>
+	</tbody></table>
+<br><p>
+Таким образом,
+все таблицы
+идентифицируются
+набором ключевых
+полей. Следовательно,
+таблицы находятся
+во второй нормальной
+форме.</p>
+<p>
+Отношение
+находится в
+третьей нормальной
+форме (3НФ) тогда
+и только тогда,
+когда отношение
+находится в
+2НФ и все неключевые
+атрибуты взаимно
+независимы.</p>
+<p>
+Приведем
+к третьей нормальной
+форме. В наших
+таблицах нет
+не ключевых
+полей, которые
+идентифицируются
+с помощью другого
+не ключевого
+поля. Следовательно,
+таблицы находятся
+в третьей нормальной
+форме.</p><br><p>
+<b>4. Структура
+базы данных
+(таблицы, связи,
+поля, типы и
+размеры полей)</b></p><br><p>
+Представим
+структуру
+таблиц.</p><br><p>
+Таблица 10
+Таблица "Информация
+о читателе"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Номер
+				билета</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Номер
+				читательского
+				билета</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Фамилия</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Фамилия
+				читателя</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Имя</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Имя читателя</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Отчество</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Отчество
+				читателя</td>
+		</tr>
+		<tr valign="TOP">
+			<td>5</td>
+			<td>Телефон</td>
+			<td>Текстовый</td>
+			<td>20</td>
+			<td>Телефон
+				для связи с
+				читателем</td>
+		</tr>
+		<tr valign="TOP">
+			<td>6</td>
+			<td>Адрес</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Адрес
+				читателя</td>
+		</tr>
+	</tbody></table>
+<br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969062_2.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>
+Рисунок 2 –
+Таблица "Информация
+о читателе"</p><br><p>
+Таблица 11
+Таблица "Информация
+о книге"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Шифр
+				книги</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Библиотечный
+				шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Название</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Название
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код
+				издательства</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на код издательства</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Год издания</td>
+			<td>Числовой</td>
+			<td>4</td>
+			<td>Год издания
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>5</td>
+			<td>Объем
+				книги</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Объем
+				книги в листах</td>
+		</tr>
+		<tr valign="TOP">
+			<td>6</td>
+			<td>Цена</td>
+			<td>Денежный</td>
+			<td><br></td>
+			<td>Цена
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>7</td>
+			<td>Количество</td>
+			<td>Числовой</td>
+			<td>3</td>
+			<td>Количество
+				экземпляров
+				в фондах библиотеки</td>
+		</tr>
+	</tbody></table>
+<br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969063_3.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+3 – Таблица
+"Информация
+о книге"</p><br><p>Таблица
+12 Таблица
+"Выдача книг"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код выдачи</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Код выдачи
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Шифр
+				книги</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на библиотечный
+				шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код
+				читательского
+				билета</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на код читательского
+				билета</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Дата
+				выдачи книги</td>
+			<td>Дата</td>
+			<td>
+				<p>Краткий
+				формат даты</p>
+				<p>По умолчанию
+				=Date()</p>
+			</td>
+			<td>Дата
+				выдачи книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>5</td>
+			<td>Дата
+				возврата книги</td>
+			<td>Дата</td>
+			<td>Краткий
+				формат даты</td>
+			<td>Дата
+				возврата книги</td>
+		</tr>
+	</tbody></table>
+<br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969064_4.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" align="BOTTOM" border="0"></p>
+<p>Рисунок
+4 – Таблица "Выдача
+книг"</p><br><p>Таблица
+13 Таблица
+"Бронирование
+книг"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код брони</td>
+			<td>Счетчик</td>
+			<td>5</td>
+			<td>Код брони
+				книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Шифр
+				книги</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на библиотечный
+				шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код
+				читательского
+				билета</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на код читательского
+				билета</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Дата
+				заказа</td>
+			<td>Дата</td>
+			<td>
+				<p>Краткий
+				формат даты</p>
+				<p>По умолчанию
+				=Date()</p>
+			</td>
+			<td>Дата
+				заказа книги</td>
+		</tr>
+	</tbody></table>
+<br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969064_5.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>
+Рисунок 5 –
+Таблица "Бронирование
+книг"</p><br><p>
+Таблица 14
+Таблица "Издательства"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код
+				издательства</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Код
+				издательства</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Наименование</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Наименование
+				издательства</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код города</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на город издательства</td>
+		</tr>
+	</tbody></table>
+<br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969065_6.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>
+Рисунок 6 –
+Таблица "Издательства"</p><br><p>
+Таблица 15
+Таблица "Города"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код города</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Код города</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Наименование</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Наименование
+				города</td>
+		</tr>
+	</tbody></table>
+<br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969065_7.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" align="BOTTOM" border="0"></p>
+<p>Рисунок
+7 – Таблица "Города"</p><br><p>
+Таблица 16
+Таблица
+"Авторы"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код автора</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Код автора</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Фамилия</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Фамилия
+				автора</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Имя</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Имя автора</td>
+		</tr>
+		<tr valign="TOP">
+			<td>4</td>
+			<td>Отчество</td>
+			<td>Текстовый</td>
+			<td>60</td>
+			<td>Отчество
+				автора</td>
+		</tr>
+	</tbody></table>
+<br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969066_8.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" align="BOTTOM" border="0"></p>
+<p>Рисунок
+8 - Таблица "Авторы"</p><br><p>Таблица
+17 Таблица
+"Авторы книг"</p>
+
+	
+	<table border="1" bordercolor="#000000" cellpadding="8" cellspacing="0"><tbody><tr valign="TOP">
+			<td>№</td>
+			<td>Поле</td>
+			<td>Тип</td>
+			<td>Размер</td>
+			<td>Описание</td>
+		</tr>
+		<tr valign="TOP">
+			<td>1</td>
+			<td>Код записи</td>
+			<td>Счетчик</td>
+			<td><br></td>
+			<td>Код записи</td>
+		</tr>
+		<tr valign="TOP">
+			<td>2</td>
+			<td>Шифр
+				книги</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на шифр книги</td>
+		</tr>
+		<tr valign="TOP">
+			<td>3</td>
+			<td>Код автора</td>
+			<td>Числовой</td>
+			<td>5</td>
+			<td>Ссылка
+				на код автора</td>
+		</tr>
+	</tbody></table>
+<br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969067_9.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>
+Рисунок 9 -
+Таблица "Авторы
+книг"</p>
+<p>
+Расставим
+связи между
+таблицами
+(рисунок 10).</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969067_10.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+10 – Схема данных</p><br><p>Все
+таблицы связаны
+между собой
+связью типа
+"Один-ко-многим".
+На примере
+таблиц "Издательства"
+и "Города" это
+означает, что
+одно издательство
+может иметь
+только один
+город, но в таблице
+"Издательства"
+может присутствовать
+множество
+записей таблицы
+"Города". Т.е.
+разные издательства
+могут иметь
+одинаковые
+названия городов.</p>
+<p>Аналогично
+связаны между
+собой остальные
+таблицы.</p><br><p>
+<b>5. Основные
+характеристики
+используемой
+СУБД</b></p><br><p>
+В результаты
+мы получили
+СУБД, обладающую
+рядом характеристик.</p>
+<p>
+Разработанная
+СУБД позволяет
+выполнять
+простейшие
+операции с
+данными:</p>
+<p>
+- добавлять
+в таблицу одну
+или несколько
+записей;</p>
+<p>
+- удалять из
+таблицы одну
+или несколько
+записей;</p>
+<p>
+- обновлять
+значения некоторых
+полей в одной
+или нескольких
+записях;</p>
+<p>
+- находить
+одну или несколько
+записей, удовлетворяющих
+заданному
+условию.</p>
+<p>
+Разработанная
+СУБД организует
+хранение информации
+таким образом,
+чтобы ее было
+удобно:</p>
+<p>
+- просматривать;</p>
+<p>
+- пополнять;</p>
+<p>
+- изменять;</p>
+<p>
+- искать нужные
+сведения,</p>
+<p>
+- делать любые
+выборки,</p>
+<p>
+- осуществлять
+сортировку
+в любом порядке.</p><br><p>
+<b>6. Разработка
+меню, форм,
+инструментальных
+панелей и др.</b></p><br><p>
+Разработаем
+формы для каждой
+из таблиц и
+занесем в них
+данные.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969068_11.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+11 – Форма "Авторы"</p><br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969068_12.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+12 – Форма "Города"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969069_13.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+13 – Форма "Издательства"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969070_14.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+14 – Форма "Информация
+о книге"</p>
+<p>
+Форма "Информация
+о книге" имеет
+подчиненную
+форму "Авторы
+книг", через
+которую можно
+назначить
+несколько
+авторов одной
+книге.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969071_15.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+15 – Форма "Информация
+о читателе"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969071_16.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+19 – Форма "Бронирование
+книг"</p><br><p>В
+данной форме
+требуется
+ввести либо
+"Шифр книги"
+либо выбрать
+наименование
+книги. Второе
+поле база данных
+установит
+самостоятельно.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969072_17.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+20 – Форма "Выдача
+книг"</p><br><p>
+Создадим
+главную кнопочную
+форму.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969073_18.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" align="BOTTOM" border="0"></p>
+<p>Рисунок
+21 – Форма "Главная
+кнопочная
+форма"</p><br><p>
+<b>7. Разработка
+запросов</b></p><br><p>
+Разработаем
+запросы.</p>
+<p>
+1) Вывод сведений
+о книгах, взятых
+определенным
+читателем.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969074_19.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1600" height="874" border="0"></p>
+<p>Рисунок
+22 – Запрос "Вывод
+сведений о
+книгах, взятых
+определенным
+читателем"</p><br><p>2)
+Сведения о
+читателях, у
+которых находится
+определенная
+книга.</p>
+<p>При
+построении
+данного запроса
+исключаются
+книги, которые
+были возвращены
+читателями,
+т.е. присутствует
+дата возврата.</p>
+<p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969074_20.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1600" height="874" border="0"></p>
+<p>Рисунок
+23 – Запрос "Сведения
+о читателях,
+у которых находится
+определенная
+книга"</p><br><p>3)
+Сведения о
+читателе, прочитавшем
+за определенный
+интервал времени
+максимальное
+количество
+книг.</p>
+<p>Данный
+запрос будет
+создан при
+помощи двух
+запросов.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969075_21.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+24 – Запрос "Количество
+книг"</p><br><p>На
+основании него
+создадим другой
+запрос.</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969075_22.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+25– Запрос "Сведения
+о читателе,
+прочитавшем
+за определенный
+интервал времени
+максимальное
+количество
+книг"</p>
+<p>
+4) Сведения
+о наличии
+определенной
+книги в фондах
+библиотеки.</p><br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969076_23.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1090" height="326" border="0"></p>
+<p>
+Рисунок 26 –
+Запрос "Сведения
+о наличии
+определенной
+книги в фондах
+библиотеки"</p><br><p>
+5) Вывод сведений
+о домашнем
+адресе и телефоне
+определенного
+читателя.</p><br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969076_24.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>
+Рисунок 27 –
+Запрос "Вывод
+сведений о
+домашнем адресе
+и телефоне
+определенного
+читателя"</p><br><p>
+<b>8. Примеры
+обработки
+запросов</b></p><br><p>
+Приведем
+результаты
+запросов.</p><br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969077_25.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="248" height="122" align="BOTTOM" border="0"></p>
+<p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969077_26.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+28 – Результат
+запроса "Вывод
+сведений о
+домашнем адресе
+и телефоне
+определенного
+читателя"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969078_27.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="248" height="122" align="BOTTOM" border="0"></p>
+<p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969078_28.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+29 – Результат
+запроса "Вывод
+сведений о
+книгах, взятых
+определенным
+читателем"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969078_29.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="248" height="122" align="BOTTOM" border="0"></p>
+<p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969079_30.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+30 – Результат
+запроса "Сведения
+о наличии
+определенной
+книги в фондах
+библиотеки"</p>
+<p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969079_31.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="248" height="122" align="BOTTOM" border="0"></p>
+<p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969080_32.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="248" height="122" align="BOTTOM" border="0"></p>
+<p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969080_33.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+31 – Результат
+запроса "Сведения
+о читателе,
+прочитавшем
+за определенный
+интервал времени
+максимальное
+количество
+книг"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969080_34.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="248" height="122" align="BOTTOM" border="0"></p>
+<p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969081_35.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+32 – Результат
+запроса "Сведения
+о читателях,
+у которых находится
+определенная
+книга"</p><br><p>
+<b>9. Разработка
+отчета</b></p><br><p>
+Разработаем
+отчет: Заказы
+на бронирование
+книг с группировкой
+и сортировкой
+по датам заказа.</p><br><p>
+<img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969082_36.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>
+Рисунок 33 –
+Макет отчета
+"Бронирование
+книг"</p><br><p><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/1305969082_37.png" alt="Создание базы данных &amp;amp;quot;Библиотека&amp;amp;quot;" width="1440" height="870" border="0"></p>
+<p>Рисунок
+34 – Результат
+отчета "Бронирование
+книг"</p><br><p>
+<b>Заключение</b></p><br><p>
+Организация
+данных является
+ключевым моментом
+при работе с
+большими объемами
+информации.
+Чрезвычайно
+важно упорядочить
+информацию
+таким образом,
+чтобы легко
+и быстро находить
+нужные сведения.
+В Microsoft Access подлежащая
+хранению информация
+называется
+данными, а место
+ее хранения
+- базой данных.</p>
+<p>
+Перед созданием
+базы данных
+необходимо
+ответить на
+следующие
+вопросы.</p>
+<p>
+Каково назначение
+базы данных
+и кто будет ею
+пользоваться?</p>
+<p>
+Какие таблицы
+(данные) будет
+содержать база
+данных?</p>
+<p>
+Какие запросы
+и отчеты могут
+потребоваться
+пользователям
+этой базы данных?</p>
+<p>
+Какие формы
+может потребоваться
+создать?</p>
+<p>
+Отвечая на
+эти вопросы,
+можно разработать
+проект базы
+данных и создать
+полезную и
+удобную в
+использовании
+базу данных.</p>
+<p>
+В результате
+работы мы получили
+базу данных
+"Библиотека",
+которая содержит
+запросы и отчеты:</p>
+<p>
+- Вывод сведений
+о книгах, взятых
+определенным
+читателем;</p>
+<p>
+- Сведения
+о читателях,
+у которых находится
+определенная
+книга;</p>
+<p>
+- Сведения
+о читателе,
+прочитавшем
+за определенный
+интервал времени
+максимальное
+количество
+книг;</p>
+<p>
+- Сведения
+о наличии
+определенной
+книги в фондах
+библиотеки;</p>
+<p>
+- Вывод сведений
+о домашнем
+адресе и телефоне
+определенного
+читателя.</p>
+<p>
+- Отчет: Заказы
+на бронирование
+книг с группировкой
+и сортировкой
+по датам заказа.</p><br><p>
+<b>Список
+используемой
+литературы
+и электронных
+источников
+информации</b></p><br>
+	<p>Багриновский
+	К.А. Хрусталев
+	Е.Ю. Новые информационные
+	технологии.
+	– М.: ЭКО, 2007. – 250с.</p>
+	<p>
+	Информатика
+	и информационно-коммуникационные
+	технологии.
+	Базовый курс:
+	Учебник для
+	8 класса/И.Г.
+	Семакин, С.В.
+	Русаков, Л.В.
+	Шестакова. -
+	М: БИНОМ, Лаборатория
+	знаний, 2005. – 176 с.</p>
+	<p>
+	Каймин В.А.
+	Информатика:
+	Учебник. - М.:
+	ИНФРА-М, 2007 – 179 с.</p>
+	<p>
+	Компьютерные
+	технологии
+	обработки
+	информации
+	/ Под ред. С.В.
+	Назарова. - М.:
+	Финансы и
+	статистика,
+	2005. – 248 с.</p>
+	<p>
+	Соболь Б.В.,
+	Галин А.Б., Панов
+	Ю.В. и др. Информатика:
+	учебник. – М.:
+	Феникс, 2007. – 446 с.</p>
+	<p>
+	Моторин С.В.
+	Управление
+	данными Лекции
+	1-2: Проектирование
+	реляционной
+	БД (Пример).</p>
+					</div>
+					
+				</div>
+				<div id="resultsDiv"></div>
+				</div>
+				<!--noindex--><div class="center">
+<script type="text/javascript">
+    (function(w, d, n) {
+        w[n] = w[n] || [];
+        w[n].push({
+            section_id: 140058,
+            place: "advertur_140058",
+            width: 728,
+            height: 90
+        });
+    })(window, document, "advertur_sections");
+</script>
+<script type="text/javascript" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/loader.js.загружено" async=""></script>
+				</div><!--/noindex-->
+				<div class="rebox" id="related">
+					<div class="relatede">
+						<div class="other">Похожие рефераты:</div>	
+							
+						<div class="related_block">
+						<a href="https://xreferat.com/33/7192-1-programma-uchet-vydachi-i-vozvrata-knig.html" title="Программа &quot;Учет выдачи и возврата книг&quot;">Программа "Учет выдачи и возврата книг"</a>
+						<div class="related_descript">Создание программы для учета выдачи и возврата книг. Методы создания четырех таблиц-справочников и основной таблицы. Создание базового, перекрестного, итогового запросов. Формирование форм. Формирование отчета по читателям и выданным книгам с итогами.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/7105-1-baza-dannyh-firma.html" title="База данных &quot;Фирма&quot;">База данных "Фирма"</a>
+						<div class="related_descript">Информация о работе фирмы. Даталогическое проектирование, создание новых запросов, форм и макросов. Таблицы описания структуры отношений. Рабочее проектирование, формы "Заказ", "Клиент", "Товары", "Паспортные данные". Составление отчета по продажам.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/7058-1-ispol-zovanie-programmy-access-v-knizhnom-magazine.html" title="Использование программы Access в книжном магазине">Использование программы Access в книжном магазине</a>
+						<div class="related_descript">Характеристика технических возможностей и функций программы Access. Методы построения запросов форм и отчетов, позволяющих получать следующую информацию: какие книги по тематике и автору имеются в магазине, подсчет выручки от реализации за текущий месяц.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/6763-1-razrabotka-programmy-pozvolyayusheiy-prosmatrivat-i-redaktirovat-zapisi-bibliotechnogo-kataloga.html" title="Разработка программы, позволяющей просматривать и редактировать записи библиотечного каталога">Разработка программы, позволяющей просматривать и редактировать записи библиотечного каталога</a>
+						<div class="related_descript">Требования к функциональным характеристикам программы, составу и параметрам технических средств, программной совместимости. Особенности программирования в среде Access. Описание интерфейса программы, ввод и редактирование данных, добавление новых книг.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/6520-1-proektirovanie-bazy-dannyh-biblioteka.html" title="Проектирование базы данных Библиотека">Проектирование базы данных Библиотека</a>
+						<div class="related_descript">РЕФЕРАТ  по Информационным Технологиям Управления  на тему: ПРОЕКТИРОВАНИЕ БАЗЫ ДАННЫХ  Библиотека  Выполнила:    Проверила.  2002 год План:  	Исследование 	предметной 	области</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/5875-1-avtomatizirovannyiy-uchet-vypolneniya-rabot-v-fotoatel-e.html" title="Автоматизированный учет выполнения работ в фотоателье">Автоматизированный учет выполнения работ в фотоателье</a>
+						<div class="related_descript">Хранение информации базы данных в таблицах. Полная информация о клиентах, заказах, о кодах и наименованиях услуг, о текущих ценах на услуги и о должностях фотоателье. Основные формы по оформлению заказов. Создание печатных копий из базы данных.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/5328-1-laboratornye-raboty-v-hgtu.html" title="Лабораторные работы (в ХГТУ)">Лабораторные работы (в ХГТУ)</a>
+						<div class="related_descript">Задание:   Для  модели базы данных, разработанной в первой самостоятельной работе , используя  DataBase Desktop, дать описание системы соответствующих таблиц локальной базы данных  в формате Paradox7.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/5208-1-avtomatizirovannaya-sistema-biblioteka.html" title="Автоматизированная система &quot;Библиотека&quot;">Автоматизированная система "Библиотека"</a>
+						<div class="related_descript">Методика и основные этапы создания базы данных в библиотеке, отражаемая в ней информация и функциональные особенности. Порядок построения информационно-логической модели базы данных. Особенности реализации пользовательского интерфейса средствами форм.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/4978-1-razrabotka-bazy-dannyh-po-uchetu-knig-v-biblioteke.html" title="Разработка базы данных по учету книг в библиотеке">Разработка базы данных по учету книг в библиотеке</a>
+						<div class="related_descript">Создание простых форм-справочников. Редактирование свойств формы в режиме конструктора. Добавление и редактирование свойств элементов управления. Проектирование отчётов для базы данных. Приведение таблицы к нормальной форме и построение схемы данных.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/4942-1-biblioteka-kolledzha.html" title="Библиотека колледжа">Библиотека колледжа</a>
+						<div class="related_descript">Содержание  	1. Введение	2  	2. Основные 	понятия баз 	данных	3 2.1 	Базы данных 	и системы управления 	базами данных	3 2.2 	Структура 	простейшей 	базы данных	4 2.3 	Свойства полей 	базы данных 		4</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/4939-1-proektirovanie-informacionnoiy-sistemy-biblioteka.html" title="Проектирование информационной системы &quot;Библиотека&quot;">Проектирование информационной системы "Библиотека"</a>
+						<div class="related_descript">Теоретические особенности проектирования процессов организации средствами BPwin и ERwin. Основы библиотечной деятельности. Моделирование информационной системы, позволяющей улучшить эффективность выполнения рабочих заданий, осуществляющихся в библиотеке.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/3559-1-programma-uchet-rozhdaemosti.html" title="Программа &quot;Учет рождаемости&quot;">Программа "Учет рождаемости"</a>
+						<div class="related_descript">Этапы создания программы для учета рождаемости детей. Разработка базы из основной таблицы с оперативными данными и четырех таблиц-справочников с наименованиями кодов. Создание форм для заполнения таблиц и просмотра запросов с русифицированными кнопками.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/3352-1-ponyatie-baz-dannyh.html" title="Понятие баз данных">Понятие баз данных</a>
+						<div class="related_descript">Теоретические сведения и основные понятия баз данных. Системы управления базами данных: состав, структура, безопасность, режимы работы, объекты. Работа с базами данных в OpenOffice.Org BASE: создание таблиц, связей, запросов с помощью мастера запросов.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/2881-1-gipertekstovaya-tehnologiya-tablichnye-processory-exel-sozdanie-bazy-dannyh-kartoteki-knig.html" title="Гипертекстовая технология. Табличные процессоры Exel. Создание базы данных картотеки книг">Гипертекстовая технология. Табличные процессоры Exel. Создание базы данных картотеки книг</a>
+						<div class="related_descript">Гипертекст как особая форма организации текстового материала, его принцип и ассоциативная связь с источниками информации. Работа с табличным процессором Excel на предприятии, решение производственных задач. Создание базы данных картотеки книг в Access.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/2170-1-razrabotka-avtomatizirovannogo-rabochego-mesta-bibliotekarya-s-pomosh-yu-sredy-programmirovaniya-1s-predpriyatie.html" title="Разработка автоматизированного рабочего места библиотекаря с помощью среды программирования 1С:Предприятие">Разработка автоматизированного рабочего места библиотекаря с помощью среды программирования 1С:Предприятие</a>
+						<div class="related_descript">Проектирование системы учета для библиотеки: разработка базы данных, в которой описаны наименования книг, имеющиеся в библиотечном фонде, и постоянные читатели, создание печатных форм (отчетов о приеме и выдаче изданий) и интерфейса для пользователей.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/1571-1-rabota-s-bazami-dannyh.html" title="Работа с базами данных">Работа с базами данных</a>
+						<div class="related_descript">Microsoft Access как мощное приложение, предлагающее широкий диапазон средств для эффективного управления информацией, оценка его возможностей, содержание и назначение. Создание и заполнение таблицы базы данных о студентах в режиме конструктора.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/1419-1-primer-proektirovaniya-bazy-dannyh-biblioteka.html" title="Пример проектирования базы данных " Библиотека""="">Пример проектирования базы данных "Библиотека"</a>
+						<div class="related_descript">Назначение и предметная область. Построение инфологической модели. Проектирование базы данных.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/1155-1-baza-dannyh-biblioteka.html" title="База данных &quot;Библиотека&quot;">База данных "Библиотека"</a>
+						<div class="related_descript">Создание таблиц базы данных в режиме конструктора. Наименование и структура таблиц базы данных "Библиотека". Применение поля подстановок и создание фиксированного списка значений для полей. Схема связи между таблицами. Формирование и выполнение запроса.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/324-1-razrabotka-programmnoiy-sistemy-dlya-rabotnika-dekanata.html" title="Разработка программной системы для работника деканата">Разработка программной системы для работника деканата</a>
+						<div class="related_descript">База данных для работников деканата для хранения сведений о группах и студентах и о результатах текущей сессии. Построение инфологической модели предметной области. Создание базы данных в Microsoft Access 2000. Создание элементов управления базой данных.</div>
+						<div class="clr"></div>
+						</div>	
+						<div class="related_block">
+						<a href="https://xreferat.com/33/135-1-razrabotka-avtomatizirovannoiy-sistemy-biblioteka.html" title="Разработка автоматизированной системы &quot;Библиотека&quot;">Разработка автоматизированной системы "Библиотека"</a>
+						<div class="related_descript">Построение информационно-логической модели базы данных. Корректировка данных средствами запросов. Проектирование алгоритмов обработки данных. Реализация пользовательского интерфейса средствами форм. Разработка запросов для корректировки и выборки данных.</div>
+						<div class="clr"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sidebar" id="sideLeft">
+			<div class="box">
+				<h3>Категории</h3>
+				<div class="inbox" style="overflow: hidden;">
+					<div class="list" style="display: block;">
+						<ul>
+							<li><a href="https://xreferat.com/1/" title="Авиация и космонавтика">Авиация и космонавтика <span>(327)</span></a></li>
+							<li><a href="https://xreferat.com/2/" title="Административное право">Административное право <span>(149)</span></a></li>
+							<li><a href="https://xreferat.com/3/" title="Арбитражный процесс">Арбитражный процесс <span>(29)</span></a></li>
+							<li><a href="https://xreferat.com/4/" title="Архитектура">Архитектура <span>(130)</span></a></li>
+							<li><a href="https://xreferat.com/5/" title="Астрология">Астрология <span>(4)</span></a></li>
+							<li><a href="https://xreferat.com/6/" title="Астрономия">Астрономия <span>(186)</span></a></li>
+							<li><a href="https://xreferat.com/7/" title="Банковское дело">Банковское дело <span>(2917)</span></a></li>
+							<li><a href="https://xreferat.com/8/" title="Безопасность жизнедеятельности">Безопасность жизнедеятельности <span>(1880)</span></a></li>
+							<li><a href="https://xreferat.com/9/" title="Биографии">Биографии <span>(3553)</span></a></li>
+							<li><a href="https://xreferat.com/10/" title="Биология">Биология <span>(3097)</span></a></li>
+							<li><a href="https://xreferat.com/11/" title="Биология и химия">Биология и химия <span>(1111)</span></a></li>
+							<li><a href="https://xreferat.com/12/" title="Биржевое дело">Биржевое дело <span>(79)</span></a></li>
+							<li><a href="https://xreferat.com/13/" title="Ботаника и сельское хоз-во">Ботаника и сельское хоз-во <span>(2362)</span></a></li>
+							<li><a href="https://xreferat.com/14/" title="Бухгалтерский учет и аудит">Бухгалтерский учет и аудит <span>(4899)</span></a></li>
+							<li><a href="https://xreferat.com/15/" title="Валютные отношения">Валютные отношения <span>(70)</span></a></li>
+							<li><a href="https://xreferat.com/16/" title="Ветеринария">Ветеринария <span>(56)</span></a></li>
+							<li><a href="https://xreferat.com/17/" title="Военная кафедра">Военная кафедра <span>(636)</span></a></li>
+							<li><a href="https://xreferat.com/18/" title="География">География <span>(3743)</span></a></li>
+							<li><a href="https://xreferat.com/19/" title="Геодезия">Геодезия <span>(60)</span></a></li>
+							<li><a href="https://xreferat.com/20/" title="Геология">Геология <span>(1084)</span></a></li>
+							<li><a href="https://xreferat.com/21/" title="Геополитика">Геополитика <span>(49)</span></a></li>
+							<li><a href="https://xreferat.com/22/" title="Государство и право">Государство и право <span>(13144)</span></a></li>
+							<li><a href="https://xreferat.com/23/" title="Гражданское право и процесс">Гражданское право и процесс <span>(543)</span></a></li>
+							<li><a href="https://xreferat.com/24/" title="Делопроизводство">Делопроизводство <span>(32)</span></a></li>
+							<li><a href="https://xreferat.com/25/" title="Деньги и кредит">Деньги и кредит <span>(116)</span></a></li>
+							<li><a href="https://xreferat.com/26/" title="Естествознание">Естествознание <span>(137)</span></a></li>
+							<li><a href="https://xreferat.com/27/" title="Журналистика">Журналистика <span>(637)</span></a></li>
+							<li><a href="https://xreferat.com/28/" title="Зоология">Зоология <span>(40)</span></a></li>
+							<li><a href="https://xreferat.com/29/" title="Издательское дело и полиграфия">Издательское дело и полиграфия <span>(271)</span></a></li>
+							<li><a href="https://xreferat.com/30/" title="Инвестиции">Инвестиции <span>(120)</span></a></li>
+							<li><a href="https://xreferat.com/31/" title="Иностранный язык">Иностранный язык <span>(4422)</span></a></li>
+							<li><a href="https://xreferat.com/32/" title="Информатика">Информатика <span>(74)</span></a></li>
+							<li><a href="https://xreferat.com/33/" title="Информатика, программирование">Информатика, программирование <span>(7324)</span></a></li>
+							<li><a href="https://xreferat.com/34/" title="Исторические личности">Исторические личности <span>(436)</span></a></li>
+							<li><a href="https://xreferat.com/35/" title="История">История <span>(10671)</span></a></li>
+							<li><a href="https://xreferat.com/36/" title="История техники">История техники <span>(672)</span></a></li>
+							<li><a href="https://xreferat.com/37/" title="Кибернетика">Кибернетика <span>(83)</span></a></li>
+							<li><a href="https://xreferat.com/38/" title="Коммуникации и связь">Коммуникации и связь <span>(2320)</span></a></li>
+							<li><a href="https://xreferat.com/39/" title="Компьютерные науки">Компьютерные науки <span>(75)</span></a></li>
+							<li><a href="https://xreferat.com/40/" title="Косметология">Косметология <span>(20)</span></a></li>
+							<li><a href="https://xreferat.com/41/" title="Краеведение и этнография">Краеведение и этнография <span>(528)</span></a></li>
+							<li><a href="https://xreferat.com/42/" title="Краткое содержание произведений">Краткое содержание произведений <span>(963)</span></a></li>
+							<li><a href="https://xreferat.com/43/" title="Криминалистика">Криминалистика <span>(136)</span></a></li>
+							<li><a href="https://xreferat.com/44/" title="Криминология">Криминология <span>(53)</span></a></li>
+							<li><a href="https://xreferat.com/45/" title="Криптология">Криптология <span>(5)</span></a></li>
+							<li><a href="https://xreferat.com/46/" title="Кулинария">Кулинария <span>(955)</span></a></li>
+							<li><a href="https://xreferat.com/47/" title="Культура и искусство">Культура и искусство <span>(5433)</span></a></li>
+							<li><a href="https://xreferat.com/48/" title="Культурология">Культурология <span>(586)</span></a></li>
+							<li><a href="https://xreferat.com/49/" title="Литература: зарубежная">Литература : зарубежная <span>(2101)</span></a></li>
+							<li><a href="https://xreferat.com/50/" title="Литература и русский язык">Литература и русский язык <span>(5460)</span></a></li>
+							<li><a href="https://xreferat.com/51/" title="Логика">Логика <span>(69)</span></a></li>
+							<li><a href="https://xreferat.com/52/" title="Логистика">Логистика <span>(29)</span></a></li>
+							<li><a href="https://xreferat.com/53/" title="Маркетинг">Маркетинг <span>(4459)</span></a></li>
+							<li><a href="https://xreferat.com/54/" title="Математика">Математика <span>(2533)</span></a></li>
+							<li><a href="https://xreferat.com/55/" title="Медицина, здоровье">Медицина, здоровье <span>(9201)</span></a></li>
+							<li><a href="https://xreferat.com/56/" title="Медицинские науки">Медицинские науки <span>(100)</span></a></li>
+							<li><a href="https://xreferat.com/57/" title="Международное публичное право">Международное публичное право <span>(78)</span></a></li>
+							<li><a href="https://xreferat.com/58/" title="Международное частное право">Международное частное право <span>(38)</span></a></li>
+							<li><a href="https://xreferat.com/59/" title="Международные отношения">Международные отношения <span>(2158)</span></a></li>
+							<li><a href="https://xreferat.com/60/" title="Менеджмент">Менеджмент <span>(8171)</span></a></li>
+							<li><a href="https://xreferat.com/61/" title="Металлургия">Металлургия <span>(106)</span></a></li>
+							<li><a href="https://xreferat.com/62/" title="Москвоведение">Москвоведение <span>(621)</span></a></li>
+							<li><a href="https://xreferat.com/63/" title="Музыка">Музыка <span>(1169)</span></a></li>
+							<li><a href="https://xreferat.com/64/" title="Муниципальное право">Муниципальное право <span>(46)</span></a></li>
+							<li><a href="https://xreferat.com/65/" title="Налоги, налогообложение">Налоги, налогообложение <span>(269)</span></a></li>
+							<li><a href="https://xreferat.com/66/" title="Наука и техника">Наука и техника <span>(1823)</span></a></li>
+							<li><a href="https://xreferat.com/67/" title="Начертательная геометрия">Начертательная геометрия <span>(4)</span></a></li>
+							<li><a href="https://xreferat.com/68/" title="Новейшая история, политология">Новейшая история, политология <span>(83)</span></a></li>
+							<li><a href="https://xreferat.com/69/" title="Оккультизм и уфология">Оккультизм и уфология <span>(9)</span></a></li>
+							<li><a href="https://xreferat.com/70/" title="Остальные рефераты">Остальные рефераты <span>(1506)</span></a></li>
+							<li><a href="https://xreferat.com/71/" title="Педагогика">Педагогика <span>(6624)</span></a></li>
+							<li><a href="https://xreferat.com/72/" title="Политология">Политология <span>(2380)</span></a></li>
+							<li><a href="https://xreferat.com/73/" title="Право">Право <span>(2218)</span></a></li>
+							<li><a href="https://xreferat.com/74/" title="Право, юриспруденция">Право, юриспруденция <span>(773)</span></a></li>
+							<li><a href="https://xreferat.com/75/" title="Предпринимательство">Предпринимательство <span>(600)</span></a></li>
+							<li><a href="https://xreferat.com/76/" title="Промышленность, производство">Промышленность, производство <span>(4354)</span></a></li>
+							<li><a href="https://xreferat.com/77/" title="Психология">Психология <span>(7469)</span></a></li>
+							<li><a href="https://xreferat.com/78/" title="Психология, педагогика">Психология, педагогика <span>(1936)</span></a></li>
+							<li><a href="https://xreferat.com/79/" title="Радиоэлектроника">Радиоэлектроника <span>(579)</span></a></li>
+							<li><a href="https://xreferat.com/80/" title="Реклама">Реклама <span>(902)</span></a></li>
+							<li><a href="https://xreferat.com/81/" title="Религия и мифология">Религия и мифология <span>(2580)</span></a></li>
+							<li><a href="https://xreferat.com/82/" title="Риторика">Риторика <span>(27)</span></a></li>
+							<li><a href="https://xreferat.com/83/" title="Сексология">Сексология <span>(710)</span></a></li>
+							<li><a href="https://xreferat.com/84/" title="Социология">Социология <span>(3825)</span></a></li>
+							<li><a href="https://xreferat.com/85/" title="Статистика">Статистика <span>(94)</span></a></li>
+							<li><a href="https://xreferat.com/86/" title="Страхование">Страхование <span>(127)</span></a></li>
+							<li><a href="https://xreferat.com/87/" title="Строительные науки">Строительные науки <span>(11)</span></a></li>
+							<li><a href="https://xreferat.com/88/" title="Строительство">Строительство <span>(1300)</span></a></li>
+							<li><a href="https://xreferat.com/89/" title="Схемотехника">Схемотехника <span>(16)</span></a></li>
+							<li><a href="https://xreferat.com/90/" title="Таможенная система">Таможенная система <span>(425)</span></a></li>
+							<li><a href="https://xreferat.com/91/" title="Теория государства и права">Теория государства и права <span>(260)</span></a></li>
+							<li><a href="https://xreferat.com/92/" title="Теория организации">Теория организации <span>(47)</span></a></li>
+							<li><a href="https://xreferat.com/93/" title="Теплотехника">Теплотехника <span>(31)</span></a></li>
+							<li><a href="https://xreferat.com/94/" title="Технология">Технология <span>(752)</span></a></li>
+							<li><a href="https://xreferat.com/95/" title="Товароведение">Товароведение <span>(21)</span></a></li>
+							<li><a href="https://xreferat.com/96/" title="Транспорт">Транспорт <span>(2083)</span></a></li>
+							<li><a href="https://xreferat.com/97/" title="Трудовое право">Трудовое право <span>(159)</span></a></li>
+							<li><a href="https://xreferat.com/98/" title="Туризм">Туризм <span>(115)</span></a></li>
+							<li><a href="https://xreferat.com/99/" title="Уголовное право и процесс">Уголовное право и процесс <span>(481)</span></a></li>
+							<li><a href="https://xreferat.com/100/" title="Управление">Управление <span>(111)</span></a></li>
+							<li><a href="https://xreferat.com/101/" title="Управленческие науки">Управленческие науки <span>(35)</span></a></li>
+							<li><a href="https://xreferat.com/102/" title="Физика">Физика <span>(2716)</span></a></li>
+							<li><a href="https://xreferat.com/103/" title="Физкультура и спорт">Физкультура и спорт <span>(3181)</span></a></li>
+							<li><a href="https://xreferat.com/104/" title="Философия">Философия <span>(5149)</span></a></li>
+							<li><a href="https://xreferat.com/105/" title="Финансовые науки">Финансовые науки <span>(5052)</span></a></li>
+							<li><a href="https://xreferat.com/106/" title="Финансы">Финансы <span>(486)</span></a></li>
+							<li><a href="https://xreferat.com/107/" title="Фотография">Фотография <span>(4)</span></a></li>
+							<li><a href="https://xreferat.com/108/" title="Химия">Химия <span>(1792)</span></a></li>
+							<li><a href="https://xreferat.com/109/" title="Хозяйственное право">Хозяйственное право <span>(26)</span></a></li>
+							<li><a href="https://xreferat.com/110/" title="Цифровые устройства">Цифровые устройства <span>(35)</span></a></li>
+							<li><a href="https://xreferat.com/111/" title="Экологическое право">Экологическое право <span>(40)</span></a></li>
+							<li><a href="https://xreferat.com/112/" title="Экология">Экология <span>(3536)</span></a></li>
+							<li><a href="https://xreferat.com/113/" title="Экономика">Экономика <span>(13917)</span></a></li>
+							<li><a href="https://xreferat.com/114/" title="Экономико-математическое моделирование">Экономико-математическое моделирование <span>(780)</span></a></li>
+							<li><a href="https://xreferat.com/115/" title="Экономическая география">Экономическая география <span>(141)</span></a></li>
+							<li><a href="https://xreferat.com/116/" title="Экономическая теория">Экономическая теория <span>(976)</span></a></li>
+							<li><a href="https://xreferat.com/117/" title="Этика">Этика <span>(612)</span></a></li>
+							<li><a href="https://xreferat.com/118/" title="Юриспруденция">Юриспруденция <span>(689)</span></a></li>
+							<li><a href="https://xreferat.com/119/" title="Языковедение">Языковедение <span>(171)</span></a></li>
+							<li><a href="https://xreferat.com/120/" title="Языкознание, филология">Языкознание, филология <span>(672)</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--noindex--><div class="left">
+			<script type="text/javascript">xreferatss();</script><script type="text/javascript" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/share.js.загружено" charset="windows-1251"></script><div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir"><span class="b-share"><a class="b-share__handle" id="ya-share-0.8971087191217306-1492196933603" data-hdirection="" data-vdirection=""><span class="b-share-form-button b-share-form-button_share"><i class="b-share-form-button__before"></i><i class="b-share-form-button__icon"></i>Поделиться…<i class="b-share-form-button__after"></i></span></a><a rel="nofollow" target="_blank" title="Я.ру" class="b-share__handle b-share__link" href="https://share.yandex.ru/go.xml?service=yaru&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" data-service="yaru"><span class="b-share-icon b-share-icon_yaru"></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link" href="https://share.yandex.ru/go.xml?service=vkontakte&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link" href="https://share.yandex.ru/go.xml?service=facebook&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link" href="https://share.yandex.ru/go.xml?service=twitter&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link" href="https://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="Мой Мир" class="b-share__handle b-share__link" href="https://share.yandex.ru/go.xml?service=moimir&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" data-service="moimir"><span class="b-share-icon b-share-icon_moimir"></span></a></span></div>
+			</div>
+			<div class="left">
+			<script type="text/javascript">xreferatat();</script><div id="cavU3ssnA055V2QSgF8TzT"><div id="povU3ssnA055V2QSgF8TzT" style="display: block;"><div id="actionteaservU3ssnA055V2QSgF8TzT" class="vU3ssnA055V2QSgF8TzTnb"><a href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JmlwP_IuNjAuMi4xM_MmbWM9Nzk3N2VmODVjN_c2M_QyNzRkODM3YzdmYzhmZmRlMDEmYm51b_12V_Nzc25BMDU1VjJRU2dGOFR6VCZzaXA9M_M2LjI0My4xMzAuM_Y2JmJyaWQ9MyZzZXNzPWVmNGIzYmFkODY1MGFhNWNkZmUxMDMwNzkxO_g5NzZkJnJlZjE9aHR0cHM6Ly94cmVmZXJhdC5jb20vMzMvMzI5Ny0xLXNvemRhbmllLWJhenktZGFubnloLWJpYmxpb3Rla2EuaHRtbCZiaWQ9M_E2M_EmbWM9Nzk3N2VmODVjN_c2M_QyNzRkODM3YzdmYzhmZmRlMDEmYm51b_12V_Nzc25BMDU1VjJRU2dGOFR6VCZ0P_EmaGlkZWxpbms9MQ==" class="ath" rel="nofollow"></a><table rel="2000" border="0" cellpadding="1" cellspacing="3" style=" background-color: #FFFFFF; width: 100px; border-spacing: 3px !important; border-collapse: separate !important;"><tbody><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YyMDc2JnBjPUZ6U0FGJnQ9MSZyaWQ9MyZjb21waWQ9M_M4M_ImYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0xJnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_IuN_Amc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 13812, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpu595rW.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YyMDc2JnBjPUZ6U0FGJnQ9MSZyaWQ9MyZjb21waWQ9M_M4M_ImYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0xJnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_IuN_Amc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 13812, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355162076">Растущие Папилломы сигнализируют о наличии в крови...</a>   </div>   </td></tr><tr></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YzNzIxJnBjPUlNMzdGJnQ9MSZyaWQ9MyZjb21waWQ9M_QzODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0yJnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_QuMDAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 14381, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpMQJk9Z.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YzNzIxJnBjPUlNMzdGJnQ9MSZyaWQ9MyZjb21waWQ9M_QzODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0yJnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_QuMDAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 14381, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355163721">Избавиться от полноты после 40-50 лет проще, чем в молодости! Возьмите за привычку натощак</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_I3MzYwJnBjPUF2_XBMJnQ9MSZyaWQ9MyZjb21waWQ9M_A4ODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0zJnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuODYmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 10881, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpxpg7RN.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_I3MzYwJnBjPUF2_XBMJnQ9MSZyaWQ9MyZjb21waWQ9M_A4ODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0zJnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuODYmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 10881, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355127360">Родные Фриске в ужасе от Платона! Новость о Платоне взбудоражила страну</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YxO_k2JnBjPVBmMGhMJnQ9MSZyaWQ9MyZjb21waWQ9M_QyO_gmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz00JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_QuMDAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 14298, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpyyf3Ki.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YxO_k2JnBjPVBmMGhMJnQ9MSZyaWQ9MyZjb21waWQ9M_QyO_gmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz00JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_QuMDAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 14298, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355161996">Исхудавшая Картункова поразила: Я весила 110 кг, а сейчас 78! На 1ст воды беру 2 ст. ложки</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_IyODc2JnBjPXRUVk0xJnQ9MSZyaWQ9MyZjb21waWQ9M_E3MDImYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz01JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuNjAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 11702, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpgwmbm2.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_IyODc2JnBjPXRUVk0xJnQ9MSZyaWQ9MyZjb21waWQ9M_E3MDImYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz01JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuNjAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 11702, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355122876">Путин уже не скрывает новую леди страны? Оказалось, что она...</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YzNDI2JnBjPXNYVkdlJnQ9MSZyaWQ9MyZjb21waWQ9M_QzM_YmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz02JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_IuN_Amc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 14316, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpSIhb5i.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YzNDI2JnBjPXNYVkdlJnQ9MSZyaWQ9MyZjb21waWQ9M_QzM_YmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz02JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_IuN_Amc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 14316, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355163426">Даже самый большой живот исчезнет за 15-20 дней! Просто с утра натощак...</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_cyODQ2JnBjPW9WV2lCJnQ9MSZyaWQ9NDEmY29tcGlkP_EyMjI5JmJpZD0xM_YxMSZtYz0wMjQ5MjVmNDFiZ_JjYjVkZjU3NWY2OGJjN2RkNWQ0NiZwb3M9NyZzZXNzPWVmNGIzYmFkODY1MGFhNWNkZmUxMDMwNzkxO_g5NzZkJmFnY2g9N_ZkYjQxYWM3MDRkMWIyY_JjNzFmZjcxNzY5M_M5ZGEmYnJpZD0zJm9zaWQ9MSZwcj0yLjUwJnN4P_AmaXA9Mi42MC4yLjExMyZidD0wJnNpcD0xMzYuMjQzLjEzMC4xNjYmcmVmM_1odHRwczovL3hyZWZlcmF0LmNvbS8zMy8zMjk3L_Etc296ZGFuaWUtYmF6eS1kYW5ueWgtYmlibGlvdGVrYS5odG1s" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 12229, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpHflLpF.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_cyODQ2JnBjPW9WV2lCJnQ9MSZyaWQ9NDEmY29tcGlkP_EyMjI5JmJpZD0xM_YxMSZtYz0wMjQ5MjVmNDFiZ_JjYjVkZjU3NWY2OGJjN2RkNWQ0NiZwb3M9NyZzZXNzPWVmNGIzYmFkODY1MGFhNWNkZmUxMDMwNzkxO_g5NzZkJmFnY2g9N_ZkYjQxYWM3MDRkMWIyY_JjNzFmZjcxNzY5M_M5ZGEmYnJpZD0zJm9zaWQ9MSZwcj0yLjUwJnN4P_AmaXA9Mi42MC4yLjExMyZidD0wJnNpcD0xMzYuMjQzLjEzMC4xNjYmcmVmM_1odHRwczovL3hyZWZlcmF0LmNvbS8zMy8zMjk3L_Etc296ZGFuaWUtYmF6eS1kYW5ueWgtYmlibGlvdGVrYS5odG1s" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 12229, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355172846">Жир с живота и боков уйдет за 3-4 дня, если смешать соду с...</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_cyN_A1JnBjPXc5MUkwJnQ9MSZyaWQ9MyZjb21waWQ9M_A4ODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz04JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuODYmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 10881, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpTkB5gQ.jpg" target="_blank" width="200" height="200" alt="Случилось страшное." title="Случилось страшное."></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_cyN_A1JnBjPXc5MUkwJnQ9MSZyaWQ9MyZjb21waWQ9M_A4ODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz04JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuODYmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 10881, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355172505">Трагедия с внуком Аллы: боль не унять</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YzN_Y1JnBjPWVrVmwzJnQ9MSZyaWQ9MyZjb21waWQ9M_E3MDImYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz05JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuNjAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 11702, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpcSxBd8.jpg" target="_blank" width="200" height="200" alt="" title=""></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_YzN_Y1JnBjPWVrVmwzJnQ9MSZyaWQ9MyZjb21waWQ9M_E3MDImYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz05JnNlc3M9ZWY0YjNiYWQ4NjUwYWE1Y2RmZ_EwMzA3O_E5ODk3NmQmYWdjaD01NmRiNDFhYzcwNGQxYjJhMmM3MWZmNzE3NjkxMzlkYSZicmlkP_Mmb3NpZD0xJnByP_AuNjAmc3g9MCZpcD0yLjYwLjIuM_EzJmJ0P_Amc2lwP_EzNi4yNDMuM_MwLjE2NiZyZWYxPWh0dHBzOi8veHJlZmVyYXQuY29tLzMzLzMyO_ctMS1zb3pkYW5pZS1iYXp5LWRhbm55aC1iaWJsaW90ZWthLmh0bWw=" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 11702, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355163565">Женщину без секса видно сразу! Выдает крохотная деталь</a>   </div>   </td></tr><tr><td valign="top" align="center" width="100%"><div class="atimg"><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_czNjgyJnBjP_FxN_lJJnQ9MSZyaWQ9MyZjb21waWQ9M_A4ODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0xMCZzZXNzPWVmNGIzYmFkODY1MGFhNWNkZmUxMDMwNzkxO_g5NzZkJmFnY2g9N_ZkYjQxYWM3MDRkMWIyY_JjNzFmZjcxNzY5M_M5ZGEmYnJpZD0zJm9zaWQ9MSZwcj0wLjg2JnN4P_AmaXA9Mi42MC4yLjExMyZidD0wJnNpcD0xMzYuMjQzLjEzMC4xNjYmcmVmM_1odHRwczovL3hyZWZlcmF0LmNvbS8zMy8zMjk3L_Etc296ZGFuaWUtYmF6eS1kYW5ueWgtYmlibGlvdGVrYS5odG1s" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 10881, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank"><img class="newsimg" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/200phpW3ucSR.jpg" target="_blank" width="200" height="200" alt="22-летний Акбаржон Джалилов, подозреваемый в теракте в метро" title="22-летний Акбаржон Джалилов, подозреваемый в теракте в метро"></a></div> <div style="display: block; padding-top: 5px;"><a rel="nofollow" class="livU3ssnA055V2QSgF8TzT" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JnVzaWQ9ODI4ODMzODk4MSZ0aWQ9M_czNjgyJnBjP_FxN_lJJnQ9MSZyaWQ9MyZjb21waWQ9M_A4ODEmYmlkP_ExNjExJm1jP_AyNDkyNWY0MWJlMmNiNWRmN_c1ZjY4YmM3ZGQ1ZDQ2JnBvcz0xMCZzZXNzPWVmNGIzYmFkODY1MGFhNWNkZmUxMDMwNzkxO_g5NzZkJmFnY2g9N_ZkYjQxYWM3MDRkMWIyY_JjNzFmZjcxNzY5M_M5ZGEmYnJpZD0zJm9zaWQ9MSZwcj0wLjg2JnN4P_AmaXA9Mi42MC4yLjExMyZidD0wJnNpcD0xMzYuMjQzLjEzMC4xNjYmcmVmM_1odHRwczovL3hyZWZlcmF0LmNvbS8zMy8zMjk3L_Etc296ZGFuaWUtYmF6eS1kYW5ueWgtYmlibGlvdGVrYS5odG1s" onclick="this.setAttribute(&#39;href&#39;, __bodyHandler(this.href, event, 10881, &#39;vU3ssnA055V2QSgF8TzT&#39;));" target="_blank" id="url589859355173682">Кровь стынет в жилах от того, что рассказала мать террориста</a>   </div>   </td></tr><tr></tr></tbody></table><a rel="nofollow" href="http://v.actionteaser.ru/r.php?l=aWQ9NjUwNyZ1aWQ9N_g5ODU5MzU1JmlwP_IuNjAuMi4xM_MmbWM9Nzk3N2VmODVjN_c2M_QyNzRkODM3YzdmYzhmZmRlMDEmYm51b_12V_Nzc25BMDU1VjJRU2dGOFR6VCZzaXA9M_M2LjI0My4xMzAuM_Y2JmJyaWQ9MyZzZXNzPWVmNGIzYmFkODY1MGFhNWNkZmUxMDMwNzkxO_g5NzZkJnJlZjE9aHR0cHM6Ly94cmVmZXJhdC5jb20vMzMvMzI5Ny0xLXNvemRhbmllLWJhenktZGFubnloLWJpYmxpb3Rla2EuaHRtbCZiaWQ9M_E2M_EmbWM9Nzk3N2VmODVjN_c2M_QyNzRkODM3YzdmYzhmZmRlMDEmYm51b_12V_Nzc25BMDU1VjJRU2dGOFR6VCZ0P_EmaGlkZWxpbms9MQ==" class="ath"></a></div><style> #actionteaservU3ssnA055V2QSgF8TzT .tdret {border: 2px solid #C51B1F; background-color: #F7F7F7; background-image: url(https://v.actionteaser.ru/images/pattern.png);} #actionteaservU3ssnA055V2QSgF8TzT td{border: 0px solid #FFFFFF; padding: 5px;  background-color: #FFFFFF; white-space: normal;} a.livU3ssnA055V2QSgF8TzT{font: 13px Arial; color: #248FE0 !important; text-decoration: underline; font-weight: normal;} a.livU3ssnA055V2QSgF8TzTret {font: 13px Arial; line-height: 1.2; color: #265A95;  font-weight: bold;} #actionteaservU3ssnA055V2QSgF8TzT img.newsimg{ border: 0px solid #FFFFFF;   width: 200px; height: 200px; margin: 0px; position: relative; top: auto; left: auto; z-index: auto;} #actionteaservU3ssnA055V2QSgF8TzT font.opisfont{font: 11px Arial; color: #000000;} div.divprice {display: block;} #actionteaservU3ssnA055V2QSgF8TzT font.tovarfont{font: 11px Arial;   font-weight: bold;  color: #E37E0F;}  #actionteaservU3ssnA055V2QSgF8TzT font.oldprice{font: 11px Arial; color: #E37E0F;  font-weight: bold; text-decoration: line-through !important;}	  a.livU3ssnA055V2QSgF8TzT:hover, a.livU3ssnA055V2QSgF8TzTret:hover {font-size: 13px; color:#171717 !important; text-decoration: none;} .ath {display: none !important} .atimg {text-align: center;}</style></div></div><script type="text/javascript" async="" id="atriptvU3ssnA055V2QSgF8TzT" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/news.php"></script>
+			</div>
+			<div class="left">
+			<script type="text/javascript">
+			    (function(w, d, n) {
+			        w[n] = w[n] || [];
+			        w[n].push({
+			            section_id: 138251,
+			            place: "advertur_138251",
+			            width: 240,
+			            height: 400
+			        });
+			    })(window, document, "advertur_sections");
+			</script>
+			<script type="text/javascript" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/loader.js.загружено" async=""></script>
+            </div><!--/noindex-->
+		</div>
+	</div>
+	<div id="footer">
+		<div class="flinks">
+			<ul>
+				<li><a href="https://xreferat.com/support.html">Обратная связь</a></li>
+				<li><a href="https://xreferat.com/upload.html">Добавить работу</a></li>
+				<li><a href="https://xreferat.com/advertising.html">Реклама</a></li>
+				<li>©&nbsp;2010 — 2017&nbsp; <a href="https://xreferat.com/">Xreferat.com</a></li>
+			</ul>
+		</div>
+		<div class="mouse"></div>
+	</div>
+</div>
+<!--noindex--><script language="Javascript">
+var bid = 'WHv9NY4ISCd7ooD0dtMm';
+var sid = '6507';
+var async = 1;
+</script>
+<script type="text/javascript">xreferatas();</script><script type="text/javascript" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/news_ssl.js.загружено" id="atmainscript_vU3ssnA055V2QSgF8TzT"></script>
+<script language="Javascript">
+var bid = 'vU3ssnA055V2QSgF8TzT';
+var sid = '6507';
+var async = 1;
+</script>
+<script type="text/javascript">xreferatas();</script><script type="text/javascript" src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/news_ssl.js.загружено" id="atmainscript_vU3ssnA055V2QSgF8TzT"></script><!--/noindex-->
+
+
+<!-- Xreferat (https://xreferat.com) -->
+<div class="b-share-popup-wrap b-share-popup-wrap_state_hidden" id="ya-share-0.8971087191217306-1492196933603-popup"><div class="b-share-popup b-share-popup_down b-share-popup_to-right"><div class="b-share-popup__i"><div class="b-share-popup__main  b-share-popup_yandexed"><div class="b-share-popup__header b-share-popup__header_first">Поделитесь с друзьями</div><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=yaru&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="yaru"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_yaru"></span></span><span class="b-share-popup__item__text">Я.ру</span></a><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=vkontakte&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="vkontakte"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_vkontakte"></span></span><span class="b-share-popup__item__text">ВКонтакте</span></a><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="odnoklassniki"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_odnoklassniki"></span></span><span class="b-share-popup__item__text">Одноклассники</span></a><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=twitter&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="twitter"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_twitter"></span></span><span class="b-share-popup__item__text">Twitter</span></a><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=facebook&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="facebook"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_facebook"></span></span><span class="b-share-popup__item__text">Facebook</span></a><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=moimir&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="moimir"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_moimir"></span></span><span class="b-share-popup__item__text">Мой Мир</span></a><a rel="nofollow" target="_blank" href="https://share.yandex.ru/go.xml?service=lj&amp;url=https%3A%2F%2Fxreferat.com%2F33%2F3297-1-sozdanie-bazy-dannyh-biblioteka.html&amp;title=%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%3A%20%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B0%D0%B7%D1%8B%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85%20%22%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0%22%20-%20Xreferat.com%20-%20%D0%91%D0%B0%D0%BD%D0%BA%20%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D0%B2%2C%20%D1%81%D0%BE%D1%87%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9%2C%20%D0%B4%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%B2%2C%20%D0%BA%D1%83%D1%80%D1%81%D0%BE%D0%B2%D1%8B%D1%85%20%D0%B8%20%D0%B4%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82" class="b-share-popup__item" data-service="lj"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_lj"></span></span><span class="b-share-popup__item__text">LiveJournal</span></a><a href="https://xreferat.com/" class="b-share-popup__yandex">Xreferat</a></div></div><div class="b-share-popup__tail"></div></div></div><img src="./Реферат_ Создание базы данных _Библиотека_ - Xreferat.com - Банк рефератов, сочинений, докладов, курсовых и дипломных работ_files/rv.php" height="0" width="0"></body></html>

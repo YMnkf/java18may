@@ -1,0 +1,260 @@
+swagger: "2.0"
+info:
+  description: "This is a sample API"
+  version: "1.0.0" #Версия API сервиса-адаптера
+  title: "Adapter" #Наименование сервиса - адаптера
+  termsOfService: "http://swagger.io/terms/" #Условия использования (если Вы используете этот сервис, то вы гарантируете, что пользователи согласны на обработку персональных данных)
+  contact:
+    email: "yklesovay@gmail.com" 
+  license:
+    name: "Apache 2.0" #Версия лицензии исходного кода API (если модицифируют, то новая версия будет распространяться свободно)
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html" #Адрес текста лицензии
+host: "petstore.swagger.io" #Адрес, где располагается сам сервис
+basePath: "/v2"
+tags: #Ключевые слова, которые описывают сервис для поиска в интернет
+- name: "Client" #Pet - это группа обращений. Все адреса API, которые начинаются с Pet, работают с питомцами
+  description: "Операции с клиентом"
+  externalDocs:
+    description: "Find out more"
+    url: "http://" #Ссылка
+schemes:
+- "https" #Протоколы, по которым работает API. Https - шифрованное соединение
+- "http"
+paths:                   
+  /Client/{ClientCardId}: #Client - ключевое слово, с которого начинанется адрес
+    get:
+      tags:
+      - "Client" #см. ключевые слова
+      summary: "Find ClientCard by ID"
+      description: "Returns a single ClientCard"
+      operationId: "getClientCardById" #Наименование метода в JAVA
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: #Входящие параметры
+      - name: "ClientCardId"
+        in: "path" #in - это откуда он берется. В данном случае ID бфл в самом адресе 
+        description: "ID of ClientCard to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ClientCard" #Здесь добавили ссылку на объект, т.к. с ответом 200 возвращается структура данных
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "ClientCard not found"
+      security:
+      - api_key: [] #Нужно ли нам авторизовываться, чтобы получать информацию о ClientCard
+  /Client:
+    post:
+      tags: #К какой группе методов относить
+      - "Client"
+      summary: "Add a new Client Card"
+      description: ""
+      operationId: "addClientCard"
+      consumes: #Это будет описано в header
+      - "application/json"
+      - "application/xml"
+      produces: #Это будет описано в header
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body" #Это будет описано в body. Данные, которые отправляем вместе с запросом
+        name: "body"
+        description: "ClientCard that needs to be added"
+        required: true #Содержимое дополнительного запроса обязательно или нет? Т.е. должны ли при отправке запроса направлять данные о клиенте
+        schema:
+          $ref: "#/definitions/ClientCard" #Структура данных, передаваемых с запросом
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input" #500 сами возникнут, если сервер упадет
+      security:
+      - Client_auth:
+        - "write:ClientCards"
+        - "read:ClientCards"
+  /Client/findByClientCriteria:
+    get:
+      tags:
+      - "Client"
+      summary: "Finds ClientCards by ClientCriteria"
+      description: ""
+      operationId: "findClientCardByClientCriteria"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Name"
+        in: "query"
+        type: "string"
+        required: true
+        maxLength: 250
+      - name: "Surname"
+        in: "query"
+        type: "string"
+        required: true
+        maxLength: 250
+      - name: "ParentName"
+        in: "query"
+        type: "string"
+        maxLength: 250
+      - name: "TypeDoc"
+        in: "query"
+        type: "string"
+        enum:
+        - "Passport"
+        - "Foreign passport"
+        - "Seaman passport"
+      - name: "SeriaDoc"
+        in: "query"
+        type: "string"
+        maxLength: 20
+      - name: "NumDoc"
+        in: "query"
+        type: "string"
+        maxLength: 20
+      - name: "Issuer"
+        in: "query"
+        type: "string"
+        maxLength: 100
+      - name: "IssueDate"
+        in: "query"
+        type: "string"
+        format: "date"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ClientCard" #Ссылка на структуру данных, которую возвращают с 200
+        400:
+          description: "Invalid ClientCriteria value"
+      security:
+      - Client_auth:
+        - "write:ClientCards"
+        - "read:ClientCards"
+      #deprecated: true  #является ли этот адрес устаревшим для использования: /Client/findByClientCriteria: Опубликовали одну версию, потом изменили, старый фрагмент пометили как устаревший, а потом удалили
+securityDefinitions:
+  Client_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog" #Адрес, на который нужно отправлять запрос, чтобы авторизоваться
+    flow: "implicit" #
+    scopes:
+      write:ClientCards: "modify ClientCards in your account" #write, read должны быть прописаны в API, предоставляющем authorizationUrl
+      read:ClientCards: "read ClientCard"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  PersonDoc:
+    type: "object"
+    required:
+    - "TypeDoc"
+    - "NumDoc"
+    - "Issuer"
+    - "IssueDate"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      TypeDoc:
+        type: "string"
+        description: "PersonDoc type"
+        enum:
+        - "Passport"
+        - "Foreign passport"
+        - "Seaman passport"
+      SeriaDoc:
+        type: "string"
+      NumDoc:
+        type: "string"
+      Issuer:
+        type: "string"
+      IssueDate:
+        type: "string"
+        format: "date"
+    xml:
+      name: "PersonDoc"
+  ClientCard:
+    type: "object"
+    required:
+    - "Name"
+    - "Surname"
+    - "DateBirth"
+    - "PersonDocs"
+    - "PersFlag"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      Name:
+        type: "string"
+      Surname:
+        type: "string"
+      ParentName:
+        type: "string"
+      PersonDocs:
+        type: "array"
+        description: "Personal Docs"
+        items:
+          $ref: "#/definitions/PersonDoc"
+      Phone:
+        type: "string"
+      DateBirth:
+        type: "string"
+        format: "date"
+      Address:
+        type: "string"
+      PersFlag:
+        type: "boolean"
+      AdvFlag:
+        type: "boolean"
+    xml:
+      name: "ClientCard"
+  ClientCriteria:
+    type: "object"
+    properties:
+      Name:
+        type: "string"
+      Surname:
+        type: "string"
+      ParentName:
+        type: "string"
+      TypeDoc:
+        type: "string"
+        description: "PersonDoc type"
+        enum:
+        - "Passport"
+        - "Foreign passport"
+        - "Seaman passport"
+      SeriaDoc:
+        type: "string"
+      NumDoc:
+        type: "string"
+      Issuer:
+        type: "string"
+      IssueDate:
+        type: "string"
+        format: "date"
+    xml:
+      name: "ClientCritaria"    
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+externalDocs:
+  description: "Find out more about API"
+  url: "http://Ссылка" #Ссылка

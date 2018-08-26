@@ -1,0 +1,66 @@
+1
+ Титульный лист
+ index.htm
+2
+ 1. Вводная часть
+ vvodnaya_chast.htm
+3
+ 2. Назначение
+ 2__naznachenie.htm
+4
+ 3. Функциональные ограничения
+ 3__funktsionalnye_ogranicheniya.htm
+5
+ 4. Описание логики
+ 4__opisanie_logiki.htm
+6
+ 4.1. Описание структуры программы и ее основных частей
+ 4_1__opisanie_struktury_programmy_i_ee_osnovnykh_chastej.htm
+7
+ 4.2. Описание функций составных частей и связей между ними
+ 4_2__opisanie_funktsij_sostavnykh_chastej_i_svyazej_mezhdu_nimi.htm
+8
+ 4.3. Описание входных и выходных данных для каждой из составных частей
+ 4_3__opisanie_vkhodnykh_i_vykhodnykh_dannykh_dlya_kazhdoj_iz_sostavnykh_chastej.htm
+9
+ 4.4. Описание логики составных частей
+ 4_4__opisanie_logiki_sostavnykh_chastej.htm
+10
+ 5. Состав и функции
+ 5__sostav_i_funktsii.htm
+11
+ 5.1. Модуль расчета ...
+ 5_1__modul_rascheta____.htm
+12
+ 5.2. Модуль определения ...
+ 5_2__modul_opredeleniya____.htm
+13
+ 5.3. Модуль построения ...
+ 5_3__modul_postroeniya____.htm
+14
+ 6. Условия применения
+ 6__usloviya_primeneniya.htm
+15
+ 6.1. Функциональные ограничения
+ 6_1__funktsionalnye_ogranicheniya.htm
+16
+ 7. Контрольный пример
+ 7__kontrolnyj_primer.htm
+17
+ 8. Вызов и загрузка
+ 8__vyzov_i_zagruzka.htm
+18
+ 9. Руководство пользователя
+ 9__rukovodstvo_polzovatelya.htm
+19
+ Справочные материалы
+ spravochnye_materialy.htm
+20
+ Схема 1
+ skhema_1.htm
+21
+ Рисунок 1. Исходная матрица
+ risunok_1__iskhodnaya_matritsa.htm
+22
+ Рисунок 2. Результирующая матрица
+ risunok_2__rezultiruyushchaya_matritsa.htm

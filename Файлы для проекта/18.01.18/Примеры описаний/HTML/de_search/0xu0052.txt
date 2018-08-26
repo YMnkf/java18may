@@ -1,0 +1,4 @@
+RANDOM
+ 18
+RANDOM(100
+ 18
