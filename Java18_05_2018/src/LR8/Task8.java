@@ -21,12 +21,15 @@ public class Task8 {
         return;
     }
     
-    if (b <0 || b>= line.length()) {
-        System.out.print("Значение CA должно быть в интервале [0, длина строки)\n");
+    if (b <0) {
+        System.out.print("Значение CB должно быть неотрицательно\n");
         return;
     }
     
-       
+    if (a+b >= line.length) {
+        System.out.print("Сумма значений CA и CB должна быть меньше длины строки\n");
+        return;
+    }   
         
     System.out.print("Код страны: " + line.substring(0, 2) + "\n"); // проверяем включительно от a до b
     System.out.print("Код изготовителя: " + line.substring(3, 6) + "\n"); // проверяем включительно от a до b

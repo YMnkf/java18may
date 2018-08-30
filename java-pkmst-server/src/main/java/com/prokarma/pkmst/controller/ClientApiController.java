@@ -137,11 +137,59 @@ public class ClientApiController implements ClientApi {
            
         clientCard = new clientCard();
         for (PersonDoc doc: docs) {
-            card.addPersonDocItems(doc);
+            clientCard.addPersonDocItems(doc);
         }
         
         //выполняем запрос к БД
+        
+        string ClientCardQuery = "select " + //24.08.2018
+                "ClientCardID" +
+                ", Name" +
+                " , Surname" +
+                " , ParentName" +
+                " , Phone" +
+                " , DateBirth" +
+                " , Address" +
+                " , PersFlag" +
+                " , AdvFlag" +
+                " FROM ClientCard" +
+                " WHERE ClientCardID = ?;";
         //обрабатывам результат по аналогии с PersonDoc
+        
+        List<Map<String,Object>> rows = jdbcTemplate.queryForList(ClientCardQuery, args);
+        List<clientCard> docs = new ArrayList<>(); //Объект типа List<clientCard
+        
+        for (Map<String, Object> row: rows) {
+            clientCard clientCard = new clientCard();
+                        
+            String ClientCardId = (String) row.get("ClientCardID");
+            
+            String Name = (String) row.get("Name");
+            doc.setSurname(Name);
+                        
+            String Surname = (String) row.get("Surname");
+            doc.setSurname(Surname);
+            
+            String ParentName = (String) row.get("ParentName");
+            doc.setSurname(ParentName);
+            
+            String Phone = (String) row.get("Phone");
+            doc.setSurname(Phone);
+            
+            Date DateBirth = Date.parseDate((String) row.get("DateBirth"));
+            doc.setSurname(DateBirth);
+            
+            String Address = (String) row.get("Address");
+            doc.setSurname(Address);
+            
+            Boolean PersFlag = Boolean.parseBoolean((String) row.get("PersFlag")));
+            doc.setIssuer(PersFlag);
+            
+            Boolean AdvFlag = Boolean.parseBoolean((String) row.get("AdvFlag")));
+            doc.setIssuer(AdvFlag);
+            
+            docs.add(doc);
+        }
         
         return new ResponseEntity<ClientCard> (card, HttpStatus.OK); // 24.08.2018
         
