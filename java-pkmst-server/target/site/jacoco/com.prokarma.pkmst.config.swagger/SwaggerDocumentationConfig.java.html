@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SwaggerDocumentationConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.config.swagger</a> &gt; <span class="el_source">SwaggerDocumentationConfig.java</span></div><h1>SwaggerDocumentationConfig.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.config.swagger;
+
+import java.util.Date;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.StopWatch;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+//import static springfox.documentation.builders.PathSelectors.regex;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+/**
+ * Enable swagger ui for application
+ * @author pkmst
+ *
+ */
+@EnableSwagger2
+@Configuration
+<span class="nc" id="L23">public class SwaggerDocumentationConfig {</span>
+
+    public static final String DEFAULT_INCLUDE_PATTERN = &quot;/pkmst/.*&quot;;
+	 @Bean
+	    public Docket swaggerSpringfoxDocket(PkmstProperties pkmstProperties) {
+<span class="nc" id="L28">	        StopWatch watch = new StopWatch();</span>
+<span class="nc" id="L29">	        watch.start();</span>
+<span class="nc" id="L30">	        Contact contact = new Contact(</span>
+<span class="nc" id="L31">	        		pkmstProperties.getSwagger().getContactName(),</span>
+<span class="nc" id="L32">	        		pkmstProperties.getSwagger().getContactUrl(),</span>
+<span class="nc" id="L33">	        		pkmstProperties.getSwagger().getContactEmail());</span>
+
+<span class="nc" id="L35">	        ApiInfo apiInfo = new ApiInfo(</span>
+<span class="nc" id="L36">	        		pkmstProperties.getSwagger().getTitle(),</span>
+<span class="nc" id="L37">	        		pkmstProperties.getSwagger().getDescription(),</span>
+<span class="nc" id="L38">	        		pkmstProperties.getSwagger().getVersion(),</span>
+<span class="nc" id="L39">	        		pkmstProperties.getSwagger().getTermsOfServiceUrl(),</span>
+	            contact,
+<span class="nc" id="L41">	            pkmstProperties.getSwagger().getLicense(),</span>
+<span class="nc" id="L42">	            pkmstProperties.getSwagger().getLicenseUrl());</span>
+
+<span class="nc" id="L44">	        Docket docket = new Docket(DocumentationType.SWAGGER_2)</span>
+<span class="nc" id="L45">	            .apiInfo(apiInfo)</span>
+<span class="nc" id="L46">	            .forCodeGeneration(true)</span>
+<span class="nc" id="L47">	            .genericModelSubstitutes(ResponseEntity.class)</span>
+<span class="nc" id="L48">	            .ignoredParameterTypes(java.sql.Date.class)</span>
+<span class="nc" id="L49">	            .directModelSubstitute(java.time.LocalDate.class, java.sql.Date.class)</span>
+<span class="nc" id="L50">	            .directModelSubstitute(java.time.ZonedDateTime.class, Date.class)</span>
+<span class="nc" id="L51">	            .directModelSubstitute(java.time.LocalDateTime.class, Date.class)</span>
+<span class="nc" id="L52">	            .select()</span>
+<span class="nc" id="L53">	            .apis(RequestHandlerSelectors.basePackage(&quot;com.prokarma.pkmst&quot;))</span>
+	           // .paths(regex(DEFAULT_INCLUDE_PATTERN))
+<span class="nc" id="L55">	            .paths(PathSelectors.any())</span>
+<span class="nc" id="L56">	            .build();</span>
+<span class="nc" id="L57">	        watch.stop();</span>
+<span class="nc" id="L58">	        return docket;</span>
+	    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

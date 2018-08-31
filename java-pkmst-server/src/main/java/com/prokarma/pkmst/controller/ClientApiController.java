@@ -1,6 +1,8 @@
 package com.prokarma.pkmst.controller;
 
-import com.prokarma.pkmst.model.ClientCard;
+import com.prokarma.pkmst.model.ClientCard; //24.08.2018
+import com.prokarma.pkmst.model.PersonDoc; //31.08.2018
+
 import org.threeten.bp.LocalDate;
 
 import io.swagger.annotations.*;
@@ -18,11 +20,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.sql.ResultSet; // 25.08.2018
 import java.sql.SQLException; // 25.08.2018
 import org.springframework.jdbc.core.RowMapper; // 25.08.2018
+
 
 /**
  * Api implemention
@@ -77,21 +83,22 @@ public class ClientApiController implements ClientApi {
         @RequestHeader(value = "Accept", required = false) String accept) throws Exception {
         // do some magic!
         
-        string docTypeQuery = "select " + //24.08.2018
+                      
+        String docTypeQuery = "select " + //24.08.2018
                 "DocTypeID" +
                 ", DocName" +
                 " FROM DocTypes";
         
         List<Map<String, Object>> docTypes = jdbcTemplate.queryForList(docTypeQuery);
-        Map<String,String> doctypesMap = new HashMap<>();
+        Map<String,String> doctypesMap = new HashMap<String,String>();
         
         for (Map<String, Object> row: docTypes) {
             String id = (String) row.get("DocTypeId");
             String Name = (String) row.get("DocName");
-            doctypesMap.put(id,name);
+            doctypesMap.put(id,Name);
         }
         
-        string personDocQuery = "select " + //24.08.2018
+        String personDocQuery = "select " + //24.08.2018
                 "PersonDocID" +
                 ", ClientCardID" +
                 " , DocTypeID" +
@@ -102,16 +109,17 @@ public class ClientApiController implements ClientApi {
                 " FROM PersonDoc" +
                 " WHERE ClientCardID = ?;";
         
-        Object[] args = new Object[] { clientCardID };
+        Object[] args = new Object[] { clientCardId }; //заполняем массив значениями параметров SQL-запроса
+        // {clientCardID} - inline инициализация массива, в массиве в этой задаче будет 1 элемент = 1 значение clientCardId
         
         List<Map<String,Object>> rows = jdbcTemplate.queryForList(personDocQuery, args);
         List<PersonDoc> docs = new ArrayList<>(); //Объект типа List<PersonDoc>
         
         for (Map<String, Object> row: rows) {
-            PersonDoc doc = new PersonDoc();
+            PersonDoc doc = new PersonDoc(); //создание экземпляров документов в цикле
             Object idObj = row.get("PersonDocId"); // преобразование данных
             String idStr = (String) idObj;
-            Long id = Long.ParseLong(idstr);
+            Long id = Long.parseLong(idStr);
             doc.setId(id);
             
             String docTypeId = (String) row.get("DocTypeId");
@@ -120,29 +128,32 @@ public class ClientApiController implements ClientApi {
             PersonDoc.TypeDocEnum type = PersonDoc.TypeDocEnum.fromValue(docTypeName);
             doc.setTypeDoc(type);
             
-            Long seriaDoc = Long.parseLong((String) row.get("SeriaDoc")));
+            String seriaDoc = (String) row.get("SeriaDoc");
             doc.setSeriaDoc(seriaDoc);
                         
-            Long numDoc = Long.parseLong((String) row.get("NumDoc")));
+            String numDoc = (String) row.get("NumDoc");
             doc.setNumDoc(numDoc);
             
-            Long issuer = Long.parseLong((String) row.get("Issuer")));
+            String issuer = (String) row.get("Issuer");
             doc.setIssuer(issuer);
             
-            Long issueDate = Long.parseLong((String) row.get("IssuerDate")));
-            doc.setIssuer(issuerDate);
+            LocalDate issueDate = LocalDate.parse((String) row.get("IssuerDate"));
+            doc.setIssueDate(issueDate);
+            
             
             docs.add(doc);
         }
            
-        clientCard = new clientCard();
-        for (PersonDoc doc: docs) {
-            clientCard.addPersonDocItems(doc);
-        }
+        ClientCard NewClientCard = new ClientCard (); //создали экземпляр ClientCard
+        //for (PersonDoc doc: docs) {
+        //    NewClientCard.setPersonDocs(docs);
+        //}
+        
+        NewClientCard.setPersonDocs(docs);
         
         //выполняем запрос к БД
         
-        string ClientCardQuery = "select " + //24.08.2018
+        String ClientCardQuery = "select " + //24.08.2018
                 "ClientCardID" +
                 ", Name" +
                 " , Surname" +
@@ -156,42 +167,38 @@ public class ClientApiController implements ClientApi {
                 " WHERE ClientCardID = ?;";
         //обрабатывам результат по аналогии с PersonDoc
         
-        List<Map<String,Object>> rows = jdbcTemplate.queryForList(ClientCardQuery, args);
-        List<clientCard> docs = new ArrayList<>(); //Объект типа List<clientCard
-        
-        for (Map<String, Object> row: rows) {
-            clientCard clientCard = new clientCard();
-                        
+        List<Map<String,Object>> rowsClients = jdbcTemplate.queryForList(ClientCardQuery, args);
+                
+        for (Map<String, Object> row: rowsClients) {
             String ClientCardId = (String) row.get("ClientCardID");
-            
+                                
             String Name = (String) row.get("Name");
-            doc.setSurname(Name);
+            NewClientCard.setSurname(Name);
                         
             String Surname = (String) row.get("Surname");
-            doc.setSurname(Surname);
+            NewClientCard.setSurname(Surname);
             
             String ParentName = (String) row.get("ParentName");
-            doc.setSurname(ParentName);
+            NewClientCard.setSurname(ParentName);
             
             String Phone = (String) row.get("Phone");
-            doc.setSurname(Phone);
+            NewClientCard.setSurname(Phone);
             
-            Date DateBirth = Date.parseDate((String) row.get("DateBirth"));
-            doc.setSurname(DateBirth);
+            LocalDate DateBirth = LocalDate.parse((String) row.get("DateBirth"));
+            NewClientCard.setDateBirth(DateBirth);
             
             String Address = (String) row.get("Address");
-            doc.setSurname(Address);
+            NewClientCard.setSurname(Address);
             
-            Boolean PersFlag = Boolean.parseBoolean((String) row.get("PersFlag")));
-            doc.setIssuer(PersFlag);
+            Boolean PersFlag = Boolean.parseBoolean((String) row.get("PersFlag"));
+            NewClientCard.setPersFlag(PersFlag);
             
-            Boolean AdvFlag = Boolean.parseBoolean((String) row.get("AdvFlag")));
-            doc.setIssuer(AdvFlag);
-            
-            docs.add(doc);
+            Boolean AdvFlag = Boolean.parseBoolean((String) row.get("AdvFlag"));
+            NewClientCard.setAdvFlag(AdvFlag);
+                        
         }
         
-        return new ResponseEntity<ClientCard> (card, HttpStatus.OK); // 24.08.2018
+        return new ResponseEntity<ClientCard> (NewClientCard, HttpStatus.OK); // 24.08.2018
         
 
         //if (accept != null && accept.contains("application/xml")) {

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClientCriteria.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.model</a> &gt; <span class="el_source">ClientCriteria.java</span></div><h1>ClientCriteria.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.threeten.bp.LocalDate;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * ClientCriteria
+ */
+
+@javax.annotation.Generated(value = &quot;io.swagger.codegen.languages.JavaPKMSTServerCodegen&quot;, date = &quot;2018-08-18T07:07:33.250Z&quot;)
+
+<span class="nc" id="L21">public class ClientCriteria   {</span>
+<span class="nc" id="L22">  @JsonProperty(&quot;Name&quot;)</span>
+  private String name = null;
+
+<span class="nc" id="L25">  @JsonProperty(&quot;Surname&quot;)</span>
+  private String surname = null;
+
+<span class="nc" id="L28">  @JsonProperty(&quot;ParentName&quot;)</span>
+  private String parentName = null;
+
+  /**
+   * PersonDoc type
+   */
+<span class="nc" id="L34">  public enum TypeDocEnum {</span>
+<span class="nc" id="L35">    PASSPORT(&quot;Passport&quot;),</span>
+    
+<span class="nc" id="L37">    FOREIGN_PASSPORT(&quot;Foreign passport&quot;),</span>
+    
+<span class="nc" id="L39">    SEAMAN_PASSPORT(&quot;Seaman passport&quot;);</span>
+
+    private String value;
+
+<span class="nc" id="L43">    TypeDocEnum(String value) {</span>
+<span class="nc" id="L44">      this.value = value;</span>
+<span class="nc" id="L45">    }</span>
+
+    @Override
+    @JsonValue
+    public String toString() {
+<span class="nc" id="L50">      return String.valueOf(value);</span>
+    }
+
+    @JsonCreator
+    public static TypeDocEnum fromValue(String text) {
+<span class="nc bnc" id="L55" title="All 2 branches missed.">      for (TypeDocEnum b : TypeDocEnum.values()) {</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if (String.valueOf(b.value).equals(text)) {</span>
+<span class="nc" id="L57">          return b;</span>
+        }
+      }
+<span class="nc" id="L60">      return null;</span>
+    }
+  }
+
+<span class="nc" id="L64">  @JsonProperty(&quot;TypeDoc&quot;)</span>
+  private TypeDocEnum typeDoc = null;
+
+<span class="nc" id="L67">  @JsonProperty(&quot;SeriaDoc&quot;)</span>
+  private String seriaDoc = null;
+
+<span class="nc" id="L70">  @JsonProperty(&quot;NumDoc&quot;)</span>
+  private String numDoc = null;
+
+<span class="nc" id="L73">  @JsonProperty(&quot;Issuer&quot;)</span>
+  private String issuer = null;
+
+<span class="nc" id="L76">  @JsonProperty(&quot;IssueDate&quot;)</span>
+  private LocalDate issueDate = null;
+
+  public ClientCriteria name(String name) {
+<span class="nc" id="L80">    this.name = name;</span>
+<span class="nc" id="L81">    return this;</span>
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getName() {
+<span class="nc" id="L90">    return name;</span>
+  }
+
+  public void setName(String name) {
+<span class="nc" id="L94">    this.name = name;</span>
+<span class="nc" id="L95">  }</span>
+
+  public ClientCriteria surname(String surname) {
+<span class="nc" id="L98">    this.surname = surname;</span>
+<span class="nc" id="L99">    return this;</span>
+  }
+
+   /**
+   * Get surname
+   * @return surname
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getSurname() {
+<span class="nc" id="L108">    return surname;</span>
+  }
+
+  public void setSurname(String surname) {
+<span class="nc" id="L112">    this.surname = surname;</span>
+<span class="nc" id="L113">  }</span>
+
+  public ClientCriteria parentName(String parentName) {
+<span class="nc" id="L116">    this.parentName = parentName;</span>
+<span class="nc" id="L117">    return this;</span>
+  }
+
+   /**
+   * Get parentName
+   * @return parentName
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getParentName() {
+<span class="nc" id="L126">    return parentName;</span>
+  }
+
+  public void setParentName(String parentName) {
+<span class="nc" id="L130">    this.parentName = parentName;</span>
+<span class="nc" id="L131">  }</span>
+
+  public ClientCriteria typeDoc(TypeDocEnum typeDoc) {
+<span class="nc" id="L134">    this.typeDoc = typeDoc;</span>
+<span class="nc" id="L135">    return this;</span>
+  }
+
+   /**
+   * PersonDoc type
+   * @return typeDoc
+  **/
+  @ApiModelProperty(value = &quot;PersonDoc type&quot;)
+  public TypeDocEnum getTypeDoc() {
+<span class="nc" id="L144">    return typeDoc;</span>
+  }
+
+  public void setTypeDoc(TypeDocEnum typeDoc) {
+<span class="nc" id="L148">    this.typeDoc = typeDoc;</span>
+<span class="nc" id="L149">  }</span>
+
+  public ClientCriteria seriaDoc(String seriaDoc) {
+<span class="nc" id="L152">    this.seriaDoc = seriaDoc;</span>
+<span class="nc" id="L153">    return this;</span>
+  }
+
+   /**
+   * Get seriaDoc
+   * @return seriaDoc
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getSeriaDoc() {
+<span class="nc" id="L162">    return seriaDoc;</span>
+  }
+
+  public void setSeriaDoc(String seriaDoc) {
+<span class="nc" id="L166">    this.seriaDoc = seriaDoc;</span>
+<span class="nc" id="L167">  }</span>
+
+  public ClientCriteria numDoc(String numDoc) {
+<span class="nc" id="L170">    this.numDoc = numDoc;</span>
+<span class="nc" id="L171">    return this;</span>
+  }
+
+   /**
+   * Get numDoc
+   * @return numDoc
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getNumDoc() {
+<span class="nc" id="L180">    return numDoc;</span>
+  }
+
+  public void setNumDoc(String numDoc) {
+<span class="nc" id="L184">    this.numDoc = numDoc;</span>
+<span class="nc" id="L185">  }</span>
+
+  public ClientCriteria issuer(String issuer) {
+<span class="nc" id="L188">    this.issuer = issuer;</span>
+<span class="nc" id="L189">    return this;</span>
+  }
+
+   /**
+   * Get issuer
+   * @return issuer
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getIssuer() {
+<span class="nc" id="L198">    return issuer;</span>
+  }
+
+  public void setIssuer(String issuer) {
+<span class="nc" id="L202">    this.issuer = issuer;</span>
+<span class="nc" id="L203">  }</span>
+
+  public ClientCriteria issueDate(LocalDate issueDate) {
+<span class="nc" id="L206">    this.issueDate = issueDate;</span>
+<span class="nc" id="L207">    return this;</span>
+  }
+
+   /**
+   * Get issueDate
+   * @return issueDate
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public LocalDate getIssueDate() {
+<span class="nc" id="L216">    return issueDate;</span>
+  }
+
+  public void setIssueDate(LocalDate issueDate) {
+<span class="nc" id="L220">    this.issueDate = issueDate;</span>
+<span class="nc" id="L221">  }</span>
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+<span class="nc bnc" id="L226" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L227">      return true;</span>
+    }
+<span class="nc bnc" id="L229" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L230">      return false;</span>
+    }
+<span class="nc" id="L232">    ClientCriteria clientCriteria = (ClientCriteria) o;</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">    return Objects.equals(this.name, clientCriteria.name) &amp;&amp;</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">        Objects.equals(this.surname, clientCriteria.surname) &amp;&amp;</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">        Objects.equals(this.parentName, clientCriteria.parentName) &amp;&amp;</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">        Objects.equals(this.typeDoc, clientCriteria.typeDoc) &amp;&amp;</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">        Objects.equals(this.seriaDoc, clientCriteria.seriaDoc) &amp;&amp;</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">        Objects.equals(this.numDoc, clientCriteria.numDoc) &amp;&amp;</span>
+<span class="nc bnc" id="L239" title="All 2 branches missed.">        Objects.equals(this.issuer, clientCriteria.issuer) &amp;&amp;</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        Objects.equals(this.issueDate, clientCriteria.issueDate);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L245">    return Objects.hash(name, surname, parentName, typeDoc, seriaDoc, numDoc, issuer, issueDate);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L250">    StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L251">    sb.append(&quot;class ClientCriteria {\n&quot;);</span>
+    
+<span class="nc" id="L253">    sb.append(&quot;    name: &quot;).append(toIndentedString(name)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L254">    sb.append(&quot;    surname: &quot;).append(toIndentedString(surname)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L255">    sb.append(&quot;    parentName: &quot;).append(toIndentedString(parentName)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L256">    sb.append(&quot;    typeDoc: &quot;).append(toIndentedString(typeDoc)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L257">    sb.append(&quot;    seriaDoc: &quot;).append(toIndentedString(seriaDoc)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L258">    sb.append(&quot;    numDoc: &quot;).append(toIndentedString(numDoc)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L259">    sb.append(&quot;    issuer: &quot;).append(toIndentedString(issuer)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L260">    sb.append(&quot;    issueDate: &quot;).append(toIndentedString(issueDate)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L261">    sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L262">    return sb.toString();</span>
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+<span class="nc bnc" id="L270" title="All 2 branches missed.">    if (o == null) {</span>
+<span class="nc" id="L271">      return &quot;null&quot;;</span>
+    }
+<span class="nc" id="L273">    return o.toString().replace(&quot;\n&quot;, &quot;\n    &quot;);</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

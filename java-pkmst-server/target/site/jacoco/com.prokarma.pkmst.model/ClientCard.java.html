@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClientCard.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.model</a> &gt; <span class="el_source">ClientCard.java</span></div><h1>ClientCard.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.prokarma.pkmst.model.PersonDoc;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import org.threeten.bp.LocalDate;
+/**
+ * Response class to be returned by Api
+ * @author pkmst
+ *
+ */
+/**
+ * ClientCard
+ */
+
+@javax.annotation.Generated(value = &quot;io.swagger.codegen.languages.JavaPKMSTServerCodegen&quot;, date = &quot;2018-08-18T07:07:33.250Z&quot;)
+
+<span class="nc" id="L23">public class ClientCard   {</span>
+<span class="nc" id="L24">  @JsonProperty(&quot;id&quot;)</span>
+  private Long id = null;
+
+<span class="nc" id="L27">  @JsonProperty(&quot;Name&quot;)</span>
+  private String name = null;
+
+<span class="nc" id="L30">  @JsonProperty(&quot;Surname&quot;)</span>
+  private String surname = null;
+
+<span class="nc" id="L33">  @JsonProperty(&quot;ParentName&quot;)</span>
+  private String parentName = null;
+
+<span class="nc" id="L36">  @JsonProperty(&quot;PersonDocs&quot;)</span>
+  
+  private List&lt;PersonDoc&gt; personDocs = new ArrayList&lt;&gt;();
+
+<span class="nc" id="L40">  @JsonProperty(&quot;Phone&quot;)</span>
+  private String phone = null;
+
+<span class="nc" id="L43">  @JsonProperty(&quot;DateBirth&quot;)</span>
+  private LocalDate dateBirth = null;
+
+<span class="nc" id="L46">  @JsonProperty(&quot;Address&quot;)</span>
+  private String address = null;
+
+<span class="nc" id="L49">  @JsonProperty(&quot;PersFlag&quot;)</span>
+  private Boolean persFlag = null;
+
+<span class="nc" id="L52">  @JsonProperty(&quot;AdvFlag&quot;)</span>
+  private Boolean advFlag = null;
+
+  public ClientCard id(Long id) {
+<span class="nc" id="L56">    this.id = id;</span>
+<span class="nc" id="L57">    return this;</span>
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public Long getId() {
+<span class="nc" id="L66">    return id;</span>
+  }
+
+  public void setId(Long id) {
+<span class="nc" id="L70">    this.id = id;</span>
+<span class="nc" id="L71">  }</span>
+
+  public ClientCard name(String name) {
+<span class="nc" id="L74">    this.name = name;</span>
+<span class="nc" id="L75">    return this;</span>
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = &quot;&quot;)
+  public String getName() {
+<span class="nc" id="L84">    return name;</span>
+  }
+
+  public void setName(String name) {
+<span class="nc" id="L88">    this.name = name;</span>
+<span class="nc" id="L89">  }</span>
+
+  public ClientCard surname(String surname) {
+<span class="nc" id="L92">    this.surname = surname;</span>
+<span class="nc" id="L93">    return this;</span>
+  }
+
+   /**
+   * Get surname
+   * @return surname
+  **/
+  @ApiModelProperty(required = true, value = &quot;&quot;)
+  public String getSurname() {
+<span class="nc" id="L102">    return surname;</span>
+  }
+
+  public void setSurname(String surname) {
+<span class="nc" id="L106">    this.surname = surname;</span>
+<span class="nc" id="L107">  }</span>
+
+  public ClientCard parentName(String parentName) {
+<span class="nc" id="L110">    this.parentName = parentName;</span>
+<span class="nc" id="L111">    return this;</span>
+  }
+
+   /**
+   * Get parentName
+   * @return parentName
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getParentName() {
+<span class="nc" id="L120">    return parentName;</span>
+  }
+
+  public void setParentName(String parentName) {
+<span class="nc" id="L124">    this.parentName = parentName;</span>
+<span class="nc" id="L125">  }</span>
+
+  public ClientCard personDocs(List&lt;PersonDoc&gt; personDocs) {
+<span class="nc" id="L128">    this.personDocs = personDocs;</span>
+<span class="nc" id="L129">    return this;</span>
+  }
+
+  public ClientCard addPersonDocsItem(PersonDoc personDocsItem) {
+<span class="nc" id="L133">    this.personDocs.add(personDocsItem);</span>
+<span class="nc" id="L134">    return this;</span>
+  }
+
+   /**
+   * Personal Docs
+   * @return personDocs
+  **/
+  @ApiModelProperty(required = true, value = &quot;Personal Docs&quot;)
+  public List&lt;PersonDoc&gt; getPersonDocs() {
+<span class="nc" id="L143">    return personDocs;</span>
+  }
+
+  public void setPersonDocs(List&lt;PersonDoc&gt; personDocs) {
+<span class="nc" id="L147">    this.personDocs = personDocs;</span>
+<span class="nc" id="L148">  }</span>
+
+  public ClientCard phone(String phone) {
+<span class="nc" id="L151">    this.phone = phone;</span>
+<span class="nc" id="L152">    return this;</span>
+  }
+
+   /**
+   * Get phone
+   * @return phone
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getPhone() {
+<span class="nc" id="L161">    return phone;</span>
+  }
+
+  public void setPhone(String phone) {
+<span class="nc" id="L165">    this.phone = phone;</span>
+<span class="nc" id="L166">  }</span>
+
+  public ClientCard dateBirth(LocalDate dateBirth) {
+<span class="nc" id="L169">    this.dateBirth = dateBirth;</span>
+<span class="nc" id="L170">    return this;</span>
+  }
+
+   /**
+   * Get dateBirth
+   * @return dateBirth
+  **/
+  @ApiModelProperty(required = true, value = &quot;&quot;)
+  public LocalDate getDateBirth() {
+<span class="nc" id="L179">    return dateBirth;</span>
+  }
+
+  public void setDateBirth(LocalDate dateBirth) {
+<span class="nc" id="L183">    this.dateBirth = dateBirth;</span>
+<span class="nc" id="L184">  }</span>
+
+  public ClientCard address(String address) {
+<span class="nc" id="L187">    this.address = address;</span>
+<span class="nc" id="L188">    return this;</span>
+  }
+
+   /**
+   * Get address
+   * @return address
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public String getAddress() {
+<span class="nc" id="L197">    return address;</span>
+  }
+
+  public void setAddress(String address) {
+<span class="nc" id="L201">    this.address = address;</span>
+<span class="nc" id="L202">  }</span>
+
+  public ClientCard persFlag(Boolean persFlag) {
+<span class="nc" id="L205">    this.persFlag = persFlag;</span>
+<span class="nc" id="L206">    return this;</span>
+  }
+
+   /**
+   * Get persFlag
+   * @return persFlag
+  **/
+  @ApiModelProperty(required = true, value = &quot;&quot;)
+  public Boolean isPersFlag() {
+<span class="nc" id="L215">    return persFlag;</span>
+  }
+
+  public void setPersFlag(Boolean persFlag) {
+<span class="nc" id="L219">    this.persFlag = persFlag;</span>
+<span class="nc" id="L220">  }</span>
+
+  public ClientCard advFlag(Boolean advFlag) {
+<span class="nc" id="L223">    this.advFlag = advFlag;</span>
+<span class="nc" id="L224">    return this;</span>
+  }
+
+   /**
+   * Get advFlag
+   * @return advFlag
+  **/
+  @ApiModelProperty(value = &quot;&quot;)
+  public Boolean isAdvFlag() {
+<span class="nc" id="L233">    return advFlag;</span>
+  }
+
+  public void setAdvFlag(Boolean advFlag) {
+<span class="nc" id="L237">    this.advFlag = advFlag;</span>
+<span class="nc" id="L238">  }</span>
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+<span class="nc bnc" id="L243" title="All 2 branches missed.">    if (this == o) {</span>
+<span class="nc" id="L244">      return true;</span>
+    }
+<span class="nc bnc" id="L246" title="All 4 branches missed.">    if (o == null || getClass() != o.getClass()) {</span>
+<span class="nc" id="L247">      return false;</span>
+    }
+<span class="nc" id="L249">    ClientCard clientCard = (ClientCard) o;</span>
+<span class="nc bnc" id="L250" title="All 2 branches missed.">    return Objects.equals(this.id, clientCard.id) &amp;&amp;</span>
+<span class="nc bnc" id="L251" title="All 2 branches missed.">        Objects.equals(this.name, clientCard.name) &amp;&amp;</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">        Objects.equals(this.surname, clientCard.surname) &amp;&amp;</span>
+<span class="nc bnc" id="L253" title="All 2 branches missed.">        Objects.equals(this.parentName, clientCard.parentName) &amp;&amp;</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">        Objects.equals(this.personDocs, clientCard.personDocs) &amp;&amp;</span>
+<span class="nc bnc" id="L255" title="All 2 branches missed.">        Objects.equals(this.phone, clientCard.phone) &amp;&amp;</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">        Objects.equals(this.dateBirth, clientCard.dateBirth) &amp;&amp;</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">        Objects.equals(this.address, clientCard.address) &amp;&amp;</span>
+<span class="nc bnc" id="L258" title="All 2 branches missed.">        Objects.equals(this.persFlag, clientCard.persFlag) &amp;&amp;</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">        Objects.equals(this.advFlag, clientCard.advFlag);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="nc" id="L264">    return Objects.hash(id, name, surname, parentName, personDocs, phone, dateBirth, address, persFlag, advFlag);</span>
+  }
+
+  @Override
+  public String toString() {
+<span class="nc" id="L269">    StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L270">    sb.append(&quot;class ClientCard {\n&quot;);</span>
+    
+<span class="nc" id="L272">    sb.append(&quot;    id: &quot;).append(toIndentedString(id)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L273">    sb.append(&quot;    name: &quot;).append(toIndentedString(name)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L274">    sb.append(&quot;    surname: &quot;).append(toIndentedString(surname)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L275">    sb.append(&quot;    parentName: &quot;).append(toIndentedString(parentName)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L276">    sb.append(&quot;    personDocs: &quot;).append(toIndentedString(personDocs)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L277">    sb.append(&quot;    phone: &quot;).append(toIndentedString(phone)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L278">    sb.append(&quot;    dateBirth: &quot;).append(toIndentedString(dateBirth)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L279">    sb.append(&quot;    address: &quot;).append(toIndentedString(address)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L280">    sb.append(&quot;    persFlag: &quot;).append(toIndentedString(persFlag)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L281">    sb.append(&quot;    advFlag: &quot;).append(toIndentedString(advFlag)).append(&quot;\n&quot;);</span>
+<span class="nc" id="L282">    sb.append(&quot;}&quot;);</span>
+<span class="nc" id="L283">    return sb.toString();</span>
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+<span class="nc bnc" id="L291" title="All 2 branches missed.">    if (o == null) {</span>
+<span class="nc" id="L292">      return &quot;null&quot;;</span>
+    }
+<span class="nc" id="L294">    return o.toString().replace(&quot;\n&quot;, &quot;\n    &quot;);</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

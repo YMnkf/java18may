@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResourceServerConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.security</a> &gt; <span class="el_source">ResourceServerConfiguration.java</span></div><h1>ResourceServerConfiguration.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.security;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
+import org.springframework.http.HttpMethod;
+/**
+ * Configurer class for &lt;code&gt;@EnableResourceServer&lt;/code&gt; classes. This class adjust the access
+ * rules and paths that are protected by OAuth2 security. If more than one configures the same property, then the last
+ * one wins. The configurers are sorted by {@link Order} before being applied.
+ * 
+ * @author pkmst
+ * 
+ */
+@Configuration
+@EnableResourceServer
+<span class="nc" id="L20">public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {</span>
+
+    private static final String RESOURCE_ID = &quot;my_rest_api&quot;;
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+<span class="nc" id="L26">        resources.resourceId(RESOURCE_ID).stateless(false);</span>
+<span class="nc" id="L27">    }</span>
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+    //configure security for the http methods
+<span class="nc" id="L32">        http.</span>
+<span class="nc" id="L33">        anonymous().disable()</span>
+<span class="nc" id="L34">        .requestMatchers().antMatchers(HttpMethod.GET, &quot;/Client/**&quot;)</span>
+<span class="nc" id="L35">        .and().authorizeRequests()</span>
+<span class="nc" id="L36">        .antMatchers(HttpMethod.GET, &quot;/Client/**&quot;).access(&quot;hasRole('ADMIN')&quot;)</span>
+<span class="nc" id="L37">        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());</span>
+<span class="nc" id="L38">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

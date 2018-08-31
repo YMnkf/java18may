@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PkmstProperties.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.config.swagger</a> &gt; <span class="el_source">PkmstProperties.java</span></div><h1>PkmstProperties.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.config.swagger;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+/**
+ * Provides the swagger API info
+ * @author pkmst
+ *
+ */
+@Configuration
+@ConfigurationProperties(prefix = &quot;pkmst&quot;, ignoreUnknownFields = false)
+<span class="nc" id="L11">public class PkmstProperties {</span>
+
+<span class="nc" id="L13">	private final Swagger swagger = new Swagger();</span>
+	
+	
+	public Swagger getSwagger() {
+<span class="nc" id="L17">		return swagger;</span>
+	}
+
+
+<span class="nc" id="L21">	public static class Swagger {</span>
+
+<span class="nc" id="L23">	    private String title = &quot;Pkmst API&quot;;</span>
+
+<span class="nc" id="L25">	    private String description = &quot;Pkmst API documentation&quot;;</span>
+
+<span class="nc" id="L27">	    private String version = &quot;0.0.1&quot;;</span>
+
+	    private String termsOfServiceUrl;
+
+	    private String contactName;
+
+	    private String contactUrl;
+
+	    private String contactEmail;
+
+	    private String license;
+
+	    private String licenseUrl;
+
+	    public String getTitle() {
+<span class="nc" id="L42">	        return title;</span>
+	    }
+
+	    public void setTitle(String title) {
+<span class="nc" id="L46">	        this.title = title;</span>
+<span class="nc" id="L47">	    }</span>
+
+	    public String getDescription() {
+<span class="nc" id="L50">	        return description;</span>
+	    }
+
+	    public void setDescription(String description) {
+<span class="nc" id="L54">	        this.description = description;</span>
+<span class="nc" id="L55">	    }</span>
+
+	    public String getVersion() {
+<span class="nc" id="L58">	        return version;</span>
+	    }
+
+	    public void setVersion(String version) {
+<span class="nc" id="L62">	        this.version = version;</span>
+<span class="nc" id="L63">	    }</span>
+
+	    public String getTermsOfServiceUrl() {
+<span class="nc" id="L66">	        return termsOfServiceUrl;</span>
+	    }
+
+	    public void setTermsOfServiceUrl(String termsOfServiceUrl) {
+<span class="nc" id="L70">	        this.termsOfServiceUrl = termsOfServiceUrl;</span>
+<span class="nc" id="L71">	    }</span>
+
+	    public String getContactName() {
+<span class="nc" id="L74">	        return contactName;</span>
+	    }
+
+	    public void setContactName(String contactName) {
+<span class="nc" id="L78">	        this.contactName = contactName;</span>
+<span class="nc" id="L79">	    }</span>
+
+	    public String getContactUrl() {
+<span class="nc" id="L82">	        return contactUrl;</span>
+	    }
+
+	    public void setContactUrl(String contactUrl) {
+<span class="nc" id="L86">	        this.contactUrl = contactUrl;</span>
+<span class="nc" id="L87">	    }</span>
+
+	    public String getContactEmail() {
+<span class="nc" id="L90">	        return contactEmail;</span>
+	    }
+
+	    public void setContactEmail(String contactEmail) {
+<span class="nc" id="L94">	        this.contactEmail = contactEmail;</span>
+<span class="nc" id="L95">	    }</span>
+
+	    public String getLicense() {
+<span class="nc" id="L98">	        return license;</span>
+	    }
+
+	    public void setLicense(String license) {
+<span class="nc" id="L102">	        this.license = license;</span>
+<span class="nc" id="L103">	    }</span>
+
+	    public String getLicenseUrl() {
+<span class="nc" id="L106">	        return licenseUrl;</span>
+	    }
+
+	    public void setLicenseUrl(String licenseUrl) {
+<span class="nc" id="L110">	        this.licenseUrl = licenseUrl;</span>
+<span class="nc" id="L111">	    }</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

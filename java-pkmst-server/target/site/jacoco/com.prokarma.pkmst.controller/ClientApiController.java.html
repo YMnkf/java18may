@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClientApiController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.controller</a> &gt; <span class="el_source">ClientApiController.java</span></div><h1>ClientApiController.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.controller;
+
+import com.prokarma.pkmst.model.ClientCard; //24.08.2018
+import com.prokarma.pkmst.model.PersonDoc; //31.08.2018
+
+import org.threeten.bp.LocalDate;
+
+import io.swagger.annotations.*;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.sql.ResultSet; // 25.08.2018
+import java.sql.SQLException; // 25.08.2018
+import org.springframework.jdbc.core.RowMapper; // 25.08.2018
+
+
+/**
+ * Api implemention
+ * @author pkmst
+ *
+ */
+@javax.annotation.Generated(value = &quot;io.swagger.codegen.languages.JavaPKMSTServerCodegen&quot;, date = &quot;2018-08-18T07:07:33.250Z&quot;)
+
+
+@Controller
+public class ClientApiController implements ClientApi {
+    private final ObjectMapper objectMapper;
+    @Autowired //Подключение к БД
+    private JdbcTemplate jdbcTemplate; // Добавили поле класса
+
+<span class="nc" id="L47">    public ClientApiController(ObjectMapper objectMapper) {</span>
+<span class="nc" id="L48">        this.objectMapper = objectMapper;</span>
+<span class="nc" id="L49">    }</span>
+
+    public ResponseEntity&lt;Void&gt; addClientCard(
+        @ApiParam(value = &quot;ClientCard that needs to be added&quot; ,required=true )   @RequestBody ClientCard body,
+        @RequestHeader(value = &quot;Accept&quot;, required = false) String accept) throws Exception {
+        // do some magic!
+        
+<span class="nc" id="L56">        return new ResponseEntity&lt;Void&gt;(HttpStatus.OK);</span>
+    }
+
+    public ResponseEntity&lt;List&lt;ClientCard&gt;&gt; findClientCardByClientCriteria(@ApiParam(value = &quot;&quot;, required = true)  @RequestParam(value = &quot;Name&quot;, required = true) String name,
+        @ApiParam(value = &quot;&quot;, required = true)  @RequestParam(value = &quot;Surname&quot;, required = true) String surname,
+        @ApiParam(value = &quot;&quot;)  @RequestParam(value = &quot;ParentName&quot;, required = false) String parentName,
+        @ApiParam(value = &quot;&quot;, allowableValues = &quot;Passport, Foreign passport, Seaman passport&quot;)  @RequestParam(value = &quot;TypeDoc&quot;, required = false) String typeDoc,
+        @ApiParam(value = &quot;&quot;)  @RequestParam(value = &quot;SeriaDoc&quot;, required = false) String seriaDoc,
+        @ApiParam(value = &quot;&quot;)  @RequestParam(value = &quot;NumDoc&quot;, required = false) String numDoc,
+        @ApiParam(value = &quot;&quot;)  @RequestParam(value = &quot;Issuer&quot;, required = false) String issuer,
+        @ApiParam(value = &quot;&quot;)  @RequestParam(value = &quot;IssueDate&quot;, required = false) LocalDate issueDate,
+        @RequestHeader(value = &quot;Accept&quot;, required = false) String accept) throws Exception {
+        // do some magic!
+
+<span class="nc bnc" id="L70" title="All 4 branches missed.">        if (accept != null &amp;&amp; accept.contains(&quot;application/xml&quot;)) {</span>
+<span class="nc" id="L71">            return new ResponseEntity&lt;List&lt;ClientCard&gt;&gt;(objectMapper.readValue(&quot;&quot;, List.class), HttpStatus.OK);</span>
+        }
+
+
+<span class="nc bnc" id="L75" title="All 4 branches missed.">        if (accept != null &amp;&amp; accept.contains(&quot;application/json&quot;)) {</span>
+<span class="nc" id="L76">            return new ResponseEntity&lt;List&lt;ClientCard&gt;&gt;(objectMapper.readValue(&quot;&quot;, List.class), HttpStatus.OK);</span>
+        }
+
+<span class="nc" id="L79">        return new ResponseEntity&lt;List&lt;ClientCard&gt;&gt;(HttpStatus.OK);</span>
+    }
+
+    public ResponseEntity&lt;ClientCard&gt; getClientCardById(@ApiParam(value = &quot;ID of ClientCard to return&quot;,required=true ) @PathVariable(&quot;ClientCardId&quot;) Long clientCardId,
+        @RequestHeader(value = &quot;Accept&quot;, required = false) String accept) throws Exception {
+        // do some magic!
+        
+                      
+<span class="nc" id="L87">        String docTypeQuery = &quot;select &quot; + //24.08.2018</span>
+                &quot;DocTypeID&quot; +
+                &quot;, DocName&quot; +
+                &quot; FROM DocTypes&quot;;
+        
+<span class="nc" id="L92">        List&lt;Map&lt;String, Object&gt;&gt; docTypes = jdbcTemplate.queryForList(docTypeQuery);</span>
+<span class="nc" id="L93">        Map&lt;String,String&gt; doctypesMap = new HashMap&lt;String,String&gt;();</span>
+        
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        for (Map&lt;String, Object&gt; row: docTypes) {</span>
+<span class="nc" id="L96">            String id = (String) row.get(&quot;DocTypeId&quot;);</span>
+<span class="nc" id="L97">            String Name = (String) row.get(&quot;DocName&quot;);</span>
+<span class="nc" id="L98">            doctypesMap.put(id,Name);</span>
+<span class="nc" id="L99">        }</span>
+        
+<span class="nc" id="L101">        String personDocQuery = &quot;select &quot; + //24.08.2018</span>
+                &quot;PersonDocID&quot; +
+                &quot;, ClientCardID&quot; +
+                &quot; , DocTypeID&quot; +
+                &quot; , SeriaDoc&quot; +
+                &quot; , NumDoc&quot; +
+                &quot; , Issuer&quot; +
+                &quot; , IssueDate&quot; +
+                &quot; FROM PersonDoc&quot; +
+                &quot; WHERE ClientCardID = ?;&quot;;
+        
+<span class="nc" id="L112">        Object[] args = new Object[] { clientCardId }; //заполняем массив значениями параметров SQL-запроса</span>
+        // {clientCardID} - inline инициализация массива, в массиве в этой задаче будет 1 элемент = 1 значение clientCardId
+        
+<span class="nc" id="L115">        List&lt;Map&lt;String,Object&gt;&gt; rows = jdbcTemplate.queryForList(personDocQuery, args);</span>
+<span class="nc" id="L116">        List&lt;PersonDoc&gt; docs = new ArrayList&lt;&gt;(); //Объект типа List&lt;PersonDoc&gt;</span>
+        
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        for (Map&lt;String, Object&gt; row: rows) {</span>
+<span class="nc" id="L119">            PersonDoc doc = new PersonDoc(); //создание экземпляров документов в цикле</span>
+<span class="nc" id="L120">            Object idObj = row.get(&quot;PersonDocId&quot;); // преобразование данных</span>
+<span class="nc" id="L121">            String idStr = (String) idObj;</span>
+<span class="nc" id="L122">            Long id = Long.parseLong(idStr);</span>
+<span class="nc" id="L123">            doc.setId(id);</span>
+            
+<span class="nc" id="L125">            String docTypeId = (String) row.get(&quot;DocTypeId&quot;);</span>
+            
+<span class="nc" id="L127">            String docTypeName = doctypesMap.get(docTypeId);</span>
+<span class="nc" id="L128">            PersonDoc.TypeDocEnum type = PersonDoc.TypeDocEnum.fromValue(docTypeName);</span>
+<span class="nc" id="L129">            doc.setTypeDoc(type);</span>
+            
+<span class="nc" id="L131">            String seriaDoc = (String) row.get(&quot;SeriaDoc&quot;);</span>
+<span class="nc" id="L132">            doc.setSeriaDoc(seriaDoc);</span>
+                        
+<span class="nc" id="L134">            String numDoc = (String) row.get(&quot;NumDoc&quot;);</span>
+<span class="nc" id="L135">            doc.setNumDoc(numDoc);</span>
+            
+<span class="nc" id="L137">            String issuer = (String) row.get(&quot;Issuer&quot;);</span>
+<span class="nc" id="L138">            doc.setIssuer(issuer);</span>
+            
+<span class="nc" id="L140">            LocalDate issueDate = LocalDate.parse((String) row.get(&quot;IssuerDate&quot;));</span>
+<span class="nc" id="L141">            doc.setIssueDate(issueDate);</span>
+            
+            
+<span class="nc" id="L144">            docs.add(doc);</span>
+<span class="nc" id="L145">        }</span>
+           
+<span class="nc" id="L147">        ClientCard NewClientCard = new ClientCard (); //создали экземпляр ClientCard</span>
+        //for (PersonDoc doc: docs) {
+        //    NewClientCard.setPersonDocs(docs);
+        //}
+        
+<span class="nc" id="L152">        NewClientCard.setPersonDocs(docs);</span>
+        
+        //выполняем запрос к БД
+        
+<span class="nc" id="L156">        String ClientCardQuery = &quot;select &quot; + //24.08.2018</span>
+                &quot;ClientCardID&quot; +
+                &quot;, Name&quot; +
+                &quot; , Surname&quot; +
+                &quot; , ParentName&quot; +
+                &quot; , Phone&quot; +
+                &quot; , DateBirth&quot; +
+                &quot; , Address&quot; +
+                &quot; , PersFlag&quot; +
+                &quot; , AdvFlag&quot; +
+                &quot; FROM ClientCard&quot; +
+                &quot; WHERE ClientCardID = ?;&quot;;
+        //обрабатывам результат по аналогии с PersonDoc
+        
+<span class="nc" id="L170">        List&lt;Map&lt;String,Object&gt;&gt; rowsClients = jdbcTemplate.queryForList(ClientCardQuery, args);</span>
+                
+<span class="nc bnc" id="L172" title="All 2 branches missed.">        for (Map&lt;String, Object&gt; row: rowsClients) {</span>
+<span class="nc" id="L173">            String ClientCardId = (String) row.get(&quot;ClientCardID&quot;);</span>
+                                
+<span class="nc" id="L175">            String Name = (String) row.get(&quot;Name&quot;);</span>
+<span class="nc" id="L176">            NewClientCard.setSurname(Name);</span>
+                        
+<span class="nc" id="L178">            String Surname = (String) row.get(&quot;Surname&quot;);</span>
+<span class="nc" id="L179">            NewClientCard.setSurname(Surname);</span>
+            
+<span class="nc" id="L181">            String ParentName = (String) row.get(&quot;ParentName&quot;);</span>
+<span class="nc" id="L182">            NewClientCard.setSurname(ParentName);</span>
+            
+<span class="nc" id="L184">            String Phone = (String) row.get(&quot;Phone&quot;);</span>
+<span class="nc" id="L185">            NewClientCard.setSurname(Phone);</span>
+            
+<span class="nc" id="L187">            LocalDate DateBirth = LocalDate.parse((String) row.get(&quot;DateBirth&quot;));</span>
+<span class="nc" id="L188">            NewClientCard.setDateBirth(DateBirth);</span>
+            
+<span class="nc" id="L190">            String Address = (String) row.get(&quot;Address&quot;);</span>
+<span class="nc" id="L191">            NewClientCard.setSurname(Address);</span>
+            
+<span class="nc" id="L193">            Boolean PersFlag = Boolean.parseBoolean((String) row.get(&quot;PersFlag&quot;));</span>
+<span class="nc" id="L194">            NewClientCard.setPersFlag(PersFlag);</span>
+            
+<span class="nc" id="L196">            Boolean AdvFlag = Boolean.parseBoolean((String) row.get(&quot;AdvFlag&quot;));</span>
+<span class="nc" id="L197">            NewClientCard.setAdvFlag(AdvFlag);</span>
+                        
+<span class="nc" id="L199">        }</span>
+        
+<span class="nc" id="L201">        return new ResponseEntity&lt;ClientCard&gt; (NewClientCard, HttpStatus.OK); // 24.08.2018</span>
+        
+
+        //if (accept != null &amp;&amp; accept.contains(&quot;application/xml&quot;)) {
+        //    return new ResponseEntity&lt;ClientCard&gt;(objectMapper.readValue(&quot;&quot;, ClientCard.class), HttpStatus.OK);
+        //}
+
+
+        //if (accept != null &amp;&amp; accept.contains(&quot;application/json&quot;)) {
+        //    return new ResponseEntity&lt;ClientCard&gt;(objectMapper.readValue(&quot;&quot;, ClientCard.class), HttpStatus.OK);
+        //}
+
+        //return new ResponseEntity&lt;ClientCard&gt;(HttpStatus.OK);
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HttpLoggingFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.logging</a> &gt; <span class="el_source">HttpLoggingFilter.java</span></div><h1>HttpLoggingFilter.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.logging;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ReadListener;
+import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.WriteListener;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import org.apache.commons.io.output.TeeOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+/**
+ * Implements javax.servlet.Filter and dump the request/response to syslog
+ * @author pkmst
+ *
+ */
+
+@Component
+<span class="nc" id="L43">public class HttpLoggingFilter implements Filter {</span>
+
+<span class="nc" id="L45">  private static final Logger log = LoggerFactory.getLogger(HttpLoggingFilter.class);</span>
+
+  @Override
+  public void init(FilterConfig filterConfig) throws ServletException {
+<span class="nc" id="L49">  }</span>
+
+  @Override
+  public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException {
+    try {
+<span class="nc" id="L54">        HttpServletRequest httpServletRequest = (HttpServletRequest) request;</span>
+<span class="nc" id="L55">        HttpServletResponse httpServletResponse = (HttpServletResponse) response;</span>
+<span class="nc" id="L56">        Map&lt;String, String&gt; requestMap = this.getTypesafeRequestMap(httpServletRequest);</span>
+<span class="nc" id="L57">        BufferedRequestWrapper bufferedRequest = new BufferedRequestWrapper(httpServletRequest);</span>
+<span class="nc" id="L58">        BufferedResponseWrapper bufferedResponse = new BufferedResponseWrapper(httpServletResponse);</span>
+<span class="nc" id="L59">        final StringBuilder logMessage = new StringBuilder(</span>
+<span class="nc" id="L60">                &quot;REST Request - &quot;).append(&quot;[HTTP METHOD:&quot;)</span>
+<span class="nc" id="L61">                .append(httpServletRequest.getMethod())</span>
+<span class="nc" id="L62">                .append(&quot;] [PATH INFO:&quot;)</span>
+<span class="nc" id="L63">                .append(httpServletRequest.getServletPath())</span>
+<span class="nc" id="L64">                .append(&quot;] [REQUEST PARAMETERS:&quot;).append(requestMap)</span>
+<span class="nc" id="L65">                .append(&quot;] [REQUEST BODY:&quot;)</span>
+<span class="nc" id="L66">                .append(bufferedRequest.getRequestBody())</span>
+<span class="nc" id="L67">                .append(&quot;] [REMOTE ADDRESS:&quot;)</span>
+<span class="nc" id="L68">                .append(httpServletRequest.getRemoteAddr()).append(&quot;]&quot;);</span>
+<span class="nc" id="L69">        long start = System.currentTimeMillis();</span>
+<span class="nc" id="L70">        chain.doFilter(bufferedRequest, bufferedResponse);</span>
+<span class="nc" id="L71">        long elapsedTime = System.currentTimeMillis() - start;</span>
+<span class="nc" id="L72">        String respContent = null;</span>
+<span class="nc bnc" id="L73" title="All 4 branches missed.">        if (bufferedResponse.getContent() == null || bufferedResponse.getContent() == &quot;&quot;) {</span>
+<span class="nc" id="L74">          respContent = &quot;No data&quot;;</span>
+        } else {
+<span class="nc" id="L76">          respContent = bufferedResponse.getContent();</span>
+        }
+<span class="nc" id="L78">        logMessage.append(&quot; [RESPONSE:&quot;).append(respContent)</span>
+<span class="nc" id="L79">                .append(&quot;] [STATUS CODE:&quot;)</span>
+<span class="nc" id="L80">                .append(bufferedResponse.getStatus())</span>
+<span class="nc" id="L81">                .append(&quot;] [Response Time(ms):&quot;).append(elapsedTime)</span>
+<span class="nc" id="L82">                .append(&quot;]&quot;);</span>
+<span class="nc" id="L83">		String [] nonLoggingPaths = {&quot;/v2/api-docs&quot;,&quot;/swagger-resources&quot;,&quot;/configuration/security&quot;,&quot;/swagger-ui.html&quot;,&quot;/webjars&quot;};</span>
+<span class="nc" id="L84">        String urlPath = httpServletRequest.getRequestURL().toString();</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (! ( Arrays.stream(nonLoggingPaths).parallel().anyMatch(urlPath::contains) )){</span>
+<span class="nc" id="L86">             log.info(logMessage.toString());</span>
+        } 
+<span class="nc" id="L88">    } catch (Throwable a) {</span>
+<span class="nc" id="L89">        log.error(a.getMessage());</span>
+<span class="nc" id="L90">        a.printStackTrace();</span>
+<span class="nc" id="L91">    }</span>
+<span class="nc" id="L92">  }</span>
+
+  private Map&lt;String, String&gt; getTypesafeRequestMap(HttpServletRequest request) {
+<span class="nc" id="L95">    Map&lt;String, String&gt; typesafeRequestMap = new HashMap&lt;String, String&gt;();</span>
+<span class="nc" id="L96">    Enumeration&lt;?&gt; requestParamNames = request.getParameterNames();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">    while (requestParamNames.hasMoreElements()) {</span>
+<span class="nc" id="L98">      String requestParamName = (String) requestParamNames.nextElement();</span>
+      String requestParamValue;
+<span class="nc bnc" id="L100" title="All 2 branches missed.">      if (requestParamName.equalsIgnoreCase(&quot;password&quot;)) {</span>
+<span class="nc" id="L101">        requestParamValue = &quot;********&quot;;</span>
+      } else {
+<span class="nc" id="L103">        requestParamValue = request.getParameter(requestParamName);</span>
+      }
+<span class="nc" id="L105">      typesafeRequestMap.put(requestParamName, requestParamValue);</span>
+<span class="nc" id="L106">    }</span>
+<span class="nc" id="L107">    return typesafeRequestMap;</span>
+  }
+
+  @Override
+  public void destroy() {
+<span class="nc" id="L112">  }</span>
+
+  private static final class BufferedRequestWrapper extends HttpServletRequestWrapper {
+
+<span class="nc" id="L116">    private ByteArrayInputStream bais = null;</span>
+<span class="nc" id="L117">    private ByteArrayOutputStream baos = null;</span>
+<span class="nc" id="L118">    private BufferedServletInputStream bsis = null;</span>
+<span class="nc" id="L119">    private byte[] buffer = null;</span>
+
+    public BufferedRequestWrapper(HttpServletRequest req) throws IOException {
+<span class="nc" id="L122">      super(req);</span>
+      // Read InputStream and store its content in a buffer.
+<span class="nc" id="L124">      InputStream is = req.getInputStream();</span>
+<span class="nc" id="L125">      this.baos = new ByteArrayOutputStream();</span>
+<span class="nc" id="L126">      byte buf[] = new byte[1024];</span>
+      int read;
+<span class="nc bnc" id="L128" title="All 2 branches missed.">      while ((read = is.read(buf)) &gt; 0) {</span>
+<span class="nc" id="L129">        this.baos.write(buf, 0, read);</span>
+      }
+<span class="nc" id="L131">      this.buffer = this.baos.toByteArray();</span>
+<span class="nc" id="L132">    }</span>
+
+    @Override
+    public ServletInputStream getInputStream() {
+<span class="nc" id="L136">      this.bais = new ByteArrayInputStream(this.buffer);</span>
+<span class="nc" id="L137">      this.bsis = new BufferedServletInputStream(this.bais);</span>
+<span class="nc" id="L138">      return this.bsis;</span>
+    }
+
+    String getRequestBody() throws IOException {
+<span class="nc" id="L142">      BufferedReader reader = new BufferedReader(new InputStreamReader(this.getInputStream()));</span>
+<span class="nc" id="L143">      String line = null;</span>
+<span class="nc" id="L144">      StringBuilder inputBuffer = new StringBuilder();</span>
+      do {
+<span class="nc" id="L146">        line = reader.readLine();</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        if (null != line) {</span>
+<span class="nc" id="L148">          inputBuffer.append(line.trim());</span>
+        }
+<span class="nc bnc" id="L150" title="All 2 branches missed.">      } while (line != null);</span>
+<span class="nc" id="L151">      reader.close();</span>
+<span class="nc" id="L152">      return inputBuffer.toString().trim();</span>
+    }
+
+  }
+
+  private static final class BufferedServletInputStream extends ServletInputStream {
+
+    private ByteArrayInputStream bais;
+
+<span class="nc" id="L161">    public BufferedServletInputStream(ByteArrayInputStream bais) {</span>
+<span class="nc" id="L162">      this.bais = bais;</span>
+<span class="nc" id="L163">    }</span>
+
+    @Override
+    public int available() {
+<span class="nc" id="L167">      return this.bais.available();</span>
+    }
+
+    @Override
+    public int read() {
+<span class="nc" id="L172">      return this.bais.read();</span>
+    }
+
+    @Override
+    public int read(byte[] buf, int off, int len) {
+<span class="nc" id="L177">      return this.bais.read(buf, off, len);</span>
+    }
+
+    @Override
+    public boolean isFinished() {
+<span class="nc" id="L182">      return false;</span>
+    }
+
+    @Override
+    public boolean isReady() {
+<span class="nc" id="L187">      return true;</span>
+    }
+
+    @Override
+    public void setReadListener(ReadListener readListener) {
+
+<span class="nc" id="L193">    }</span>
+  }
+
+  public class TeeServletOutputStream extends ServletOutputStream {
+
+    private final TeeOutputStream targetStream;
+
+<span class="nc" id="L200">    public TeeServletOutputStream(OutputStream one, OutputStream two) {</span>
+<span class="nc" id="L201">      targetStream = new TeeOutputStream(one, two);</span>
+<span class="nc" id="L202">    }</span>
+
+    @Override
+    public void write(int arg0) throws IOException {
+<span class="nc" id="L206">      this.targetStream.write(arg0);</span>
+<span class="nc" id="L207">    }</span>
+
+    public void flush() throws IOException {
+<span class="nc" id="L210">      super.flush();</span>
+<span class="nc" id="L211">      this.targetStream.flush();</span>
+<span class="nc" id="L212">    }</span>
+
+    public void close() throws IOException {
+<span class="nc" id="L215">      super.close();</span>
+<span class="nc" id="L216">      this.targetStream.close();</span>
+<span class="nc" id="L217">    }</span>
+
+    @Override
+    public boolean isReady() {
+<span class="nc" id="L221">      return false;</span>
+    }
+
+    @Override
+    public void setWriteListener(WriteListener writeListener) {
+
+<span class="nc" id="L227">    }</span>
+  }
+
+  public class BufferedResponseWrapper implements HttpServletResponse {
+
+    HttpServletResponse original;
+    TeeServletOutputStream tee;
+    ByteArrayOutputStream bos;
+
+<span class="nc" id="L236">    public BufferedResponseWrapper(HttpServletResponse response) {</span>
+<span class="nc" id="L237">      original = response;</span>
+<span class="nc" id="L238">    }</span>
+
+    public String getContent() {
+<span class="nc bnc" id="L241" title="All 2 branches missed.">      if (bos == null) {</span>
+<span class="nc" id="L242">        return null;</span>
+      } else
+<span class="nc" id="L244">        return bos.toString();</span>
+    }
+
+    public PrintWriter getWriter() throws IOException {
+<span class="nc" id="L248">      return original.getWriter();</span>
+    }
+
+    public ServletOutputStream getOutputStream() throws IOException {
+<span class="nc bnc" id="L252" title="All 2 branches missed.">      if (tee == null) {</span>
+<span class="nc" id="L253">        bos = new ByteArrayOutputStream();</span>
+<span class="nc" id="L254">        tee = new TeeServletOutputStream(original.getOutputStream(),bos);</span>
+      }
+<span class="nc" id="L256">      return tee;</span>
+
+    }
+
+    @Override
+    public String getCharacterEncoding() {
+<span class="nc" id="L262">      return original.getCharacterEncoding();</span>
+    }
+
+    @Override
+    public String getContentType() {
+<span class="nc" id="L267">      return original.getContentType();</span>
+    }
+
+    @Override
+    public void setCharacterEncoding(String charset) {
+<span class="nc" id="L272">      original.setCharacterEncoding(charset);</span>
+<span class="nc" id="L273">    }</span>
+
+    @Override
+    public void setContentLength(int len) {
+<span class="nc" id="L277">      original.setContentLength(len);</span>
+<span class="nc" id="L278">    }</span>
+
+    @Override
+    public void setContentLengthLong(long l) {
+<span class="nc" id="L282">      original.setContentLengthLong(l);</span>
+<span class="nc" id="L283">    }</span>
+
+    @Override
+    public void setContentType(String type) {
+<span class="nc" id="L287">      original.setContentType(type);</span>
+<span class="nc" id="L288">    }</span>
+
+    @Override
+    public void setBufferSize(int size) {
+<span class="nc" id="L292">      original.setBufferSize(size);</span>
+<span class="nc" id="L293">    }</span>
+
+    @Override
+    public int getBufferSize() {
+<span class="nc" id="L297">      return original.getBufferSize();</span>
+    }
+
+    @Override
+    public void flushBuffer() throws IOException {
+<span class="nc" id="L302">      tee.flush();</span>
+<span class="nc" id="L303">    }</span>
+
+    @Override
+    public void resetBuffer() {
+<span class="nc" id="L307">      original.resetBuffer();</span>
+<span class="nc" id="L308">    }</span>
+
+    @Override
+    public boolean isCommitted() {
+<span class="nc" id="L312">      return original.isCommitted();</span>
+    }
+
+    @Override
+    public void reset() {
+<span class="nc" id="L317">      original.reset();</span>
+<span class="nc" id="L318">    }</span>
+
+    @Override
+    public void setLocale(Locale loc) {
+<span class="nc" id="L322">      original.setLocale(loc);</span>
+<span class="nc" id="L323">    }</span>
+
+    @Override
+    public Locale getLocale() {
+<span class="nc" id="L327">      return original.getLocale();</span>
+    }
+
+    @Override
+    public void addCookie(Cookie cookie) {
+<span class="nc" id="L332">      original.addCookie(cookie);</span>
+<span class="nc" id="L333">    }</span>
+
+    @Override
+    public boolean containsHeader(String name) {
+<span class="nc" id="L337">      return original.containsHeader(name);</span>
+    }
+
+    @Override
+    public String encodeURL(String url) {
+<span class="nc" id="L342">      return original.encodeURL(url);</span>
+    }
+
+    @Override
+    public String encodeRedirectURL(String url) {
+<span class="nc" id="L347">      return original.encodeRedirectURL(url);</span>
+    }
+
+    @SuppressWarnings(&quot;deprecation&quot;)
+    @Override
+    public String encodeUrl(String url) {
+<span class="nc" id="L353">      return original.encodeUrl(url);</span>
+    }
+
+    @SuppressWarnings(&quot;deprecation&quot;)
+    @Override
+    public String encodeRedirectUrl(String url) {
+<span class="nc" id="L359">      return original.encodeRedirectUrl(url);</span>
+    }
+
+    @Override
+    public void sendError(int sc, String msg) throws IOException {
+<span class="nc" id="L364">      original.sendError(sc, msg);</span>
+<span class="nc" id="L365">    }</span>
+
+    @Override
+    public void sendError(int sc) throws IOException {
+<span class="nc" id="L369">      original.sendError(sc);</span>
+<span class="nc" id="L370">    }</span>
+
+    @Override
+    public void sendRedirect(String location) throws IOException {
+<span class="nc" id="L374">      original.sendRedirect(location);</span>
+<span class="nc" id="L375">    }</span>
+
+    @Override
+    public void setDateHeader(String name, long date) {
+<span class="nc" id="L379">      original.setDateHeader(name, date);</span>
+<span class="nc" id="L380">    }</span>
+
+    @Override
+    public void addDateHeader(String name, long date) {
+<span class="nc" id="L384">      original.addDateHeader(name, date);</span>
+<span class="nc" id="L385">    }</span>
+
+    @Override
+    public void setHeader(String name, String value) {
+<span class="nc" id="L389">      original.setHeader(name, value);</span>
+<span class="nc" id="L390">    }</span>
+
+    @Override
+    public void addHeader(String name, String value) {
+<span class="nc" id="L394">      original.addHeader(name, value);</span>
+<span class="nc" id="L395">    }</span>
+
+    @Override
+    public void setIntHeader(String name, int value) {
+<span class="nc" id="L399">      original.setIntHeader(name, value);</span>
+<span class="nc" id="L400">    }</span>
+
+    @Override
+    public void addIntHeader(String name, int value) {
+<span class="nc" id="L404">      original.addIntHeader(name, value);</span>
+<span class="nc" id="L405">    }</span>
+
+    @Override
+    public void setStatus(int sc) {
+<span class="nc" id="L409">      original.setStatus(sc);</span>
+<span class="nc" id="L410">    }</span>
+
+    @SuppressWarnings(&quot;deprecation&quot;)
+    @Override
+    public void setStatus(int sc, String sm) {
+<span class="nc" id="L415">      original.setStatus(sc, sm);</span>
+<span class="nc" id="L416">    }</span>
+
+    @Override
+    public String getHeader(String arg0) {
+<span class="nc" id="L420">      return original.getHeader(arg0);</span>
+    }
+
+    @Override
+    public Collection&lt;String&gt; getHeaderNames() {
+<span class="nc" id="L425">      return original.getHeaderNames();</span>
+    }
+
+    @Override
+    public Collection&lt;String&gt; getHeaders(String arg0) {
+<span class="nc" id="L430">      return original.getHeaders(arg0);</span>
+    }
+
+    @Override
+    public int getStatus() {
+<span class="nc" id="L435">      return original.getStatus();</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

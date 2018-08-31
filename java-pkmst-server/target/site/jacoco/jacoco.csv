@@ -1,0 +1,22 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+pkmst-MS_service,com.prokarma.pkmst.logging,HttpLoggingFilter.BufferedRequestWrapper,96,0,6,0,24,0,6,0,3,0
+pkmst-MS_service,com.prokarma.pkmst.logging,HttpLoggingFilter.BufferedServletInputStream,26,0,0,0,9,0,7,0,7,0
+pkmst-MS_service,com.prokarma.pkmst.logging,HttpLoggingFilter.TeeServletOutputStream,33,0,0,0,13,0,6,0,6,0
+pkmst-MS_service,com.prokarma.pkmst.logging,HttpLoggingFilter,187,0,10,0,50,0,11,0,6,0
+pkmst-MS_service,com.prokarma.pkmst.logging,HttpLoggingFilter.BufferedResponseWrapper,218,0,4,0,67,0,41,0,39,0
+pkmst-MS_service,com.prokarma.pkmst.security,AuthorizationServerConfiguration,87,0,0,0,16,0,5,0,5,0
+pkmst-MS_service,com.prokarma.pkmst.security,OAuth2SecurityConfiguration,86,0,0,0,21,0,7,0,7,0
+pkmst-MS_service,com.prokarma.pkmst.security,ResourceServerConfiguration,46,0,0,0,10,0,3,0,3,0
+pkmst-MS_service,com.prokarma.pkmst.controller,ClientApiController,292,0,14,0,65,0,11,0,4,0
+pkmst-MS_service,com.prokarma.pkmst,PkmstApplication,15,0,0,0,5,0,3,0,3,0
+pkmst-MS_service,com.prokarma.pkmst.config.swagger,PkmstProperties.Swagger,75,0,0,0,31,0,19,0,19,0
+pkmst-MS_service,com.prokarma.pkmst.config.swagger,SwaggerDocumentationConfig,88,0,0,0,28,0,2,0,2,0
+pkmst-MS_service,com.prokarma.pkmst.config.swagger,PkmstProperties,11,0,0,0,3,0,2,0,2,0
+pkmst-MS_service,com.prokarma.pkmst.config,AppConfig.new WebMvcConfigurerAdapter() {...},11,0,0,0,3,0,2,0,2,0
+pkmst-MS_service,com.prokarma.pkmst.config,AppConfig,24,0,0,0,6,0,3,0,3,0
+pkmst-MS_service,com.prokarma.pkmst.model,ModelApiResponse,164,0,14,0,38,0,21,0,14,0
+pkmst-MS_service,com.prokarma.pkmst.model,ClientCard,432,0,28,0,96,0,50,0,36,0
+pkmst-MS_service,com.prokarma.pkmst.model,PersonDoc.TypeDocEnum,84,0,4,0,12,0,8,0,6,0
+pkmst-MS_service,com.prokarma.pkmst.model,ClientCriteria.TypeDocEnum,84,0,4,0,12,0,8,0,6,0
+pkmst-MS_service,com.prokarma.pkmst.model,ClientCriteria,349,0,24,0,78,0,41,0,29,0
+pkmst-MS_service,com.prokarma.pkmst.model,PersonDoc,275,0,20,0,62,0,33,0,23,0

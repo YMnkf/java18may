@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthorizationServerConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pkmst-MS_service</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.pkmst.security</a> &gt; <span class="el_source">AuthorizationServerConfiguration.java</span></div><h1>AuthorizationServerConfiguration.java</h1><pre class="source lang-java linenums">package com.prokarma.pkmst.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+/**
+ * Convenient strategy for configuring an OAUth2 Authorization Server. Beans of this type are applied to the Spring
+ * context automatically if you {@link EnableAuthorizationServer @EnableAuthorizationServer}.
+ * 
+ * @author pkmst
+ * 
+ */
+@Configuration
+@EnableAuthorizationServer
+<span class="nc" id="L23">public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {</span>
+
+<span class="nc" id="L25">    private static String REALM=&quot;MY_OAUTH_REALM&quot;;</span>
+
+    @Autowired
+    private TokenStore tokenStore;
+
+    @Autowired
+    private UserApprovalHandler userApprovalHandler;
+
+    @Autowired
+    @Qualifier(&quot;authenticationManagerBean&quot;)
+    private AuthenticationManager authenticationManager;
+
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
+<span class="nc" id="L40">        clients.inMemory()</span>
+<span class="nc" id="L41">            .withClient(&quot;my-trusted-client&quot;)</span>
+<span class="nc" id="L42">            .authorizedGrantTypes(&quot;password&quot;, &quot;authorization_code&quot;, &quot;refresh_token&quot;, &quot;implicit&quot;)</span>
+<span class="nc" id="L43">            .authorities(&quot;ROLE_CLIENT&quot;, &quot;ROLE_TRUSTED_CLIENT&quot;)</span>
+<span class="nc" id="L44">            .scopes(&quot;read&quot;, &quot;write&quot;, &quot;trust&quot;)</span>
+<span class="nc" id="L45">            .secret(&quot;secret&quot;)</span>
+<span class="nc" id="L46">            .accessTokenValiditySeconds(120).//Access token is only valid for 2 minutes.</span>
+<span class="nc" id="L47">            refreshTokenValiditySeconds(600);//Refresh token is only valid for 10 minutes.</span>
+<span class="nc" id="L48">    }</span>
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+<span class="nc" id="L52">        endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler)</span>
+<span class="nc" id="L53">                .authenticationManager(authenticationManager);</span>
+<span class="nc" id="L54">    }</span>
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+<span class="nc" id="L58">        oauthServer.realm(REALM+&quot;/client&quot;);</span>
+<span class="nc" id="L59">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
