@@ -9,12 +9,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *
  * @author pro-26
  */
 public class Lab02Suite {
 
-    @Test // аннотация к методу Task4411Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом 
+    @Test
+    // аннотация к методу Task4411Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом
     public void Task4411Test() {
         double result1;
         result1 = Lab01.task4411(11.13); // запись результата вызова метода Lab01.task4411 в переменную result1
@@ -29,7 +29,8 @@ public class Lab02Suite {
         Assert.assertEquals(7.0000, Lab01.task4411(0), 0.0001);
     }
 
-    @Test // аннотация к методу Task2790Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом 
+    @Test
+    // аннотация к методу Task2790Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом
     public void Task2790Test() {
         double result1;
         result1 = Lab01.task2790(6997); // запись результата вызова метода Lab01.task2790 в переменную result1
@@ -48,7 +49,8 @@ public class Lab02Suite {
         Assert.assertEquals(1.0000, Lab01.task2790(180), 0.0001);
     }
 
-    @Test // аннотация к методу Task3946Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом 
+    @Test
+    // аннотация к методу Task3946Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом
     public void Task3946Test() {
         double result1;
         int[] arr = new int[]{1, 2, 3, 4, 1};
@@ -65,33 +67,68 @@ public class Lab02Suite {
 
         Assert.assertEquals(0.0000, Lab01.task3946(new int[0]), 0.0001);
 
-    
-}
-    
-    @Test // аннотация к методу Task3946Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом 
+
+    }
+
+    @Test
+    // аннотация к методу Task9774Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом
     public void Task9774Test() {
         double a1 = 31;
         double[] data1 = new double[]{9, 8, 7, 6, 5, 4};
         double[] data1_result = new double[]{279, 248, 217, 186, 155, 124};
-        Lab01.task9774(a1, data1); 
+        Lab01.task9774(a1, data1);
         Assert.assertArrayEquals(data1_result, data1, 0.0001);
-        
+
         double a2 = -3;
         double[] data2 = new double[]{9, 8, 7, 6, 5, 4};
         double[] data2_result = new double[]{-27, -24, -21, -18, -15, -12};
-        Lab01.task9774(a2, data2); 
+        Lab01.task9774(a2, data2);
         Assert.assertArrayEquals(data2_result, data2, 0.0001);
-        
+
         double a3 = 11;
         double[] data3 = new double[]{98, 76, 54};
         double[] data3_result = new double[]{1078, 836, 594};
-        Lab01.task9774(a3, data3); 
+        Lab01.task9774(a3, data3);
         Assert.assertArrayEquals(data3_result, data3, 0.0001);
-        
+
         double a4 = 73;
         double[] data4 = new double[0];
         double[] data4_result = new double[0];
         Lab01.task9774(a4, data4);
         Assert.assertArrayEquals(data4_result, data4, 0.0001);
+    }
+
+    @Test
+    // аннотация к методу Task9271Test. Маркирует элементы кода (чтобы библиотека junit понимала, что этот метод является тестом
+    public void Task9271Test() {
+        double[] data1 = new double[]{5, 4, 6, 2, 3, 1};
+        double[] data1_result = new double[]{4, 3, 5, 1, 2, 0};
+        Lab01.task9271(data1);
+        Assert.assertArrayEquals(data1_result, data1, 0.0001);
+
+        double[][] data = new double[][]{ // загрузка тестов в виде двмерного массива
+                new double[]{1, 2, 3, 4, 1, 2},
+                new double[]{3, 4, 1, 2, 3, 4, 1, 2, 3, 1, 2},
+                new double[]{4, 2, 3, 4, 3, 2},
+                new double[]{4, 4, 4, 4, 4, 3, 2, 1},
+                new double[]{4, 4, 4, 4},
+                new double[]{4, 3}
+        };
+
+        double[][] data_result = new double[][]{
+                new double[]{0, 1, 2, 3, 0, 1},
+                new double[]{2, 3, 0, 1, 2, 3, 0, 1, 2, 0, 1},
+                new double[]{2, 0, 1, 2, 1, 0},
+                new double[]{3, 3, 3, 3, 3, 2, 1, 0},
+                new double[]{0, 0, 0, 0},
+                new double[]{1, 0}
+        };
+
+        for (int i = 0; i<=data.length-1; i++) {//data.length - количество строк массива
+           Lab01.task9271(data[i]);
+           Assert.assertArrayEquals(data_result[i], data[i], 0.0001);
+        }
+
+    }
 }
-}
+

@@ -60,4 +60,23 @@ public class Lab01 {
         }
 
     }
+
+    public static void task9271(double[] arr) {
+        if (arr.length == 0) {
+            return;
+        }
+        double a = arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            double dv = arr[i];
+            if (dv < a) {
+                a = dv;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            double dv = arr[i];
+            arr[i] = dv-a;
+        }
+        }
 }
+

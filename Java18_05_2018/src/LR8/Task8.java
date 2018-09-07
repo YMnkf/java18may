@@ -26,7 +26,7 @@ public class Task8 {
         return;
     }
     
-    if (a+b >= line.length) {
+    if (a+b >= line.length()) {
         System.out.print("Сумма значений CA и CB должна быть меньше длины строки\n");
         return;
     }   
