@@ -25,7 +25,7 @@ public class Task1 {
         int m;
         int n;
         String[] arr;
-
+        
 
         if (s.hasNext()) {
             m = Integer.parseInt(s.nextLine());
@@ -35,7 +35,7 @@ public class Task1 {
             return;
         }
 
-        if (m==0) {
+        if (m==0) { //Как добавить "Не является целым положит числом"?
             System.out.print("Сообщение об ошибке");
             return;
         }
@@ -55,14 +55,15 @@ public class Task1 {
 
         double [][] arr1 = new double [m][n];
 
-     for (int i=0; i<m-2; i++){
+     for (int i=0; i<m; i++){
             if (s.hasNext()) {///////////////////////////////////
                 arr = s.nextLine().split(" ");
 
-                for (int j=3; j<arr.length; j++){
-                    {arr1[i][j-3] = Double.parseDouble(arr[i]); ////////////////
+                for (int j=0; j<arr.length; j++){
+                    {arr1[i][j] = Double.parseDouble(arr[i]); ////////////////
                 }
-             } else {
+               }
+            } else {
                 System.out.print("Сообщение об ошибке");
                 return;
             }
@@ -71,7 +72,26 @@ public class Task1 {
                 System.out.print("Сообщение об ошибке");
                 return;
             }
-        }
+    }
+     
+     String[] arrSum = new String [n];
+     
+     for (int j=0; j<n; j++){
+         double S = 0;
+         for (int i=0; i<m; i++){
+             S = S + arr1[i][j];
+         }
+             arrSum[j]= String.valueOf((double)S);
+    }
+     
+     for (int i=0; i<arrSum.length; i++){
+             System.out.print(arrSum[i] + " ");
+     }
+     
+     System.out.print("\n");
+     s.close ();     
+      
+}
 
 
 
