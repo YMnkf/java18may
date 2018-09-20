@@ -15,7 +15,7 @@ public class Task1 {
 
         File target = new File ("./Resourses/task9299/test1.txt");
         if (!target.exists()) {
-            System.out.println("Файл " + target.getAbsolutePath()+ " не существует");
+            System.out.println("Файл " + target.getAbsolutePath()+ " не существует" + "\n");
             return;
         }
 
@@ -29,14 +29,13 @@ public class Task1 {
 
         if (s.hasNext()) {
             m = Integer.parseInt(s.nextLine());
-            //System.out.print(line);
-        } else {
-            System.out.print("Сообщение об ошибке");
+         } else {
+            System.out.print("Сообщение об ошибке" + "\n");
             return;
         }
 
         if (m==0) { //Как добавить "Не является целым положит числом"?
-            System.out.print("Сообщение об ошибке");
+            System.out.print("Сообщение об ошибке" + "\n");
             return;
         }
 
@@ -44,12 +43,12 @@ public class Task1 {
             n = Integer.parseInt(s.nextLine());
             //System.out.print(line);
         } else {
-            System.out.print("Сообщение об ошибке");
+            System.out.print("Сообщение об ошибке" + "\n");
             return;
         }
 
         if (n==0) {
-            System.out.print("Сообщение об ошибке");
+            System.out.print("Сообщение об ошибке" + "\n");
             return;
         }
 
@@ -60,20 +59,28 @@ public class Task1 {
                 arr = s.nextLine().split(" ");
 
                 for (int j=0; j<arr.length; j++){
-                    {arr1[i][j] = Double.parseDouble(arr[i]); ////////////////
+                    {arr1[i][j] = Double.parseDouble(arr[j]); ////////////////
                 }
                }
             } else {
-                System.out.print("Сообщение об ошибке");
+                System.out.print("Сообщение об ошибке" + "\n");
                 return;
             }
 
             if (arr.length != n) {
-                System.out.print("Сообщение об ошибке");
+                System.out.print("Сообщение об ошибке" + "\n");
                 return;
             }
     }
-     
+    s.close ();   //Где это должно быть? 
+    
+     for (int i=0; i<m; i++){
+                for (int j=0; j<n; j++){
+                    System.out.print(arr1[i][j] + " ");
+                }
+                System.out.print("\n");
+               }
+    
      String[] arrSum = new String [n];
      
      for (int j=0; j<n; j++){
@@ -89,55 +96,5 @@ public class Task1 {
      }
      
      System.out.print("\n");
-     s.close ();     
-      
 }
-
-
-
-
-
-
-
-
-
-
-
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-
-        if (s.hasNext()) {
-            line = s.nextLine();
-            System.out.print(", " + line);
-        }
-
-        System.out.print("\n");
-
-
-        s.close ();
-
-    }
 }
